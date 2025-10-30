@@ -3,7 +3,7 @@ import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 const Navs = () => {
   return (
-    <div className="shadow-2xl bg-white px-6 py-8 flex items-center justify-between">
+    <div className="fixed top-0 left-0 w-full  shadow-2xl bg-white px-6 py-8 flex items-center justify-between">
       
       <p className="text-2xl font-bold text-black">Shop Sphere</p>
 
