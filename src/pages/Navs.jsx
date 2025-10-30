@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 const Navs = () => {
     return (
-        <nav>
-             <Link>Home</Link>
-             <Link>Contact</Link>
-             <Link>About</Link>
-             <Link>Sign Up</Link>
-        </nav> 
+        <div>
+             <Link to="/">Home</Link>
+             <Link to="/contact">Contact</Link>
+             <Link to="/about">About</Link>
+             <Link to="sign-Up">Sign Up</Link>
+        </div> 
     )
 }
 
