@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { FaSearch,  } from "react-icons/fa"
 const Navs = () => {
     return (
         <div>
@@ -10,6 +11,7 @@ const Navs = () => {
             </div>
 
             <div>
+                <FaSearch />
                 <input type="text" name="What are you looking for" />
             </div>
 
