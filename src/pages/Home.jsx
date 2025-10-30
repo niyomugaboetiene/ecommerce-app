@@ -1,6 +1,5 @@
-
-const SignUp = () => {
+const Home = () => {
 
 }
 
-export default SignUp
+export default Home
