@@ -30,7 +30,8 @@ const recentlyViewed = [
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [recentIndex, setRecentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isCurrentHovered, setIsCurrentHovered] = useState(false);
+  const [isRecentHovered, setIsRecentHovered] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
