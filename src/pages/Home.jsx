@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import phone1 from "../assets/electrics/phone1.jpg";
-import camera1 from "../assets/electrics/keboard1.jpeg";
+import keyboard1 from "../assets/electrics/keboard1.jpeg";
 import pc1 from "../assets/electrics/pc1.jpeg";
 import women1 from "../assets/clothes/women1.jpg";
+import camera2 from "../assets/electrics/camera2.jpeg"
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
-  { image: camera1, description: "Modern camera Canon for better price" },
+  { image: keyboard1, description: "Modern clothes for better price" },
   { image: pc1, description: "Modern laptop for better price" },
   { image: women1, description: "Women's clothing" }
 ];
@@ -26,6 +27,13 @@ const Home = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
+      <aside className="flex justify-end">
+         <h1>Special offer</h1>
+         <div className="flex justify-end">
+            <img src={camera2} alt="special offer" />
+            <p>a line of imaging products known for quality, featuring a range of Digital Single-Lens Reflex (DSLR) and mirrorless models, all part of the EOS (Electro-Optical System) family</p>
+         </div>
+      </aside>
       <div className="w-[80%] max-w-4xl"> 
         <div className="relative">
           <div className="transition-opacity duration-500 ease-in-out">
