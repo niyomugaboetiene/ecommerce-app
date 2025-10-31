@@ -29,9 +29,13 @@ const Home = () => {
     <div className="flex justify-center items-center min-h-screen">
       <aside className="flex justify-end">
          <h1>Special offer</h1>
-         <div className="flex justify-end">
-            <img src={camera2} alt="special offer" />
-            <p>a line of imaging products known for quality, featuring a range of Digital Single-Lens Reflex (DSLR) and mirrorless models, all part of the EOS (Electro-Optical System) family</p>
+         <div className="aspect-video relative">
+            <img src={camera2} alt="special offer"
+              className="w-full h-full object-cover rounded-lg shadow-lg" 
+            />
+            <div className="absolute top-0 bottom-0 left-0 right-0  bg-black bg-opacity-50 text-white p-4 rounded-b-lg ">
+              <p>a line of imaging products known for quality, featuring a range of Digital Single-Lens Reflex (DSLR) and mirrorless models, all part of the EOS (Electro-Optical System) family</p>
+            </div>
          </div>
       </aside>
       <div className="w-[80%] max-w-4xl"> 
