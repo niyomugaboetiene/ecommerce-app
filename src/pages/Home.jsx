@@ -60,8 +60,8 @@ const Home = () => {
           font-bold mb-4 text-center">Special offer</h1>
          <div 
            className="h-[700px] relative group"
-           onMouseEnter={() => setIsHovered(true)}
-           onMouseLeave={() => setIsHovered(false)}
+           onMouseEnter={() => setIsCurrentHovered(true)}
+           onMouseLeave={() => setIsCurrentHovered(false)}
          >
             <img 
               src={camera2} 
@@ -123,8 +123,8 @@ const Home = () => {
       <h1>Recently Viewed</h1>
     <div 
            className="h-[700px] relative group"
-           onMouseEnter={() => setIsHovered(true)}
-           onMouseLeave={() => setIsHovered(false)}
+           onMouseEnter={() => setIsRecentHovered(true)}
+           onMouseLeave={() => setIsRecentHovered(false)}
          >
             <img 
               src={recentlyViewed[recentIndex].image} 
