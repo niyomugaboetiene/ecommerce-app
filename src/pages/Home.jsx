@@ -125,8 +125,8 @@ const Home = () => {
            onMouseLeave={() => setIsHovered(false)}
          >
             <img 
-              src={camera2} 
-              alt="special offer"
+              src={recentlyViewed[currentIndex].image} 
+              alt={recentlyViewed[currentIndex].description}
               className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300  group-hover:scale-105"
             />
             
