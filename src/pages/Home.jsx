@@ -4,6 +4,7 @@ import keyboard1 from "../assets/electrics/keboard1.jpeg";
 import pc1 from "../assets/electrics/pc1.jpeg";
 import women1 from "../assets/clothes/women1.jpg";
 import camera2 from "../assets/electrics/camera2.jpeg"
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
@@ -14,6 +15,7 @@ const Images = [
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [appearButton, setAppearButton] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,11 +35,21 @@ const Home = () => {
             <img 
               src={camera2} 
               alt="special offer"
-              className="w-full h-full object-cover rounded-lg shadow-lg" 
+              className="w-full h-full object-cover rounded-lg shadow-lg"
+              onTouchMove={() => setAppearButton(true)} 
             />
             <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/30 bg-opacity-50 text-white p-4 rounded-lg flex items-center justify-center">
-              <p className="text-center">a line of imaging products known for quality, featuring a range of Digital Single-Lens Reflex (DSLR) and mirrorless models, all part of the EOS (Electro-Optical System) family</p>
-            </div>
+                <p className="mt-[400px] text-center font-bold text-lg">SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.</p>
+                {appearButton && (
+                  <div>
+                     <button>
+                        <FaShoppingCart />
+                        Add To Cart
+                     </button>
+                     <button><FaHeart /></button>
+                  </div>
+                )}
+           </div>
          </div>
       </aside>
 
