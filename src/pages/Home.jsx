@@ -8,10 +8,17 @@ const Images = [
    {image: camera1, description: "Modern camera Canon for better price"},
    {image: pc1, description: "Modern laptop for better price"},
 ]
+
 const Home = () => {
    return (
     <div>
-
+         <div>
+            {Images.map((image, idx) => (
+               <ul key={idx}>
+                  <li>{image.image}</li>
+               </ul>
+            ))}
+         </div>
     </div>
    )
 }
