@@ -36,7 +36,8 @@ const Home = () => {
               src={camera2} 
               alt="special offer"
               className="w-full h-full object-cover rounded-lg shadow-lg"
-              onTouchMove={() => setAppearButton(true)} 
+              onMouseEnter={() => setAppearButton(true)} 
+              onMouseLeave={() => setAppearButton(false)} 
             />
             <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/30 bg-opacity-50 text-white p-4 rounded-lg flex items-center justify-center">
                 <p className="mt-[400px] text-center font-bold text-lg">SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.</p>
