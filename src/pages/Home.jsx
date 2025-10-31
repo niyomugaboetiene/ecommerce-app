@@ -78,7 +78,7 @@ const Home = () => {
                   SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.
                 </p>
                 
-                {isHovered && (
+                {isCurrentHovered && (
                   <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 mb-4">
                     <FaShoppingCart />
                     Add To Cart
@@ -141,7 +141,7 @@ const Home = () => {
                   SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.
                 </p>
                 
-                {isHovered && (
+                {isRecentHovered && (
                   <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 mb-4">
                     <FaShoppingCart />
                     Add To Cart
