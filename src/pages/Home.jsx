@@ -7,7 +7,7 @@ import camera2 from "../assets/electrics/camera2.jpeg"
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
-  { image: keyboard1, description: "Modern clothes for better price" },
+  { image: keyboard1, description: "Modern keyboard for better price" },
   { image: pc1, description: "Modern laptop for better price" },
   { image: women1, description: "Women's clothing" }
 ];
@@ -26,32 +26,35 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <aside className="flex justify-end">
-         <h1>Special offer</h1>
-         <div className="aspect-video relative">
-            <img src={camera2} alt="special offer"
+    <div className="flex justify-center items-center min-h-screen px-8">
+      <aside className="w-1/4 pr-4">
+         <h1 className="text-xl font-bold mb-4">Special offer</h1>
+         <div className="h-[800px] relative">
+            <img 
+              src={camera2} 
+              alt="special offer"
               className="w-full h-full object-cover rounded-lg shadow-lg" 
             />
-            <div className="absolute top-0 bottom-0 left-0 right-0  bg-black bg-opacity-50 text-white p-4 rounded-b-lg ">
-              <p>a line of imaging products known for quality, featuring a range of Digital Single-Lens Reflex (DSLR) and mirrorless models, all part of the EOS (Electro-Optical System) family</p>
+            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/30 bg-opacity-50 text-white p-4 rounded-lg flex items-center justify-center">
+              <p className="text-center">a line of imaging products known for quality, featuring a range of Digital Single-Lens Reflex (DSLR) and mirrorless models, all part of the EOS (Electro-Optical System) family</p>
             </div>
          </div>
       </aside>
-      <div className="w-[80%] max-w-4xl"> 
+
+      <div className="w-2/4 max-w-4xl px-4"> 
         <div className="relative">
           <div className="transition-opacity duration-500 ease-in-out">
-            <div className="aspect-video"> 
+            <div className="aspect-video relative"> 
               <img 
                 src={Images[currentIndex].image} 
                 alt={Images[currentIndex].description}
                 className="w-full h-full object-cover rounded-lg shadow-lg"
               />
-            </div>
-            <div className="mt-4 text-center">
-              <p className="text-lg font-medium text-gray-700">
-                {Images[currentIndex].description}
-              </p>
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 rounded-b-lg">
+                <p className="text-lg font-medium text-center">
+                  {Images[currentIndex].description}
+                </p>
+              </div>
             </div>
           </div>
           
@@ -68,6 +71,10 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <aside className="w-1/4 pl-4">
+        {/* You can add another sidebar content here if needed */}
+      </aside>
     </div>
   );
 };
