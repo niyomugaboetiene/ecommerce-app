@@ -29,6 +29,7 @@ const recentlyViewed = [
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [recentIndex, setRecentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ const Home = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setRecentIndex((prevIndex) => 
         prevIndex === recentlyViewed.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000)
@@ -125,8 +126,8 @@ const Home = () => {
            onMouseLeave={() => setIsHovered(false)}
          >
             <img 
-              src={recentlyViewed[currentIndex].image} 
-              alt={recentlyViewed[currentIndex].description}
+              src={recentlyViewed[recentIndex].image} 
+              alt={recentlyViewed[recentIndex].description}
               className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300  group-hover:scale-105"
             />
             
