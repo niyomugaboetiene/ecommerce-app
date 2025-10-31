@@ -8,6 +8,9 @@ import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import pent1 from "../assets/clothes/pent1.jpeg"
 import pent2 from "../assets/clothes/pent2.jpeg"
 import pent3 from "../assets/clothes/pent3.jpeg"
+import shoes1 from "../assets/clothes/shoes1.jpeg"
+import shoes2 from "../assets/clothes/shoes3.jpeg"
+import shoes3 from "../assets/clothes/shoes4.jpeg"
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
@@ -17,11 +20,12 @@ const Images = [
 ];
 
 const recentlyViewed = [
-   { image: phone1, description: "Modern phones for better price" },
-  { image: keyboard1, description: "Modern keyboard for better price" },
-  { image: pc1, description: "Modern laptop for better price" },
-  { image: women1, description: "Women's clothing" }
-]
+   { image: pent1, description: "Modern phones for better price" },
+   { image: pent2, description: "Modern keyboard for better price" },
+   { image: shoes1, description: "Modern laptop for better price" },
+   { image: shoes3, description: "Women's clothing" },
+   { image: shoes2, description: "Women's clothing" }
+];
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,6 +35,16 @@ const Home = () => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => 
         prevIndex === Images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000)
+
+    return () => clearInterval(interval); 
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => 
+        prevIndex === recentlyViewed.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000)
 
