@@ -5,6 +5,9 @@ import pc1 from "../assets/electrics/pc1.jpeg";
 import women1 from "../assets/clothes/women1.jpg";
 import camera2 from "../assets/electrics/camera2.jpeg"
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
+import pent1 from "../assets/clothes/pent1.jpeg"
+import pent2 from "../assets/clothes/pent2.jpeg"
+import pent3 from "../assets/clothes/pent3.jpeg"
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
@@ -13,9 +16,16 @@ const Images = [
   { image: women1, description: "Women's clothing" }
 ];
 
+const recentlyViewed = [
+   { image: phone1, description: "Modern phones for better price" },
+  { image: keyboard1, description: "Modern keyboard for better price" },
+  { image: pc1, description: "Modern laptop for better price" },
+  { image: women1, description: "Women's clothing" }
+]
+
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [appearButton, setAppearButton] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,28 +39,36 @@ const Home = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen px-8">
-      <aside className="w-1/4 pr-4">
-         <h1 className="text-xl font-bold mb-4">Special offer</h1>
-         <div className="h-[700px] relative">
+       <aside className="w-1/4 pr-4">
+         <h1 className="text-2xl
+          font-bold mb-4 text-center">Special offer</h1>
+         <div 
+           className="h-[700px] relative group"
+           onMouseEnter={() => setIsHovered(true)}
+           onMouseLeave={() => setIsHovered(false)}
+         >
             <img 
               src={camera2} 
               alt="special offer"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-              onMouseEnter={() => setAppearButton(true)} 
-              onMouseLeave={() => setAppearButton(false)} 
+              className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300  group-hover:scale-105"
             />
-            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/30 bg-opacity-50 text-white p-4 rounded-lg flex items-center justify-center">
-                <p className="mt-[400px] text-center font-bold text-lg">SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.</p>
-                {appearButton && (
-                  <div>
-                     <button>
-                        <FaShoppingCart />
-                        Add To Cart
-                     </button>
-                     <button><FaHeart /></button>
-                  </div>
+            
+            <button className="absolute top-4 right-4 bg-white p-3 rounded-full shadow-lg hover:bg-red-50 transition-colors">
+              <FaHeart className="text-gray-600 hover:text-red-500 text-xl hover:bg-red-50" />
+            </button>
+
+            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/30 text-white p-4 rounded-lg flex flex-col items-center justify-end">
+                <p className="text-center font-bold text-lg mb-4">
+                  SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.
+                </p>
+                
+                {isHovered && (
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 mb-4">
+                    <FaShoppingCart />
+                    Add To Cart
+                  </button>
                 )}
-           </div>
+            </div>
          </div>
       </aside>
 
@@ -61,7 +79,7 @@ const Home = () => {
               <img 
                 src={Images[currentIndex].image} 
                 alt={Images[currentIndex].description}
-                className="w-full h-full object-cover rounded-lg shadow-lg"
+                className="w-full h-full object-cover rounded-lg shadow-lg hover:scale-105 transition duration-200"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 rounded-b-lg">
                 <p className="text-lg font-medium text-center">
@@ -86,6 +104,35 @@ const Home = () => {
       </div>
 
       <aside className="w-1/4 pl-4">
+      <h1>Recently Viewed</h1>
+    <div 
+           className="h-[700px] relative group"
+           onMouseEnter={() => setIsHovered(true)}
+           onMouseLeave={() => setIsHovered(false)}
+         >
+            <img 
+              src={camera2} 
+              alt="special offer"
+              className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300  group-hover:scale-105"
+            />
+            
+            <button className="absolute top-4 right-4 bg-white p-3 rounded-full shadow-lg hover:bg-red-50 transition-colors">
+              <FaHeart className="text-gray-600 hover:text-red-500 text-xl hover:bg-red-50" />
+            </button>
+
+            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/30 text-white p-4 rounded-lg flex flex-col items-center justify-end">
+                <p className="text-center font-bold text-lg mb-4">
+                  SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.
+                </p>
+                
+                {isHovered && (
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 mb-4">
+                    <FaShoppingCart />
+                    Add To Cart
+                  </button>
+                )}
+            </div>
+         </div>
       </aside>
     </div>
   );
