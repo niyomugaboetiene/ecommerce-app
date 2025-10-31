@@ -11,12 +11,18 @@ import pent3 from "../assets/clothes/pent3.jpeg"
 import shoes1 from "../assets/clothes/shoes1.jpeg"
 import shoes2 from "../assets/clothes/shoes3.jpeg"
 import shoes3 from "../assets/clothes/shoes4.jpeg"
+import clothes1 from "../assets/clothes/clothes1.jpg"
+import clothes2 from "../assets/clothes/clothes2.jpg"
+import clothes3 from "../assets/clothes/clothes3.webp"
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
   { image: keyboard1, description: "Modern keyboard for better price" },
   { image: pc1, description: "Modern laptop for better price" },
-  { image: women1, description: "Women's clothing" }
+  { image: women1, description: "Women's clothing" },
+  { image: clothes1, description: "Women's clothing" },
+  { image: clothes2, description: "Women's clothing" },
+  { image: clothes3, description: "Women's clothing" },
 ];
 
 const recentlyViewed = [
@@ -56,8 +62,7 @@ const Home = () => {
   return (
     <div className="flex justify-center items-center min-h-screen px-8">
        <aside className="w-1/4 pr-4">
-         <h1 className="text-2xl
-          font-bold mb-4 text-center">Special offer</h1>
+         <h1 className="text-2xl font-bold mb-4 text-center">Special offer</h1>
          <div 
            className="h-[700px] relative group"
            onMouseEnter={() => setIsCurrentHovered(true)}
@@ -120,9 +125,9 @@ const Home = () => {
       </div>
 
       <aside className="w-1/4 pl-4">
-      <h1>Recently Viewed</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Recently Viewed</h1>
     <div 
-           className="h-[700px] relative group"
+           className="h-[700px] relative group mt-4"
            onMouseEnter={() => setIsRecentHovered(true)}
            onMouseLeave={() => setIsRecentHovered(false)}
          >
