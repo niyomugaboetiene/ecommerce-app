@@ -29,7 +29,7 @@ const Home = () => {
     <div className="flex justify-center items-center min-h-screen px-8">
       <aside className="w-1/4 pr-4">
          <h1 className="text-xl font-bold mb-4">Special offer</h1>
-         <div className="h-[800px] relative">
+         <div className="h-[700px] relative">
             <img 
               src={camera2} 
               alt="special offer"
@@ -73,7 +73,6 @@ const Home = () => {
       </div>
 
       <aside className="w-1/4 pl-4">
-        {/* You can add another sidebar content here if needed */}
       </aside>
     </div>
   );
