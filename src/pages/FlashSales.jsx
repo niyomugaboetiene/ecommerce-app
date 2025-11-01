@@ -39,13 +39,15 @@ const FlashSales = () => {
     return (
         <div>
              <div>
-                {Images.map((idx, name) => (
+                {Images.map((idx, item) => (
                     <div key={idx}>
-                         <p>{name.name}</p>
-                         <p>{name.description}</p>
+                         <p>{item.name}</p>
+                         <p>{item.description}</p>
                     </div>
                 ))}
              </div>
         </div>
     )
 }
+
+export default FlashSales
