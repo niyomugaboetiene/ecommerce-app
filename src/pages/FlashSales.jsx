@@ -38,15 +38,16 @@ const Images = [
 
 const FlashSales = () => {
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center p-6">
             <h2 className="flex">Flash Sales</h2>
-             <div className="grid grid-cols-4 gap-4">
+             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl">
                 {Images.map((item, idx) => (
-                    <div key={idx} className="p-4 shadow-2xl rounded-2xl">
-                        <div className="w-full h-60 p-3  hover:scale-105 transition duration-200">
-                              <img src={item.name} className="w-full h-full"/>
+                    <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200">
+                        <div className="w-full h-74 overflow-hidden rounded-lg mb-3">
+                              <img src={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-200"/>
+                            </div>
+
                                <p className="text-lg text-center text-gray-500">{item.description}</p>
-                        </div>
                     
                     </div>
                 ))}
