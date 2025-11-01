@@ -1,4 +1,5 @@
 import pent1 from "../assets/clothes/bag.jpeg"
+import pent2 from "../assets/clothes/pent9.jpeg"
 import  bag1 from "../assets/clothes/bag1.jpeg"
 import bag2 from "../assets/clothes/bag2.jpeg"
 import clothes1 from "../assets/clothes/clothes1.jpeg";
@@ -17,7 +18,7 @@ import car1 from "../assets/electrics/car1.jpg"
 
 const Images = [
     {name: pent1, description: "This pent can be yours" },
-    {name: pent1, description: "This pents can be yours for better price" },
+    {name: pent2, description: "This pents can be yours for better price" },
     {name: bag1, description: "This pent can be yours" },
     {name: bag2, description: "This pent can be yours" },
     {name: clothes1, description: "This clothes can be yours please buy if you want" },
