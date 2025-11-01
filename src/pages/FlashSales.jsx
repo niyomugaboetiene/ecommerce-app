@@ -39,7 +39,7 @@ const Images = [
 const FlashSales = () => {
     return (
         <div className="flex flex-col items-center justify-center p-6">
-            <h2 className="flex">Flash Sales</h2>
+            <h2 className="text-3xl font-bold mb-8">Flash Sales</h2>
              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl">
                 {Images.map((item, idx) => (
                     <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200">
