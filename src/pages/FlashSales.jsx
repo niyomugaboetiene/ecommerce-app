@@ -26,6 +26,13 @@ const Images = [
     {name: clothes4, description: "This clothes can be yours" },
     {name: clothes5, description: "This clothes can be yours" },
     {name: clothes6, description: "This clothes can be yours" },
+    {name: clothes7, description: "This clothes can be yours" },
+    {name: clothes8, description: "This clothes can be yours" },
+    {name: camera1, description: "This clothes can be yours" },
+    {name: camera2, description: "This clothes can be yours" },
+    {name: camera3, description: "This clothes can be yours" },
+    {name: camera4, description: "This clothes can be yours" },
+    {name: car1, description: "This clothes can be yours" },
 ]
 
 const FlashSales = () => {
