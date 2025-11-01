@@ -28,17 +28,24 @@ const Images = [
     {name: clothes6, description: "This clothes can be yours" },
     {name: clothes7, description: "This clothes can be yours" },
     {name: clothes8, description: "This clothes can be yours" },
-    {name: camera1, description: "This clothes can be yours" },
-    {name: camera2, description: "This clothes can be yours" },
-    {name: camera3, description: "This clothes can be yours" },
-    {name: camera4, description: "This clothes can be yours" },
-    {name: car1, description: "This clothes can be yours" },
+    {name: camera1, description: "This camera can be yours" },
+    {name: camera2, description: "This camera can be yours" },
+    {name: camera3, description: "This camera can be yours" },
+    {name: camera4, description: "This camera can be yours" },
+    {name: car1, description: "This car can be yours" },
 ]
 
 const FlashSales = () => {
     return (
         <div>
-
+             <div>
+                {Images.map((idx, name) => (
+                    <div key={idx}>
+                         <p>{name.name}</p>
+                         <p>{name.description}</p>
+                    </div>
+                ))}
+             </div>
         </div>
     )
 }
