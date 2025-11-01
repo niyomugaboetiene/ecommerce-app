@@ -17,9 +17,9 @@ import car1 from "../assets/electrics/car1.jpg"
 
 const Images = [
     {name: pent1, description: "This pent can be yours" },
-    {name: pent1, description: "This pent can be yours" },
+    {name: pent1, description: "This pents can be yours for better price" },
     {name: bag1, description: "This pent can be yours" },
-    {name: pent1, description: "This pent can be yours" },
+    {name: bag2, description: "This pent can be yours" },
     {name: pent1, description: "This pent can be yours" },
     {name: pent1, description: "This pent can be yours" }
 ]
