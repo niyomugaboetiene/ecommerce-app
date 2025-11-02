@@ -36,9 +36,11 @@ import pent3 from "../assets/clothes/pent3.jpeg"
 import shoes1 from "../assets/clothes/shoes1.jpeg"
 import shoes2 from "../assets/clothes/shoes3.jpeg"
 import shoes3 from "../assets/clothes/shoes4.jpeg"
+import clothes from "../assets/clothes/clothes2.jpg"
 import clothes1 from "../assets/clothes/clothes1.jpg"
 import clothes2 from "../assets/clothes/clothes2.jpg"
 import clothes3 from "../assets/clothes/clothes3.webp"
+import bag from "../assets/clothes/bag.jpeg"
 import { useState } from "react";
 
 
