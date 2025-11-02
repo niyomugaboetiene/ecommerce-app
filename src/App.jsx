@@ -20,11 +20,11 @@ function App() {
                          <Home />
                       </section>
                     
-                    <section className="h-screen">
+                    <section className="">
                          <FlashSales />
                       </section>  
 
-                    <section className="h-screen">
+                    <section className="">
                          <BestSeller />
                       </section>
                 </div>
