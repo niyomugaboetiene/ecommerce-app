@@ -15,6 +15,7 @@ import camera2 from "../assets/electrics/camera2.jpeg"
 import camera3 from "../assets/electrics/camera3.jpeg"
 import camera4 from "../assets/electrics/camera4.jpeg"
 import car1 from "../assets/electrics/car1.jpg"
+import { useState } from "react";
 
 const Images = [
     {name: pent1, description: "This pent can be yours" },
@@ -37,11 +38,15 @@ const Images = [
 ]
 
 const FlashSales = () => {
+    const [showAll, setShowAll] = useState(false);
+
+    const itemToShow = showAll ? Images : Images.slice(0, 8);
+    const hasMoreItems = Images.length > 8;
     return (
         <div className="flex flex-col items-center justify-center p-6">
             <h2 className="text-3xl font-bold mb-8">Flash Sales</h2>
              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl">
-                {Images.map((item, idx) => (
+                {itemToShow.map((item, idx) => (
                     <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200">
                         <div className="w-full h-74 overflow-hidden rounded-lg mb-3">
                               <img src={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-200"/>
