@@ -13,6 +13,7 @@ import iphone from "../assets/electrics/iphone.jpg"
 import joystick from "../assets/electrics/joystick.jpg"
 import joystick1 from "../assets/electrics/joystick3.jpg"
 import joystick2 from "../assets/electrics/joystick2.jpg"
+import { FaShoppingCart } from "react-icons/fa";
 import joystick3 from "../assets/electrics/joystick3.webp"
 import { useState } from "react";
 
@@ -60,7 +61,12 @@ const BestSeller = () => {
                     </div>
                     <p className="text-center text-lg text-gray-600">{item.decription}</p>
                     {isHoveredIndex === idx && (
-                        <button>Add To Cart</button>
+                        <button 
+                           className="flex items-center gap-2"
+                        >
+                            <FaShoppingCart />
+                            Add To Cart
+                       </button>
                     )}
                 </div>
             ))}
