@@ -19,9 +19,7 @@ import joystick4 from "../assets/electrics/joystick4.jpg"
 import joystick5 from "../assets/electrics/joystick5.jpg"
 import joystick6 from "../assets/electrics/joystick6.jpg"
 import joystick7 from "../assets/electrics/joystick7.jpg"
-import joystick2 from "../assets/electrics/joystick2.jpg"
 import { FaShoppingCart } from "react-icons/fa";
-import joystick3 from "../assets/electrics/joystick3.webp"
 import  bag1 from "../assets/clothes/bag1.jpeg"
 import bag2 from "../assets/clothes/bag2.jpeg"
 import clothes4 from "../assets/clothes/clothes3.jpeg"
@@ -68,7 +66,7 @@ import vest1 from "../assets/clothes/vest1.jpeg"
 import vest2 from "../assets/clothes/vest2.jpeg"
 import vest3 from "../assets/clothes/vest3.jpeg"
 import vest4 from "../assets/clothes/vest4.jpeg"
-import phone from "../assets/clothes/phone.jpg"
+import phone from "../assets/electrics/phone.jpg"
 
 import { useState } from "react";
 
@@ -79,7 +77,6 @@ const Images = [
     {image: pent5, description: "pent"},
     {image: pent6, description: "pent"},
     {image: pent7, description: "pent"},
-    {image: pent8, description: "pent"},
     {image: pent9, description: "pent"},
     {image: pent10, description: "pent"},
     {image: pent11, description: "pent"},
@@ -94,10 +91,10 @@ const Images = [
     {image: speaker6, description: "speaker"},
     {image: speaker7, description: "speaker"},
     {image: speaker9, description: "speaker"},
-    {image: camera1, description: "speaker"},
-    {image: electcar, description: "speaker"},
-    {image: homeDesk, description: "speaker"},
-    {image: iphone, description: "speaker"},
+    {image: camera1, description: "camera"},
+    {image: electcar, description: "electric car"},
+    {image: homeDesk, description: "home desk"},
+    {image: iphone, description: "I phone"},
     {image: joystick, description: "speaker"},
     {image: joystick1, description: "speaker"},
     {image: joystick2, description: "speaker"},
@@ -122,6 +119,7 @@ const Images = [
     {name: camera4, description: "This camera can be yours" },
     {name: car1, description: "This car can be yours" },
     { image: phone1, description: "Modern phones for better price" },
+    { image: phone, description: "Modern phones for better price" },
     { image: keyboard1, description: "Modern keyboard for better price" },
     { image: pc1, description: "Modern laptop for better price" },
     { image: women1, description: "Women's clothing" },
@@ -141,6 +139,15 @@ const Images = [
     { image: vest2, description: "vest " },
     { image: vest3, description: "vest " },
     { image: vest4, description: "vest " },
+    { image: joystick1, description: "joystick " },
+    { image: joystick2, description: "joystick " },
+    { image: joystick3, description: "joystick " },
+    { image: joystick4, description: "joystick " },
+    { image: joystick5, description: "joystick " },
+    { image: joystick6, description: "joystick " },
+    { image: joystick7, description: "joystick " },
+    { image: joystick8, description: "joystick " },
+    { image: keboard, description: "keyboard " },
     
 ];
 
