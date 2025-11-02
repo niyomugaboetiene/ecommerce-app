@@ -43,7 +43,7 @@ const BestSeller = () => {
     const hasMoreItems = Images.length > 8;
     
     return (
-        <div className="flex flex-col items-center justify-center p-6">
+        <div className="flex flex-col items-center justify-center p-8">
             <h1 className="text-center mt-16 text-3xl font-bold">Best Sold Products</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4 w-full">
                 {imageToSHow.map((item, idx) => (
