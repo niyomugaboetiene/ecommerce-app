@@ -15,19 +15,13 @@ import joystick1 from "../assets/electrics/joystick3.jpg"
 import joystick2 from "../assets/electrics/joystick2.jpg"
 import { FaShoppingCart } from "react-icons/fa";
 import joystick3 from "../assets/electrics/joystick3.webp"
-import pent1 from "../assets/clothes/bag.jpeg"
-import pent2 from "../assets/clothes/pent9.jpeg"
 import  bag1 from "../assets/clothes/bag1.jpeg"
 import bag2 from "../assets/clothes/bag2.jpeg"
-import clothes1 from "../assets/clothes/clothes1.jpeg";
-import clothes2 from "../assets/clothes/clothes2.jpeg"
-import clothes3 from "../assets/clothes/clothes2.jpg"
 import clothes4 from "../assets/clothes/clothes3.jpeg"
 import clothes5 from "../assets/clothes/clothes4.jpeg"
 import clothes6 from "../assets/clothes/clothes5.jpeg"
 import clothes7 from "../assets/clothes/clothes7.jpeg"
 import clothes8 from "../assets/clothes/clothes8.jpeg"
-import camera2 from "../assets/electrics/camera2.jpeg"
 import camera3 from "../assets/electrics/camera3.jpeg"
 import camera4 from "../assets/electrics/camera4.jpeg"
 import car1 from "../assets/electrics/car1.jpg"
@@ -95,6 +89,7 @@ const Images = [
     { image: shoes3, description: "Women's clothing" },
     { image: shoes2, description: "Women's clothing" },
     { image: pent2, description: "Pents" },
+    { image: pent3, description: "Pents" },
 ];
 
 const OurProduct = () => {
@@ -106,7 +101,7 @@ const OurProduct = () => {
     
     return (
 <div className="flex flex-col items-center justify-center p-9 mt-4">
-        <h1 className="text-center mt-16 text-3xl font-bold mb-12">Best Sold Products</h1>
+        <h1 className="text-center mt-16 text-3xl font-bold mb-12">Our Products</h1>
         <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500`}>
             {imageToSHow.map((item, idx) => (
                 <div key={idx} className="rounded-2xl hover:shadow-2xl transition-all duration-300 p-4"
