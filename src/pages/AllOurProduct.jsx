@@ -66,6 +66,12 @@ import { useState } from "react";
 
 const Images = [
     {image: speaker1, decription: "speaker"},
+    {image: pent4, decription: "pent"},
+    {image: pent5, decription: "pent"},
+    {image: pent6, decription: "pent"},
+    {image: pent7, decription: "pent"},
+    {image: pent8, decription: "pent"},
+    {image: speaker1, decription: "speaker"},
     {image: speaker2, decription: "speaker"},
     {image: speaker3, decription: "speaker"},
     {image: speaker4, decription: "speaker"},
