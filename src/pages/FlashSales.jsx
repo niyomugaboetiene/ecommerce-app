@@ -16,6 +16,7 @@ import camera3 from "../assets/electrics/camera3.jpeg"
 import camera4 from "../assets/electrics/camera4.jpeg"
 import car1 from "../assets/electrics/car1.jpg"
 import { useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Images = [
     {name: pent1, description: "This pent can be yours" },
@@ -48,19 +49,26 @@ const FlashSales = () => {
             <h2 className="text-3xl font-bold mb-8">Flash Sales</h2>
              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl">
                 {itemToShow.map((item, idx) => (
-                    <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200">
+                    <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200"
+                      onMouseEnter={() => setIsHoveredIndex(idx)}
+                      onMouseLeave={() => setIsHoveredIndex(null)}
+                    >
                         <div className="w-full h-74 overflow-hidden rounded-lg mb-3"
-                              onMouseEnter={() => setIsHoveredIndex(idx)}
-                               onMouseLeave={() => setIsHoveredIndex(null)}
+                            
                         >
                               <img src={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-200"
                               />
                             </div>
-
-                               <p className="text-lg text-center text-gray-500">{item.description}</p>
-                            
+         
+                   
+                             <p className="text-lg text-center text-gray-500">{item.description}</p>
                             {isHoveredIndex === idx && (
-                                <button>Add to Cart</button>
+                                <div className="flex justify-center">
+                                    <button className="mt-4 flex items-center gap-3 bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600">
+                                        <FaShoppingCart />
+                                        Add to Cart
+                                    </button>
+                                </div>
                             )}
                     </div>
                     
