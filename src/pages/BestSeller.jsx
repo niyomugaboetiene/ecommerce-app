@@ -38,6 +38,7 @@ const Images = [
 
 const BestSeller = () => {
     const [showAll, setShowAll] = useState(false);
+    const [isHoveredIndex, setIsHoveredIndex] = useState(null);
 
     const imageToSHow = showAll ? Images : Images.slice(0, 8);
     const hasMoreItems = Images.length > 8;
@@ -47,7 +48,10 @@ const BestSeller = () => {
         <h1 className="text-center mt-16 text-3xl font-bold mb-12">Best Sold Products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-6 w-full">
             {imageToSHow.map((item, idx) => (
-                <div key={idx} className="rounded-2xl hover:shadow-2xl transition-all duration-300 p-4">
+                <div key={idx} className="rounded-2xl hover:shadow-2xl transition-all duration-300 p-4"
+                   onMouseEnter={() => setIsHoveredIndex(idx)}
+                   onMouseLeave={() => setIsHoveredIndex(null)}
+                >
                     <div className="w-full h-64 overflow-hidden rounded-lg mb-4">
                         <img 
                             src={item.image} 
@@ -55,6 +59,9 @@ const BestSeller = () => {
                         />
                     </div>
                     <p className="text-center text-lg text-gray-600">{item.decription}</p>
+                    {isHoveredIndex === idx && (
+                        <button>Add To Cart</button>
+                    )}
                 </div>
             ))}
         </div>
