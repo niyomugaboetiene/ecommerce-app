@@ -4,6 +4,7 @@ import About from "./pages/About"
 import SignUp from "./pages/Sign-up"
 import Home from "./pages/Home"
 import FlashSales from "./pages/FlashSales"
+import BestSeller from "./pages/BestSeller"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 function App() {
 
@@ -21,6 +22,10 @@ function App() {
                     
                     <section className="h-screen">
                          <FlashSales />
+                      </section>  
+
+                    <section className="h-screen">
+                         <BestSeller />
                       </section>
                 </div>
               }
