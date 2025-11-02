@@ -47,10 +47,10 @@ const BestSeller = () => {
     return (
         <div className="flex flex-col items-center justify-center p-6">
             <h1 className="text-center mt-16 text-3xl font-bold">Best Sold Products</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4 w-full">
                 {imageToSHow.map((item, idx) => (
-                    <div key={idx} className="rounded-lg">
-                        <div>
+                    <div key={idx} className="rounded-2xl hover:shadow-2xl transition duration-200">
+                        <div className="w-full">
                             <img src={item.image}/>
                      </div>
 
