@@ -48,11 +48,11 @@ const BestSeller = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4 w-full">
                 {imageToSHow.map((item, idx) => (
                     <div key={idx} className="rounded-2xl hover:shadow-2xl transition duration-200">
-                        <div className="w-full h-74 overflow-hidden rounded-lg mb-3">
+                        <div className="w-full h-74 overflow-hidden rounded-lg mb-3 hover:scale-105 transition duration-200">
                             <img src={item.image} className="w-full h-full"/>
                      </div>
 
-                            <p>{item.decription}</p>
+                            <p className="text-center text-lg text-gray-500">{item.decription}</p>
                     </div>
                 ))}
             </div>
