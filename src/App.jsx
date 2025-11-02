@@ -21,12 +21,15 @@ function App() {
                          <Home />
                       </section>
                     
-                    <section className="">
+                    <section>
                          <FlashSales />
                       </section>  
 
-                    <section className="">
+                    <section>
                          <BestSeller />
+                      </section>  
+                      <section>
+                         <OurProduct />
                       </section>
                 </div>
               }
@@ -35,7 +38,6 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
               <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/all" element={<OurProduct />} />
          </Routes>
           </div>
 
