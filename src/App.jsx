@@ -15,7 +15,7 @@ function App() {
           <div className="pt-32 h-screen flex flex-col">
            <Routes>
               <Route path="/" element={
-                <div className="h-screen overflow-y-scroll scroll-smooth">
+                <div className="overflow-y-scroll scroll-smooth">
                       <section className="h-screen">
                          <Home />
                       </section>

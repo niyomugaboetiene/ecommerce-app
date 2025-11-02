@@ -45,9 +45,11 @@ const BestSeller = () => {
     const hasMoreItems = Images.length > 8;
     
     return (
-<div className="flex flex-col items-center justify-center p-9 mt-300">
+<div className="flex flex-col items-center justify-center p-9 mt-16">
         <h1 className="text-center mt-16 text-3xl font-bold mb-12">Best Sold Products</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-6 w-full">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500 ${
+                !showAll ? 'max-h-[1000px] overflow-hidden' : ''
+            }`}>
             {imageToSHow.map((item, idx) => (
                 <div key={idx} className="rounded-2xl hover:shadow-2xl transition-all duration-300 p-4"
                    onMouseEnter={() => setIsHoveredIndex(idx)}
