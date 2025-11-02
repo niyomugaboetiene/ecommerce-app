@@ -39,6 +39,7 @@ const Images = [
 
 const FlashSales = () => {
     const [showAll, setShowAll] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
 
     const itemToShow = showAll ? Images : Images.slice(0, 8);
     const hasMoreItems = Images.length > 8;
@@ -49,11 +50,14 @@ const FlashSales = () => {
                 {itemToShow.map((item, idx) => (
                     <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200">
                         <div className="w-full h-74 overflow-hidden rounded-lg mb-3">
-                              <img src={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-200"/>
+                              <img src={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-200"
+                               onMouseEnter={() => setIsHovered(true)}
+                               onMouseLeave={() => setIsHovered(false)}
+                              />
                             </div>
 
                                <p className="text-lg text-center text-gray-500">{item.description}</p>
-                    
+                            
                     </div>
                 ))}
              </div>
