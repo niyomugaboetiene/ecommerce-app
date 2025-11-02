@@ -42,6 +42,29 @@ const BestSeller = () => {
     const [showAll, setShowAll] = useState(false);
 
     const imageToSHow = showAll ? Images : Images.slice(0, 8);
-    const  
+    const hasMoreItems = Images.length > 8;
+    
+    return (
+        <div>
+            <div>
+                {imageToSHow.map((item, idx) => (
+                    <div key={idx}>
+                        <div>
+                            <img src={item.image}/>
+                            <p>{item.decription}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {hasMoreItems && !showAll && (
+                <button
+                  onClick={() => setShowAll(true)}
+                >
+                    Show All
+                </button>
+            )}
+        </div>
+    )
 
 }
