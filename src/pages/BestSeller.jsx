@@ -61,12 +61,15 @@ const BestSeller = () => {
                     </div>
                     <p className="text-center text-lg text-gray-600">{item.decription}</p>
                     {isHoveredIndex === idx && (
+                        <div className="flex justify-center mt-5">
                         <button 
-                           className="flex items-center gap-2"
+                           className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white"
                         >
                             <FaShoppingCart />
                             Add To Cart
                        </button>
+                     </div>
+    
                     )}
                 </div>
             ))}
