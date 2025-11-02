@@ -35,7 +35,7 @@ const Images = [
     {image: joystick, decription: "speaker"},
     {image: joystick1, decription: "speaker"},
     {image: joystick2, decription: "speaker"},
-    {image: joystick3, decription: "speaker"},
+    {image: joystick3, decription: "speaker"}
 ];
 
 const BestSeller = () => {
@@ -45,14 +45,16 @@ const BestSeller = () => {
     const hasMoreItems = Images.length > 8;
     
     return (
-        <div>
-            <div>
+        <div className="h-screen">
+            <h1 className="text-center mt-16 text-3xl font-bold">Best Sold Products</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4">
                 {imageToSHow.map((item, idx) => (
-                    <div key={idx}>
+                    <div key={idx} className="rounded-lg">
                         <div>
                             <img src={item.image}/>
+                     </div>
+
                             <p>{item.decription}</p>
-                        </div>
                     </div>
                 ))}
             </div>
