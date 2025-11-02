@@ -43,25 +43,37 @@ const BestSeller = () => {
     const hasMoreItems = Images.length > 8;
     
     return (
-        <div className="flex flex-col items-center justify-center p-8">
-            <h1 className="text-center mt-16 text-3xl font-bold">Best Sold Products</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4 w-full">
-                {imageToSHow.map((item, idx) => (
-                    <div key={idx} className="rounded-2xl hover:shadow-2xl transition duration-200">
-                        <div className="w-full h-74 overflow-hidden rounded-lg mb-3 hover:scale-105 transition duration-200">
-                            <img src={item.image} className="w-full h-full"/>
-                     </div>
-
-                            <p className="text-center text-lg text-gray-500">{item.decription}</p>
+<div className="flex flex-col items-center justify-center p-8">
+        <h1 className="text-center mt-16 text-3xl font-bold mb-12">Best Sold Products</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-6 w-full">
+            {imageToSHow.map((item, idx) => (
+                <div key={idx} className="rounded-2xl hover:shadow-2xl transition-all duration-300 p-4">
+                    <div className="w-full h-64 overflow-hidden rounded-lg mb-4">
+                        <img 
+                            src={item.image} 
+                            className="w-full h-full object-cover hover:scale-110 transition duration-300"
+                        />
                     </div>
-                ))}
-            </div>
+                    <p className="text-center text-lg text-gray-600">{item.decription}</p>
+                </div>
+            ))}
+        </div>
 
             {hasMoreItems && !showAll && (
                 <button
                   onClick={() => setShowAll(true)}
+                  className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
                 >
                     Show All
+                </button>
+            )}
+
+            {showAll && (
+                <button
+                  onClick={() => setShowAll(false)}
+                  className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
+                >
+                    Show less
                 </button>
             )}
         </div>
