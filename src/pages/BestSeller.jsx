@@ -1,1 +1,9 @@
-import
+import speaker1 from "../assets/speakers/speaker1.jpg"
+import speaker2 from "../assets/speakers/speaker2.jpeg"
+import speaker3 from "../assets/speakers/speaker3.jpeg"
+import speaker4 from "../assets/speakers/speaker4.jpeg"
+import speaker5 from "../assets/speakers/speaker5.jpeg"
+import speaker6 from "../assets/speakers/speaker6.jpeg"
+import speaker7 from "../assets/speakers/speaker7.jpeg"
+import speaker8 from "../assets/speakers/speaker8.jpg"
+import speaker9 from "../assets/speakers/speaker9.jpg"
