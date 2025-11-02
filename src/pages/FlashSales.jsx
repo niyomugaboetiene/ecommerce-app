@@ -57,6 +57,23 @@ const FlashSales = () => {
                     </div>
                 ))}
              </div>
+             {hasMoreItems && !showAll && (
+                <button
+                  onClick={() => setShowAll(true)}
+                  className="mb-8 px-6 py-3 bg-blue-500 text-white rounded-lg hover:shadow-xl hover:bg-blue-600 transition duration-200"
+                >
+                    View All
+                </button>
+             )}
+
+             {showAll && (
+                <button
+                  className="mb-8 py-3 px-6 bg-blue-500 text-white rounded-lg hover:shadow-xl hover:bg-blue-600 transition duration-200"
+                  onClick={() => setShowAll(false)} 
+                >
+                    View Less
+                </button>
+             )}
         </div>
     )
 }
