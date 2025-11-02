@@ -13,6 +13,13 @@ import iphone from "../assets/electrics/iphone.jpg"
 import joystick from "../assets/electrics/joystick.jpg"
 import joystick1 from "../assets/electrics/joystick3.jpg"
 import joystick2 from "../assets/electrics/joystick2.jpg"
+import joystick3 from "../assets/electrics/joystick3.png"
+import joystick8 from "../assets/electrics/joystick3.webp"
+import joystick4 from "../assets/electrics/joystick4.jpg"
+import joystick5 from "../assets/electrics/joystick5.jpg"
+import joystick6 from "../assets/electrics/joystick6.jpg"
+import joystick7 from "../assets/electrics/joystick7.jpg"
+import joystick2 from "../assets/electrics/joystick2.jpg"
 import { FaShoppingCart } from "react-icons/fa";
 import joystick3 from "../assets/electrics/joystick3.webp"
 import  bag1 from "../assets/clothes/bag1.jpeg"
@@ -27,6 +34,7 @@ import camera4 from "../assets/electrics/camera4.jpeg"
 import car1 from "../assets/electrics/car1.jpg"
 import phone1 from "../assets/electrics/phone1.jpg";
 import keyboard1 from "../assets/electrics/keboard1.jpeg";
+import keboard from "../assets/electrics/keboard1.jpeg"
 import pc1 from "../assets/electrics/pc1.jpeg";
 import women1 from "../assets/clothes/women1.jpg";
 import camera2 from "../assets/electrics/camera2.jpeg"
@@ -60,6 +68,7 @@ import vest1 from "../assets/clothes/vest1.jpeg"
 import vest2 from "../assets/clothes/vest2.jpeg"
 import vest3 from "../assets/clothes/vest3.jpeg"
 import vest4 from "../assets/clothes/vest4.jpeg"
+import phone from "../assets/clothes/phone.jpg"
 
 import { useState } from "react";
 
