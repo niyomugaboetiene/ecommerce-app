@@ -12,16 +12,24 @@ function App() {
       <BrowserRouter>
           <Navs />
           <div className="pt-32 h-screen flex flex-col">
-            <div className="flex-1 overflow-y-auto">
            <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={
+                <div className="h-screen overflow-y-scroll scroll-smooth">
+                      <section className="h-screen">
+                         <Home />
+                      </section>
+                    
+                    <section className="h-screen">
+                         <FlashSales />
+                      </section>
+                </div>
+              }
+             />
+
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
               <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/flash" element={<FlashSales />} />
          </Routes>
-            </div>
-
           </div>
 
       </BrowserRouter>
