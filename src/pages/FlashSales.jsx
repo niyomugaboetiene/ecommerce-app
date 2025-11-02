@@ -49,18 +49,24 @@ const FlashSales = () => {
              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl">
                 {itemToShow.map((item, idx) => (
                     <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200">
-                        <div className="w-full h-74 overflow-hidden rounded-lg mb-3">
-                              <img src={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-200"
-                               onMouseEnter={() => setIsHovered(true)}
+                        <div className="w-full h-74 overflow-hidden rounded-lg mb-3"
+                              onMouseEnter={() => setIsHovered(true)}
                                onMouseLeave={() => setIsHovered(false)}
+                        >
+                              <img src={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-200"
                               />
                             </div>
 
                                <p className="text-lg text-center text-gray-500">{item.description}</p>
                             
+                            {isHovered && (
+                                <button>Add to Cart</button>
+                            )}
                     </div>
+                    
                 ))}
              </div>
+        
              {hasMoreItems && !showAll && (
                 <button
                   onClick={() => setShowAll(true)}
