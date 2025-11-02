@@ -5,7 +5,6 @@ import speaker4 from "../assets/speakers/speaker4.jpeg";
 import speaker5 from "../assets/speakers/speaker5.jpeg";
 import speaker6 from "../assets/speakers/speaker6.jpeg";
 import speaker7 from "../assets/speakers/speaker7.jpeg";
-import speaker8 from "../assets/speakers/speaker8.jpg";
 import speaker9 from "../assets/speakers/speaker9.jpg";
 import camera1 from "../assets/electrics/camera1.jpeg"
 import electcar from "../assets/electrics/electcar.jpg"
@@ -26,7 +25,6 @@ const Images = [
     {image: speaker5, decription: "speaker"},
     {image: speaker6, decription: "speaker"},
     {image: speaker7, decription: "speaker"},
-    {image: speaker8, decription: "speaker"},
     {image: speaker9, decription: "speaker"},
     {image: camera1, decription: "speaker"},
     {image: electcar, decription: "speaker"},
@@ -50,8 +48,8 @@ const BestSeller = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4 w-full">
                 {imageToSHow.map((item, idx) => (
                     <div key={idx} className="rounded-2xl hover:shadow-2xl transition duration-200">
-                        <div className="w-full">
-                            <img src={item.image}/>
+                        <div className="w-full h-74 overflow-hidden rounded-lg mb-3">
+                            <img src={item.image} className="w-full h-full"/>
                      </div>
 
                             <p>{item.decription}</p>
