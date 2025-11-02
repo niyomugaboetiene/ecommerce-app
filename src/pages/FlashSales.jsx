@@ -39,7 +39,7 @@ const Images = [
 
 const FlashSales = () => {
     const [showAll, setShowAll] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
+    const [isHoveredIndex, setIsHoveredIndex] = useState(null);
 
     const itemToShow = showAll ? Images : Images.slice(0, 8);
     const hasMoreItems = Images.length > 8;
@@ -50,8 +50,8 @@ const FlashSales = () => {
                 {itemToShow.map((item, idx) => (
                     <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200">
                         <div className="w-full h-74 overflow-hidden rounded-lg mb-3"
-                              onMouseEnter={() => setIsHovered(true)}
-                               onMouseLeave={() => setIsHovered(false)}
+                              onMouseEnter={() => setIsHoveredIndex(idx)}
+                               onMouseLeave={() => setIsHoveredIndex(null)}
                         >
                               <img src={item.name} className="w-full h-full object-cover hover:scale-105 transition duration-200"
                               />
@@ -59,7 +59,7 @@ const FlashSales = () => {
 
                                <p className="text-lg text-center text-gray-500">{item.description}</p>
                             
-                            {isHovered && (
+                            {isHoveredIndex === idx && (
                                 <button>Add to Cart</button>
                             )}
                     </div>
