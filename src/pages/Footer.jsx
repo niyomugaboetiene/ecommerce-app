@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <footer className="bg-black text-white">
-            {/* Main Footer Content */}
             <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-                {/* Brand Section */}
                 <div className="space-y-6">
-                    <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
                         Shop Sphere
                     </h1>
                     <p className="text-gray-300 text-sm leading-relaxed">
@@ -26,7 +24,6 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Support Section */}
                 <div className="space-y-6">
                     <h1 className="text-xl font-semibold border-l-4 border-blue-500 pl-3">Support</h1>
                     <div className="space-y-3 text-gray-300">
@@ -38,14 +35,9 @@ const Footer = () => {
                             <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                             <span>+250 728 184 299</span>
                         </p>
-                        <p className="flex items-center space-x-2">
-                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                            <span>support@shopsphere.com</span>
-                        </p>
                     </div>
                 </div>
 
-                {/* Account Section */}
                 <div className="space-y-6">
                     <h1 className="text-xl font-semibold border-l-4 border-green-500 pl-3">Account</h1>
                     <div className="space-y-3 text-gray-300">
@@ -64,7 +56,6 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Quick Links Section */}
                 <div className="space-y-6">
                     <h1 className="text-xl font-semibold border-l-4 border-purple-500 pl-3">Quick Links</h1>
                     <div className="space-y-3 text-gray-300">
@@ -83,7 +74,6 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Social Media Section */}
                 <div className="space-y-6">
                     <h1 className="text-xl font-semibold border-l-4 border-red-500 pl-3">Let's Connect</h1>
                     <p className="text-gray-300 text-sm">
@@ -115,14 +105,11 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Bottom Bar */}
             <div className="border-t border-gray-700">
                 <div className="max-w-7xl mx-auto px-6 py-4">
-                    <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-gray-400 text-sm text-center">
                             © 2024 Shop Sphere. All rights reserved.
                         </p>
-                    </div>
                 </div>
             </div>
         </footer>
