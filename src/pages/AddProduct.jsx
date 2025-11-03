@@ -25,16 +25,16 @@ const AddProduct = () => {
         <div>
             <div>
                 <input type="text" 
-                   onChange={() => setProductName(e.target.value)}
+                   onChange={(e) => setProductName(e.target.value)}
                 />
                 <input type="text"
-                    onChange={() => setCategory(e.target.value)}
+                    onChange={(e) => setCategory(e.target.value)}
                 />
                 <input type="text" 
-                    onChange={() => setPrice(e.target.value)}
+                    onChange={(e) => setPrice(e.target.value)}
                 />
                 <input type="text"  
-                  onChange={() => setStock(e.target.value)}
+                  onChange={(e) => setStock(e.target.value)}
                 />
                 <button onClick={Add}>Add</button>
             </div>
