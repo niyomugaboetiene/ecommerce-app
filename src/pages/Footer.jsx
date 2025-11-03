@@ -4,21 +4,18 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <footer className="bg-black text-white">
-            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <div className="mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                 <div className="space-y-6">
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
                         Shop Sphere
                     </h1>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                        Your one-stop destination for all your shopping needs. Quality products, amazing prices.
-                    </p>
                     <div className="space-y-3">
                         <input 
                             type="email" 
                             className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-400" 
                             placeholder="Enter your email"
                         />
-                        <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 font-medium shadow-lg">
+                        <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:scale-105 font-medium shadow-lg">
                             Subscribe
                         </button>
                     </div>
@@ -50,9 +47,6 @@ const Footer = () => {
                         <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/cart">
                             My Cart
                         </Link>
-                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/wishlist">
-                            Wishlist
-                        </Link>
                     </div>
                 </div>
 
@@ -79,27 +73,24 @@ const Footer = () => {
                     <p className="text-gray-300 text-sm">
                         Follow us on social media for updates and promotions
                     </p>
-                    <div className="grid grid-cols-4 gap-4">
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-600 hover:scale-110 transform duration-200 transition-all group">
-                            <FaFacebook className="text-xl group-hover:scale-110 transform duration-200" />
+                    <div className="grid grid-cols-3 gap-4">
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-600 hover:scale-110 transform duration-200 transition-all group w-15">
+                            <FaFacebook className="text-xl group-hover:scale-110 ms-2 transform duration-200" />
                         </button>
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-pink-600 hover:scale-110 transform duration-200 transition-all group">
-                            <FaInstagram className="text-xl group-hover:scale-110 transform duration-200" />
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-pink-600 hover:scale-110 transform duration-200 transition-all group w-15">
+                            <FaInstagram className="text-xl group-hover:scale-110 ms-2 transform duration-200" />
                         </button>
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-red-600 hover:scale-110 transform duration-200 transition-all group">
-                            <FaYoutube className="text-xl group-hover:scale-110 transform duration-200" />
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-400 hover:scale-110 transform duration-200 transition-all group w-15">
+                            <FaTwitter className="text-xl group-hover:scale-110 ms-2 transform duration-200" />
                         </button>
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-400 hover:scale-110 transform duration-200 transition-all group">
-                            <FaTwitter className="text-xl group-hover:scale-110 transform duration-200" />
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-purple-600 hover:scale-110 transform duration-200 transition-all group w-15">
+                            <FaTwitch className="text-xl group-hover:scale-110 ms-2 transform duration-200" />
                         </button>
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-purple-600 hover:scale-110 transform duration-200 transition-all group">
-                            <FaTwitch className="text-xl group-hover:scale-110 transform duration-200" />
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-green-500 hover:scale-110 transform duration-200 transition-all group w-15">
+                            <FaWhatsapp className="text-xl group-hover:scale-110  ms-2 transform duration-200" />
                         </button>
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-green-500 hover:scale-110 transform duration-200 transition-all group">
-                            <FaWhatsapp className="text-xl group-hover:scale-110 transform duration-200" />
-                        </button>
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-700 hover:scale-110 transform duration-200 transition-all group">
-                            <FaLinkedinIn className="text-xl group-hover:scale-110 transform duration-200" />
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-700 hover:scale-110 transform duration-200 transition-all group w-15">
+                            <FaLinkedinIn className="text-xl group-hover:scale-110 ms-2 transform duration-200" />
                         </button>
                     </div>
                 </div>
