@@ -6,6 +6,7 @@ import Home from "./pages/Home"
 import FlashSales from "./pages/FlashSales"
 import BestSeller from "./pages/BestSeller"
 import LastPage from "./pages/LastPage"
+import Footer from "./pages/Footer"
 import OurProduct from "./pages/AllOurProduct"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 function App() {
@@ -31,6 +32,9 @@ function App() {
                       </section>  
                       <section>
                          <OurProduct />
+                      </section>    
+                       <section>
+                         <LastPage />
                       </section>
                 </div>
               }
@@ -39,7 +43,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
               <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/last" element={<LastPage />} />
+              <Route path="/footer" element={<Footer />} />
          </Routes>
           </div>
 
