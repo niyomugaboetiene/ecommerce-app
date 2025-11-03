@@ -7,9 +7,11 @@ app.use(express.json());
 
 app.use('/product', ProductRoute);
 
-mongoose.connect('localhost:27017/ecommerce-app.ecommerce')
+mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app')
 .then(() => {
     console.log('Connected successfully');
 }).catch((error) => {
     console.error(`Error: ${error}`);
-})
+});
+
+app.listen('http://localhost:5000')
