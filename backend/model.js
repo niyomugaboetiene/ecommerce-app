@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 
-const schema = new mongoose.schema({
+const ProductSchema = new mongoose.schema({
     product_id: {type: Number, unique: true, required: true },
     product_name: { type: String, required: true },
     category: { type: String, required: true },
@@ -11,4 +11,6 @@ const schema = new mongoose.schema({
     image: { type: String },
     stock: { type: Number, default: 0 }
 
-})
+});
+
+export default mongoose.model('Product', ProductSchema);
