@@ -14,29 +14,29 @@ const Footer = () => {
                       <p>RwandaMart in Rwanda</p>
                       <p>+250 728 184 299</p>
                  </div>
-                <div>
-                    <h1>Account</h1>
+                <div className="space-y-4">
+                    <h1 className="font-medium text-2xl">Account</h1>
                     <p>My Account</p>
                     <p>Login/ Register</p>
                     <p>Cart</p>
                 </div>
-                 <div>
-                  <h1>Quick Link</h1>
+                 <div className="space-y-4">
+                  <h1 className="text-2xl font-medium">Quick Link</h1>
                   <p>Privancy Policy</p>
                   <p>Terms of use</p>
                   <p>Contact</p>
                  </div>
 
                    <div>
-                  <h1>Let's connect</h1>
-                  <div>
-                       <button> <FaFacebook /> </button>
-                       <button><FaInstagram /> </button>
-                       <button><FaYoutube /> </button>
-                       <button> <FaTwitter /> </button>
-                       <button><FaTwitch /> </button>
-                       <button><FaWhatsapp /> </button>
-                       <button><FaLinkedinIn /> </button>
+                  <h1 className="font-medium text-2xl mb-4">Let's connect</h1>
+                  <div className="space-x-2">
+                       <button className="text-[25px]"> <FaFacebook /> </button>
+                       <button className="text-[25px]"><FaInstagram /> </button>
+                       <button className="text-[25px]"><FaYoutube /> </button>
+                       <button className="text-[25px]"> <FaTwitter /> </button>
+                       <button className="text-[25px]"><FaTwitch /> </button>
+                       <button className="text-[25px]"><FaWhatsapp /> </button>
+                       <button className="text-[25px]"><FaLinkedinIn /> </button>
                     </div>
                    </div>
 
