@@ -1,15 +1,16 @@
-import ecommerce from "../assets/clothes/ecommerce-big_Big.webp"
+import ecommerce from "../assets/clothes/ecommerce-big_Big.webp";
+
 const LastPage =  () => {
     return (
-        <div>
-            <div>
-                <aside>
-                    <img src={ecommerce} />
-                    <p>
+        <div className="flex justify-center items-center">
+            <div className="max-w-7xl">
+                    <img src={ecommerce} className="w-[800px] items-center"/>
+                    <p className="text-2xl">
                         Believe us by clicking to add to cart button.
                     </p>
-                </aside>
             </div>
         </div>
     )
 }
+
+export default LastPage
