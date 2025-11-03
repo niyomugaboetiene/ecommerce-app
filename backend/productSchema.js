@@ -1,7 +1,10 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+import AutoIncrementFactory from "mongoose-sequence"
+
+const AutoIncrement = AutoIncrementFactory(mongoose);
 
 const ProductSchema = new mongoose.Schema({
-    product_id: {type: Number, unique: true, required: true },
+    product_id: { type: Number, unique: true },
     product_name: { type: String, required: true },
     category: { type: String, required: true },
     price: { type: Number, required: true },
@@ -11,5 +14,7 @@ const ProductSchema = new mongoose.Schema({
     stock: { type: Number, default: 0 }
 
 });
+
+ProductSchema.plugin(AutoIncrement, { inc_field: 'product_id' });
 
 export default mongoose.model('Product', ProductSchema);
