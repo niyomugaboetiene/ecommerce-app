@@ -1,48 +1,132 @@
 import { FaFacebook, FaInstagram, FaYoutube, FaTwitter, FaTwitch, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
     return (
-        <div>
-            <div className="bg-black text-white grid grid-cols-5 p-6 h-72">
-                <div className="space-y-4">
-                     <h1 className="text-2xl font-medium">Shop Sphere </h1>
-                     <input type="email" className="w-72 py-2 border  rounded-lg" placeholder="Type your email"/> <br />
-                    <button className="bg-blue-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-blue-400 transition duration-200">Subscribe</button>
-
-                </div>
-
-                 <div className="space-y-4">
-                      <h1 className="text-2xl font-medium">Support</h1>
-                      <p>RwandaMart in Rwanda</p>
-                      <p>+250 728 184 299</p>
-                 </div>
-                <div className="space-y-4">
-                    <h1 className="font-medium text-2xl">Account</h1>
-                    <p>My Account</p>
-                    <p>Login/ Register</p>
-                    <p>My cart</p>
-                </div>
-                 <div className="space-y-4">
-                  <h1 className="text-2xl font-medium">Quick Link</h1>
-                  <p>Privancy Policy</p>
-                  <p>Terms of use</p>
-                  <p>Contact</p>
-                 </div>
-
-                   <div>
-                  <h1 className="font-medium text-2xl mb-4 ms-14">Let's connect</h1>
-                  <div className="space-x-4">
-                       <button className="text-[25px] hover:text-blue-500 hover:translate-y-1 transform duration-200"> <FaFacebook /> </button>
-                       <button className="text-[25px] hover:text-purple-500 hover:translate-y-1 transform duration-200"><FaInstagram /> </button>
-                       <button className="text-[25px] hover:text-red-500 hover:translate-y-1 transform duration-200"><FaYoutube /> </button>
-                       <button className="text-[25px] hover:text-white  hover:translate-y-1 transform duration-200"> <FaTwitter /> </button>
-                       <button className="text-[25px] hover:text-blue-500 hover:translate-y-1 transform duration-200"><FaTwitch /> </button>
-                       <button className="text-[25px] hover:text-blue-500 hover:translate-y-1 transform duration-200"><FaWhatsapp /> </button>
-                       <button className="text-[25px] hover:text-blue-500 hover:translate-y-1 transform duration-200"><FaLinkedinIn /> </button>
+        <footer className="bg-black text-white">
+            {/* Main Footer Content */}
+            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                {/* Brand Section */}
+                <div className="space-y-6">
+                    <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        Shop Sphere
+                    </h1>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                        Your one-stop destination for all your shopping needs. Quality products, amazing prices.
+                    </p>
+                    <div className="space-y-3">
+                        <input 
+                            type="email" 
+                            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-400" 
+                            placeholder="Enter your email"
+                        />
+                        <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 font-medium shadow-lg">
+                            Subscribe
+                        </button>
                     </div>
-                   </div>
+                </div>
+
+                {/* Support Section */}
+                <div className="space-y-6">
+                    <h1 className="text-xl font-semibold border-l-4 border-blue-500 pl-3">Support</h1>
+                    <div className="space-y-3 text-gray-300">
+                        <p className="flex items-center space-x-2">
+                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            <span>RwandaMart in Rwanda</span>
+                        </p>
+                        <p className="flex items-center space-x-2">
+                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            <span>+250 728 184 299</span>
+                        </p>
+                        <p className="flex items-center space-x-2">
+                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            <span>support@shopsphere.com</span>
+                        </p>
+                    </div>
+                </div>
+
+                {/* Account Section */}
+                <div className="space-y-6">
+                    <h1 className="text-xl font-semibold border-l-4 border-green-500 pl-3">Account</h1>
+                    <div className="space-y-3 text-gray-300">
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/account">
+                            My Account
+                        </Link>
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/auth">
+                            Login/Register
+                        </Link>
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/cart">
+                            My Cart
+                        </Link>
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/wishlist">
+                            Wishlist
+                        </Link>
+                    </div>
+                </div>
+
+                {/* Quick Links Section */}
+                <div className="space-y-6">
+                    <h1 className="text-xl font-semibold border-l-4 border-purple-500 pl-3">Quick Links</h1>
+                    <div className="space-y-3 text-gray-300">
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/privacy">
+                            Privacy Policy
+                        </Link>
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/terms">
+                            Terms of Use
+                        </Link>
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/contact">
+                            Contact Us
+                        </Link>
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/about">
+                            About Us
+                        </Link>
+                    </div>
+                </div>
+
+                {/* Social Media Section */}
+                <div className="space-y-6">
+                    <h1 className="text-xl font-semibold border-l-4 border-red-500 pl-3">Let's Connect</h1>
+                    <p className="text-gray-300 text-sm">
+                        Follow us on social media for updates and promotions
+                    </p>
+                    <div className="grid grid-cols-4 gap-4">
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-600 hover:scale-110 transform duration-200 transition-all group">
+                            <FaFacebook className="text-xl group-hover:scale-110 transform duration-200" />
+                        </button>
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-pink-600 hover:scale-110 transform duration-200 transition-all group">
+                            <FaInstagram className="text-xl group-hover:scale-110 transform duration-200" />
+                        </button>
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-red-600 hover:scale-110 transform duration-200 transition-all group">
+                            <FaYoutube className="text-xl group-hover:scale-110 transform duration-200" />
+                        </button>
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-400 hover:scale-110 transform duration-200 transition-all group">
+                            <FaTwitter className="text-xl group-hover:scale-110 transform duration-200" />
+                        </button>
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-purple-600 hover:scale-110 transform duration-200 transition-all group">
+                            <FaTwitch className="text-xl group-hover:scale-110 transform duration-200" />
+                        </button>
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-green-500 hover:scale-110 transform duration-200 transition-all group">
+                            <FaWhatsapp className="text-xl group-hover:scale-110 transform duration-200" />
+                        </button>
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-700 hover:scale-110 transform duration-200 transition-all group">
+                            <FaLinkedinIn className="text-xl group-hover:scale-110 transform duration-200" />
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-    )
-}
+
+            {/* Bottom Bar */}
+            <div className="border-t border-gray-700">
+                <div className="max-w-7xl mx-auto px-6 py-4">
+                    <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+                        <p className="text-gray-400 text-sm">
+                            © 2024 Shop Sphere. All rights reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
+};
 
 export default Footer;
