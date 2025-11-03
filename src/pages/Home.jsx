@@ -7,7 +7,6 @@ import camera2 from "../assets/electrics/camera2.jpeg"
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import pent1 from "../assets/clothes/pent1.jpeg"
 import pent2 from "../assets/clothes/pent2.jpeg"
-import pent3 from "../assets/clothes/pent3.jpeg"
 import shoes1 from "../assets/clothes/shoes1.jpeg"
 import shoes2 from "../assets/clothes/shoes3.jpeg"
 import shoes3 from "../assets/clothes/shoes4.jpeg"
