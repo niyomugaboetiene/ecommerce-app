@@ -3,14 +3,14 @@ const Footer = () => {
     return (
         <div>
             <div className="bg-black text-white grid grid-cols-5 p-6 h-72">
-                <div>
-                     <h1>Shop Sphere </h1>
+                <div className="space-y-4">
+                     <h1 className="text-2xl font-medium">Shop Sphere </h1>
                      <p>Subscribe</p>
-                     <input type="email" />
+                     <input type="email" className="w-72 py-2 border-2" placeholder="Type your email"/>
                 </div>
 
-                 <div>
-                      <h1>Support</h1>
+                 <div className="space-y-4">
+                      <h1 className="text-2xl font-medium">Support</h1>
                       <p>RwandaMart in Rwanda</p>
                       <p>+250 728 184 299</p>
                  </div>
@@ -18,7 +18,7 @@ const Footer = () => {
                     <h1 className="font-medium text-2xl">Account</h1>
                     <p>My Account</p>
                     <p>Login/ Register</p>
-                    <p>Cart</p>
+                    <p>My cart</p>
                 </div>
                  <div className="space-y-4">
                   <h1 className="text-2xl font-medium">Quick Link</h1>
