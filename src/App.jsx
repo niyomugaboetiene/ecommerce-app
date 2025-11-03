@@ -9,6 +9,7 @@ import LastPage from "./pages/LastPage"
 import Footer from "./pages/Footer"
 import OurProduct from "./pages/AllOurProduct"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import AddProduct from "./pages/AddProduct"
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
                 </div>
               } />
               
+              <Route path="/add" element={<AddProduct />}/>
               <Route path="/sign-up" element={
                 <div className="min-h-screen flex flex-col">
                   <div className="flex-grow">

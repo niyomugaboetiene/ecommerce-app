@@ -19,4 +19,27 @@ const AddProduct = () => {
             console.error("ERROR:", error.message);
         }
     }  
+
+
+    return (
+        <div>
+            <div>
+                <input type="text" 
+                   onChange={() => setProductName(e.target.value)}
+                />
+                <input type="text"
+                    onChange={() => setCategory(e.target.value)}
+                />
+                <input type="text" 
+                    onChange={() => setPrice(e.target.value)}
+                />
+                <input type="text"  
+                  onChange={() => setStock(e.target.value)}
+                />
+                <button onClick={Add}>Add</button>
+            </div>
+        </div>
+    )
 }
+
+export default AddProduct
