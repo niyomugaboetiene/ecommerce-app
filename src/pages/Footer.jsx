@@ -36,7 +36,7 @@ const Footer = () => {
                 </div>
 
                 <div className="space-y-6">
-                    <h1 className="text-xl font-semibold border-l-4 border-green-500 pl-3">Account</h1>
+                    <h1 className="text-xl font-semibold border-l-4 border-green-500 pl-4">Account</h1>
                     <div className="space-y-3 text-gray-300">
                         <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/account">
                             My Account
