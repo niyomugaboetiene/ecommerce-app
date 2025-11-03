@@ -2,7 +2,7 @@ import { FaFacebook, FaInstagram, FaYoutube, FaTwitter, FaTwitch, FaWhatsapp, Fa
 const Footer = () => {
     return (
         <div>
-            <div className="bg-black text-white grid grid-cols-5">
+            <div className="bg-black text-white grid grid-cols-5 p-6 h-72">
                 <div>
                      <h1>Shop Sphere </h1>
                      <p>Subscribe</p>
@@ -30,15 +30,14 @@ const Footer = () => {
                    <div>
                   <h1>Let's connect</h1>
                   <div>
-                <button> <FaFacebook /> </button>
-                <button><FaInstagram /> </button>
-                <button><FaYoutube /> </button>
-                  <FaTwitter />
-                  <FaTwitch />
-                  <FaWhatsapp />
-                  <FaLinkedinIn />
-                  </div>
-
+                       <button> <FaFacebook /> </button>
+                       <button><FaInstagram /> </button>
+                       <button><FaYoutube /> </button>
+                       <button> <FaTwitter /> </button>
+                       <button><FaTwitch /> </button>
+                       <button><FaWhatsapp /> </button>
+                       <button><FaLinkedinIn /> </button>
+                    </div>
                    </div>
 
 
