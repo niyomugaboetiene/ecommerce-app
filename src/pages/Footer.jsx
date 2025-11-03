@@ -29,20 +29,17 @@ const Footer = () => {
                  </div>
 
                    <div>
-                  <h1 className="font-medium text-2xl mb-4">Let's connect</h1>
-                  <div className="space-x-2">
-                       <button className="text-[25px]"> <FaFacebook /> </button>
-                       <button className="text-[25px]"><FaInstagram /> </button>
-                       <button className="text-[25px]"><FaYoutube /> </button>
-                       <button className="text-[25px]"> <FaTwitter /> </button>
-                       <button className="text-[25px]"><FaTwitch /> </button>
-                       <button className="text-[25px]"><FaWhatsapp /> </button>
-                       <button className="text-[25px]"><FaLinkedinIn /> </button>
+                  <h1 className="font-medium text-2xl mb-4 ms-14">Let's connect</h1>
+                  <div className="space-x-4">
+                       <button className="text-[25px] hover:text-blue-500 hover:translate-y-1 transform duration-200"> <FaFacebook /> </button>
+                       <button className="text-[25px] hover:text-purple-500 hover:translate-y-1 transform duration-200"><FaInstagram /> </button>
+                       <button className="text-[25px] hover:text-red-500 hover:translate-y-1 transform duration-200"><FaYoutube /> </button>
+                       <button className="text-[25px] hover:text-white  hover:translate-y-1 transform duration-200"> <FaTwitter /> </button>
+                       <button className="text-[25px] hover:text-blue-500 hover:translate-y-1 transform duration-200"><FaTwitch /> </button>
+                       <button className="text-[25px] hover:text-blue-500 hover:translate-y-1 transform duration-200"><FaWhatsapp /> </button>
+                       <button className="text-[25px] hover:text-blue-500 hover:translate-y-1 transform duration-200"><FaLinkedinIn /> </button>
                     </div>
                    </div>
-
-
-
             </div>
         </div>
     )
