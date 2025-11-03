@@ -8,7 +8,7 @@ const ProductSchema = new mongoose.Schema({
     product_name: { type: String, required: true },
     category: { type: String, required: true },
     price: { type: Number, required: true },
-    likes: { type: Number },
+    likes: { type: Number, default: 0 },
     date: { type: Date, default: Date.now() },
     image: { type: String },
     stock: { type: Number, default: 0 }
