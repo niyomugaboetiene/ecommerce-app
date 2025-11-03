@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import mongoose from "mongoose"
 
 
 const UserSchema = new mongoose.schema({
@@ -7,8 +6,8 @@ const UserSchema = new mongoose.schema({
     user_name: { type: String, required: true },
     password: { type: Number, required: true },
     image: { type: String },
-    isAdmin: { type: Boolean, default: false }
-
+    isAdmin: { type: Boolean, default: false },
+    createdAt: { type: Date, default: Date.now() }
 });
 
-export default mongoose.model('Product', ProductSchema);
+export default mongoose.model('Product', UserSchema);
