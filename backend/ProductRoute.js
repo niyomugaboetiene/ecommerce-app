@@ -1,10 +1,10 @@
-import productSchema from "./productSchema";
+import ProductSchema from "./productSchema.js";
 import express from "express"
 const route = express.Router();
 
 route.post('/add', async(req, res) => {
     try {
-        const product = await productSchema.create(req.body);
+        const product = await ProductSchema.create(req.body);
         res.statusCode(201).json({
             message: 'Product Added successfully'
         });

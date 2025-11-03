@@ -14,4 +14,4 @@ mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app')
     console.error(`Error: ${error}`);
 });
 
-app.listen('http://localhost:5000')
+app.listen(5000, () => 'http://localhost:5000')
