@@ -5,8 +5,9 @@ const Footer = () => {
             <div className="bg-black text-white grid grid-cols-5 p-6 h-72">
                 <div className="space-y-4">
                      <h1 className="text-2xl font-medium">Shop Sphere </h1>
-                     <p>Subscribe</p>
-                     <input type="email" className="w-72 py-2 border-2" placeholder="Type your email"/>
+                     <input type="email" className="w-72 py-2 border  rounded-lg" placeholder="Type your email"/> <br />
+                    <button className="bg-blue-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-blue-400 transition duration-200">Subscribe</button>
+
                 </div>
 
                  <div className="space-y-4">
