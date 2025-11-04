@@ -51,7 +51,7 @@ routes.post('/login', async (req, res) => {
     try {
         const user = await UserSchema.findOne({ user_name });
         if (!user) {
-            return res.status(409).json({ message: "Invalid username or password" });
+            return res.status(401).json({ message: "Invalid username or password" });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
@@ -67,9 +67,8 @@ routes.post('/login', async (req, res) => {
         };
 
         res.status(200).json({ message: "Login successfully", user: req.session.user });
-
     } catch (error) {
-        return res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 
