@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import UserSchema from "./userSchema.js";
+import bcrypt from "bcrypt";
 const routes = express.Router();
 
 
@@ -18,13 +19,15 @@ const uploads = multer({ storage });
 routes.post('/register', uploads.single('image'), async(req, res) => {
     try {
     const { user_name, password } = req.body;
+    const salt =  bcrypt.genSaltSync(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const ImagePath = req.file ? req.file.path : null;
     
     if (!user_name || !password || !ImagePath) {
         res.status(400).json({ message: 'Missing dependecies' });
     }
         await UserSchema.create({
-            user_name, password, image: ImagePath
+            user_name, hashedPassword, image: ImagePath
         });
         
         return res.status(201).json({ message: 'User registered successfully' });
@@ -33,4 +36,12 @@ routes.post('/register', uploads.single('image'), async(req, res) => {
     }      
 })
 
+routes.post('/login', async(req, res ) => {
+    const { user_name, password } = req.body;
+
+    try {
+        await UserSchema.findOne({ user_name });
+        
+    }
+})
 export default routes;
