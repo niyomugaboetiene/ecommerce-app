@@ -10,7 +10,7 @@ const AddProduct = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("")
     const [image, setImage] = useState(null);
-    const categories = ["Speaker", "Women's Fashion", "Phones", "Shoes", "Men's Fashion", "Medecine", "Baby's & Toys", "Heath & Beauty", "Electronics"];
+    const categories = ["Speaker", "Women's Fashion", "Phones", "Shoes", "Men's Fashion", "Medecine", "Baby's & Toys", "Home & Lifestyle", "Heath & Beauty", "Electronics"];
 
     const Add = async() => {
         if (!product_name || !category || !price || !stock || !image) {

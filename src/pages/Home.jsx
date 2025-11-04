@@ -62,7 +62,7 @@ const Home = () => {
           <Link to="women" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Woman's Fashion</Link>
           <Link to="men" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Men's Fashion</Link>
           <Link to="electronics" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Electronics</Link>
-          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Home & Lifestyle</Link>
+          <Link to="lifestyle" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Home & Lifestyle</Link>
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Baby's & Toys</Link>
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Health & Beauty</Link>
         </nav>

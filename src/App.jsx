@@ -13,6 +13,7 @@ import AddProduct from "./pages/AddProduct"
 import WomenFashion from "./pages/WomenFashion.jsx"
 import MenFashion from "./pages/MenFashion.jsx"
 import Electronics from "./pages/Electronics.jsx"
+import Lifestyle from "./pages/LifeStyle.jsx"
 
 function App() {
   return (
@@ -91,6 +92,14 @@ function App() {
                 <div className="min-h-screen flex flex-col">
                   <div className="flex-grow">
                     <Electronics />
+                  </div>
+                  <Footer />
+                </div>
+              } />      
+              <Route path="/lifestyle" element={
+                <div className="min-h-screen flex flex-col">
+                  <div className="flex-grow">
+                    <Lifestyle />
                   </div>
                   <Footer />
                 </div>
