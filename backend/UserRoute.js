@@ -1,4 +1,4 @@
-import express from "express";
+import express, { json } from "express";
 import multer from "multer";
 import UserSchema from "./userSchema.js";
 import bcrypt from "bcrypt";
@@ -72,6 +72,32 @@ routes.post('/logout', (req, res) => {
     if (req.session.destroy) {
         return res.status(200).json({ message: 'Logged out successfully' });
     }
+});
+
+routes.post('/cart/add', async(req, res) => {
+    if (!req.session.user) return res.status(401).json({ message: 'Login first' });
+
+    const { product_id, quality } = req.body;
+    const user = await UserSchema.findOne({ user_id: req.session.user.user_id });
+
+    const existing = user.cart.find(p => p.product_id === product_id);
+
+    if (existing) {
+        existing.quality += quality;
+    } else {
+        user.cart.push({ product_id, quality });
+    }
+
+    await user.save();
+    res.status(200).json({ message: "Added to cart", cart: user.cart });
+});
+
+routes.get('/cart', async (req, res) => {
+    if (!req.session.user) return res.status(401).json({ message: "Login first" });
+
+    const user = await UserSchema.findOne({ user_id: req.session.user.user_id });
+    res.status(200).json({ cart: user.cart });
+
 })
 
 export default routes;

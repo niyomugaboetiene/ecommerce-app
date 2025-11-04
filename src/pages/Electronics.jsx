@@ -47,9 +47,12 @@ const Electronics = () => {
                                 className="w-full h-full object-cover hover:scale-105 transition duration-200"
                             />
                             {isHoveredIndex === idx && (
+                                <>
                                 <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition">
                                     <FaHeart className="text-red-500" />
-                                </button>
+                                </button> 
+                                </>
+           
                             )}
                         </div>
 
