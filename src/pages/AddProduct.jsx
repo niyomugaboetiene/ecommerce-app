@@ -50,6 +50,13 @@ const AddProduct = () => {
                       <input type="number"  
                          onChange={(e) => setStock(e.target.value)}
                       />
+                  </div>            
+                     <div>
+                      <label>Numbers in Stock</label>
+                      <input type="file"  
+                         onChange={(e) => setStock()}
+                         accept="images/*"
+                      />
                   </div>
 
                 <button onClick={Add}>Add</button>
