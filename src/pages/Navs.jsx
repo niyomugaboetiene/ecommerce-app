@@ -69,7 +69,6 @@ const Navs = () => {
           </div>
         )}
       </div>
-      <button onClick={Logout}>logout</button>
     </div>
   );
 };
