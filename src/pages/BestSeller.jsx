@@ -1,6 +1,5 @@
 
 import { FaShoppingCart } from "react-icons/fa";
-import joystick3 from "../assets/electrics/joystick3.webp"
 import { useState, useEffect } from "react";
 import axios from "axios";
 

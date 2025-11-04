@@ -67,4 +67,17 @@ route.get('/newProducts', async(req, res) => {
         res.status(500).json({message: 'Database error'})
     }
 });
+
+route.get('/womem', async(req, res) => {
+    try {
+         const womemProduct =  await ProductSchema.find({ category: `Women's Fashion`});
+         if (womemProduct.length === 0) {
+            return res.status(404).json({ message: 'No womem  products found.' });
+         }
+         return res.status(200).json({message: 'women products', womemProduct});
+    } catch (error) {        
+        res.status(500).json({message: 'Database error'})
+    }
+
+})
 export default route;
