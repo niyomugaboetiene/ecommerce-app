@@ -46,6 +46,7 @@ const WomenFashion = () => {
                         >
                               <img src={`http://localhost:5000/${item.image}`} className="w-full h-full object-cover hover:scale-105 transition duration-200"
                               />
+                              
                             </div>
          
                           <p className="text-[15px] text-gray-600">Name: {item.product_name}</p>
