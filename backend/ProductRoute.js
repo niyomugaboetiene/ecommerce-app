@@ -80,4 +80,17 @@ route.get('/women', async(req, res) => {
     }
 
 })
+
+route.get('/men', async(req, res) => {
+    try {
+         const MenProduct =  await ProductSchema.find({ category: `Men's Fashion`});
+         if (MenProduct.length === 0) {
+            return res.status(404).json({ message: 'No men  products found.' });
+         }
+         return res.status(200).json({message: 'men products', MenProduct});
+    } catch (error) {        
+        res.status(500).json({message: 'Database error'})
+    }
+
+})
 export default route;

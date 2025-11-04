@@ -12,8 +12,8 @@ const WomenFashion = () => {
     useEffect(() => {
             try {
                  const GetNewProducts = async() => {
-                      const product = await axios.get('http://localhost:5000/product/women', {withCredentials: true});
-                      setProducts(product.data.womemProduct);
+                      const product = await axios.get('http://localhost:5000/product/men', {withCredentials: true});
+                      setProducts(product.data.MenProduct);
                 };
             
              GetNewProducts();
