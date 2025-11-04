@@ -60,50 +60,51 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen px-8">
-         <div className="flex gird grid-cols-2">
-           <nav className="flex flex-1 flex-col">
-            <Link>Woman’s Fashion</Link>
-            <Link>Men’s Fashion</Link>
-            <Link>Electronics</Link>
-            <Link>Woman’s Fashion</Link>
-            <Link>Baby’s & Toys</Link>
-            <Link>Health & Beauty</Link>
-           </nav>
+    <div className="flex flex-col items-center justify-center p-9 mt-4 w-full max-w-7xl mx-auto">
+      <div className="flex w-full gap-8">
+        {/* Navigation Section with right border */}
+        <nav className="flex flex-col w-1/4 pr-6 border-r-2 border-gray-200">
+          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Woman's Fashion</Link>
+          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Men's Fashion</Link>
+          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Electronics</Link>
+          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Home & Lifestyle</Link>
+          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Baby's & Toys</Link>
+          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Health & Beauty</Link>
+        </nav>
 
-      <div className="w-2/4 max-w-4xl px-4"> 
-        <div className="relative">
-          <div className="transition-opacity duration-500 ease-in-out">
-            <div className="aspect-video relative"> 
-              <img 
-                src={Images[currentIndex].image} 
-                alt={Images[currentIndex].description}
-                className="w-full h-full object-cover rounded-lg shadow-lg hover:scale-105 transition duration-200"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 rounded-b-lg">
-                <p className="text-lg font-medium text-center">
-                  {Images[currentIndex].description}
-                </p>
+        {/* Image Carousel Section */}
+        <div className="flex-1 max-w-3xl"> 
+          <div className="relative">
+            <div className="transition-opacity duration-500 ease-in-out">
+              <div className="aspect-video relative"> 
+                <img 
+                  src={Images[currentIndex].image} 
+                  alt={Images[currentIndex].description}
+                  className="w-full h-full object-cover rounded-lg shadow-lg hover:scale-105 transition duration-200"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 rounded-b-lg">
+                  <p className="text-lg font-medium text-center">
+                    {Images[currentIndex].description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div className="flex justify-center mt-4 space-x-2">
-            {Images.map((_, index) => (
-              <button
-                key={index}
-                className={`w-3 h-3 rounded-full ${
-                  index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
-                }`}
-                onClick={() => setCurrentIndex(index)}
-              />
-            ))}
+            
+            <div className="flex justify-center mt-4 space-x-2">
+              {Images.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full ${
+                    index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+                  }`}
+                  onClick={() => setCurrentIndex(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
   );
 };
 
