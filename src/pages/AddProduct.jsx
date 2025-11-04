@@ -9,8 +9,16 @@ const AddProduct = () => {
     const [isLoaing, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("")
+    const [image, setImage] = useState(null);
 
     const Add = async() => {
+
+        const formData = new FormData();
+        formData.append('product_name', product_name);
+        formData.append("category", category);
+        formData.append("price", price);
+        formData.append("stock", stock);
+        formData.append("image", image);
         try {
             setIsLoading()
             await axios.post('http://localhost:5000/product/add', {
