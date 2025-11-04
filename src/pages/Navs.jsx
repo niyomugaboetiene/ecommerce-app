@@ -71,18 +71,18 @@ const Navs = () => {
     </div>
 
     {isMenuShow && (
-      <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg p-4 z-50">
+      <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg px6 py-3 z-50 w-full">
         <p className="font-medium">{userInfo.user_name}</p>
         <button
           onClick={Logout}
           className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-        >
-          Logout
-        </button>
+         >
+             Logout
+           </button>
+         </div>
+        )}
       </div>
-    )}
-  </div>
-)}
+      )}
       </div>
 
     </div>
