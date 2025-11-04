@@ -61,11 +61,17 @@ routes.post('/login', async(req, res ) => {
     }
 });
 
-routes.get('/userInfo', async(req, res) => {
+routes.get('/userInfo', (req, res) => {
     if (req.session.user) {
         return res.status(200).json({ userInfo: req.session.user })
     }
     return res.status(401).json("Not logged in")
 });
+
+routes.post('/logout', (req, res) => {
+    if (req.session.destroy) {
+        return res.status(200).json({ message: 'Logged out successfully' });
+    }
+})
 
 export default routes;

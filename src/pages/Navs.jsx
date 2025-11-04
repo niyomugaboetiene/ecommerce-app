@@ -23,6 +23,12 @@ const Navs = () => {
     GetUserInfo();
   }, []);
 
+  const Logout = async() => {
+    const navigate = useNavigate();
+    await axios.post('http://localhost:5000/user/logout', {withCredentials: true});
+    navigate('/login');
+}
+
   return (
     <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
       <p className="text-2xl font-bold text-black">Shop Sphere</p>
@@ -61,6 +67,7 @@ const Navs = () => {
           </div>
         )}
       </div>
+      <button onClick={Logout}>logout</button>
     </div>
   );
 };
