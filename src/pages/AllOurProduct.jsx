@@ -39,7 +39,7 @@ const OurProduct = () => {
                 >
                     <div className="w-full h-74 overflow-hidden rounded-lg mb-4">
                         <img 
-                            src={item.image} 
+                            src={`http://localhost:5000/${item.image}`} 
                             className="w-full h-full object-cover hover:scale-110 transition duration-300"
                         />
                     </div>
