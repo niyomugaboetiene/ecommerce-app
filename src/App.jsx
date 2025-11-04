@@ -11,6 +11,7 @@ import OurProduct from "./pages/AllOurProduct"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import AddProduct from "./pages/AddProduct"
 import WomenFashion from "./pages/WomenFashion.jsx"
+import MenFashion from "./pages/MenFashion.jsx"
 
 function App() {
   return (
@@ -73,6 +74,14 @@ function App() {
                 <div className="min-h-screen flex flex-col">
                   <div className="flex-grow">
                     <WomenFashion />
+                  </div>
+                  <Footer />
+                </div>
+              } />      
+                <Route path="/men" element={
+                <div className="min-h-screen flex flex-col">
+                  <div className="flex-grow">
+                    <MenFashion />
                   </div>
                   <Footer />
                 </div>
