@@ -10,7 +10,7 @@ const AdminCheck = (req, res, next) => {
     }
 
     if (!req.session.user.isAdmin) {
-              return res.status(403).json({ message: "Forbidden. Admins only." });
+          return res.status(403).json({ message: "Forbidden. Admins only." });
     }
 
     next();
@@ -156,7 +156,7 @@ route.get('/health', async(req, res) => {
 
 });
 
-route.put('/update/product_id', AdminCheck, uploads.single("image"), async(req, res) => {
+route.put('/update/:product_id', AdminCheck, uploads.single("image"), async(req, res) => {
     try {
         const product_id = req.body;
         const { product_name, price, stock } = req.body;
