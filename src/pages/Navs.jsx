@@ -5,10 +5,20 @@ import axios from "axios";
 
 const Navs = () => {
   const [userInfo, setUserInfo] = useState([]);
+  const [loading, setIsLoading] = useState(false);
+  const [error, setError] = useState("")
   useEffect(() => {
+     try {
       const GetUserInfo = async() => {
-          const res = await axios.get('/')
+        setIsLoading(true);
+          const res = await axios.get('http://localhost:5000/user/userInfo', {withCredentials: true});
+          setUserInfo(res.data.userInfo);
+          setUserInfo(false);
       }
+     } catch (error) {
+        setError("failed to fetch data")
+     }
+
   })
   return (
     <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
