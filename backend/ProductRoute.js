@@ -171,6 +171,11 @@ route.put('/update/product_id', AdminCheck, uploads.single("image"), async(req, 
         if (price) product.price = price;
         if (stock) product.stock = stock;
         if (ImagePath) product.image = ImagePath;
+
+        await product.save();
+        res.status(200).json({ message: "Product updated successfully", product });
+    } catch (error) {
+         res.status(500).json({ message: "Database error", error: error.message });
     }
 })
 export default route;
