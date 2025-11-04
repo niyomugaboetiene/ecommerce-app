@@ -25,9 +25,6 @@ const FlashSales = () => {
     const itemToShow = showAll ? products : products.slice(0, 8);
     const hasMoreItems = products.length > 8;
 
-    if (products.length === 0) {
-           return <p className="text-center mt-10 text-gray-500">No new products found.</p>;
-    }
     return (
         <div className="flex flex-col items-center justify-center p-6">
             <h2 className="text-3xl font-bold mb-8">New Products</h2>
@@ -83,6 +80,11 @@ const FlashSales = () => {
                     View Less
                 </button>
              )}
+
+             {(products.length === 0) && (
+                  <p className="text-center mt-10 text-gray-500">No new products found.</p>
+             )
+    }
         </div>
     )
 }
