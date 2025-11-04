@@ -16,7 +16,7 @@ const LoginAccount = () => {
 
         try {
             setIsLoading(true);
-            await axios.post('http://localhost:5000/user/login', user_name, password, {
+            await axios.post('http://localhost:5000/user/login',{ user_name, password }, {
                 withCredentials: true,
             });
             

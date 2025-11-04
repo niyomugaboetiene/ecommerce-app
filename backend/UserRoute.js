@@ -41,12 +41,14 @@ routes.post('/register', uploads.single('image'), async(req, res) => {
 })
 
 routes.post('/login', async(req, res ) => {
-    const { user_name, password } = req.body;
+    const user_name = req.body;
+    const password = req.body;
 
     try {
         const user = await UserSchema.findOne({ user_name });
         const isMatch = await  bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json("Login failed");
+
         req.session.user = {
             user_id: user.user_id,
             user_name: user.user_name,
