@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import AutoIncrementFactory from "mongoose-sequence"
-
 const AutoIncrement = AutoIncrementFactory();
+
 const UserSchema = new mongoose.schema({
     user_id: { type: Number, unique: true },
     user_name: { type: String, required: true },
