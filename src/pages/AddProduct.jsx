@@ -25,14 +25,20 @@ const AddProduct = () => {
         formData.append("stock", stock);
         formData.append("image", image);
         try {
-            setIsLoading()
+            setIsLoading(true);
             await axios.post('http://localhost:5000/product/add', {
-                product_name, category, price, stock
+                formData
             }, {
                 withCredentials: true
-            })
+            }, {
+               headers: { "Content-Type": "multipart/form-data" },
+            });
+
+            setIsLoading(false);
         } catch (error) {
             console.error("ERROR:", error.message);
+            setError("Error during add product");
+            setIsLoading(false);
         }
     }  
 
@@ -67,12 +73,12 @@ const AddProduct = () => {
                      <div>
                       <label>Numbers in Stock</label>
                       <input type="file"  
-                         onChange={(e) => setStock()}
+                         onChange={(e) => setImage(e.target.files[0])}
                          accept="images/*"
                       />
                   </div>
 
-                <button onClick={Add}>Add</button>
+                <button onClick={Add}>{isLoaing ? "Adding.." : "Add"}</button>
             </div>
         </div>
     )
