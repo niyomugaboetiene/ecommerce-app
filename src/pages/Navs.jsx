@@ -8,6 +8,7 @@ const Navs = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isMenuShow, setIsMenuShown] = useState(false);
   const navigate = useNavigate();
 
 
@@ -27,12 +28,12 @@ const Navs = () => {
   }, []);
 
   const Logout = async() => {
-    await axios.post('http://localhost:5000/user/logout', {withCredentials: true});
+    await axios.post('http://localhost:5000/user/logout', {},{ withCredentials: true });
     navigate('/sign-up');
 }
 
   return (
-    <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
+      <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
       <p className="text-2xl font-bold text-black">Shop Sphere</p>
 
       <div className="flex space-x-8 font-medium text-gray-700">
@@ -63,14 +64,29 @@ const Navs = () => {
 
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        {userInfo && (
-          <div className="flex items-center space-x-2">
-            <img src={`http://localhost:5000/${userInfo.image}`} alt={userInfo.user_name} className="w-8 h-8 rounded-full" />
-          </div>
-        )}
-      </div>
+ {userInfo && (
+  <div className="relative">
+    <div className="flex items-center space-x-2 cursor-pointer" onClick={() => setIsMenuShown(!isMenuShow)}>
+      <img src={`http://localhost:5000/${userInfo.image}`} alt={userInfo.user_name} className="w-8 h-8 rounded-full" />
     </div>
-  );
+
+    {isMenuShow && (
+      <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg p-4 z-50">
+        <p className="font-medium">{userInfo.user_name}</p>
+        <button
+          onClick={Logout}
+          className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          Logout
+        </button>
+      </div>
+    )}
+  </div>
+)}
+      </div>
+
+    </div>
+    );
 };
 
 export default Navs;
