@@ -36,6 +36,11 @@ const AddProduct = () => {
         } catch (error) {
             console.error("ERROR:", error.message);
             setError("Error during add product");
+            setTimeout(() => {
+                setError("");
+            }, 6000);
+            setIsLoading(false);
+        } finally {
             setIsLoading(false);
         }
     }  
