@@ -38,7 +38,7 @@ route.get('/getProduct', async(req, res) => {
       if (products.length > 0) {
         res.status(200).json({ message: 'Product in the Database', products });
       } else {
-        res.status(404).json({message: 'error in adding product'})
+        res.status(404).json({message: 'error in fetching product'})
       }
     } catch (error) {
         res.status(500).json({message: 'Database error'})
@@ -49,9 +49,9 @@ route.get('/newProducts', async(req, res) => {
     try {
       const products = await ProductSchema.find().sort({ date: -1 });
       if (products.length > 0) {
-        res.status(200).json({ message: 'Product in the Database', products });
+        res.status(200).json({ message: 'new Products in the Database', products });
       } else {
-        res.status(404).json({message: 'error in adding product'})
+        res.status(404).json({message: 'error in fetching new  product'})
       }
     } catch (error) {
         res.status(500).json({message: 'Database error'})
