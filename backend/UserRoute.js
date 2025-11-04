@@ -41,27 +41,38 @@ routes.post('/register', uploads.single('image'), async(req, res) => {
          res.status(500).json({message: 'Database error'});
     }      
 })
-
-routes.post('/login', async(req, res ) => {
+routes.post('/login', async (req, res) => {
     const { user_name, password } = req.body;
+
+    if (!user_name || !password) {
+        return res.status(400).json({ message: "Missing username or password" });
+    }
 
     try {
         const user = await UserSchema.findOne({ user_name });
-        const isMatch = await  bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json("Login failed");
-        
+        if (!user) {
+            return res.status(409).json({ message: "Invalid username or password" });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ message: "Invalid username or password" });
+        }
+
         req.session.user = {
             user_id: user.user_id,
             user_name: user.user_name,
             isAdmin: user.isAdmin,
             image: user.image
         };
-       res.status(200).json({ message: "Login successfully", user: req.session.user });
-        
+
+        res.status(200).json({ message: "Login successfully", user: req.session.user });
+
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
 });
+
 
 routes.get('/userInfo', (req, res) => {
     if (req.session.user) {
