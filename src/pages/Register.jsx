@@ -10,7 +10,7 @@ const RegisterAccount = () => {
     const [image, setImage] = useState(null);
 
     const Register = async() => {
-        if (!product_name || !category || !price || !stock || !image) {
+        if (!user_name || !password || !image) {
             alert("All fields are required");
             return;
         }
@@ -34,7 +34,7 @@ const RegisterAccount = () => {
             setIsLoading(false);
         } catch (error) {
             console.error("ERROR:", error.message);
-            setError("Error during Registring");
+            setError("Error during Registering");
             setTimeout(() => {
                 setError("");
             }, 6000);
