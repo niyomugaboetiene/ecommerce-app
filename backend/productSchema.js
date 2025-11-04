@@ -11,7 +11,9 @@ const ProductSchema = new mongoose.Schema({
     likes: { type: Number, default: 0 },
     date: { type: Date, default: Date.now() },
     image: { type: String },
-    stock: { type: Number, default: 0 }
+    stock: { type: Number, default: 0 },
+    timesAddedToCart: { type: Number, default: 0 },
+
 
 });
 
