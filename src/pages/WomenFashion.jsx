@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
 
-const FlashSales = () => {
+const WomenFashion = () => {
     const [showAll, setShowAll] = useState(false);
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
     const [products, setProducts] = useState([]);
@@ -11,7 +11,7 @@ const FlashSales = () => {
     useEffect(() => {
             try {
                  const GetNewProducts = async() => {
-                      const product = await axios.get('http://localhost:5000/product/newProducts', {withCredentials: true});
+                      const product = await axios.get('http://localhost:5000/product/women', {withCredentials: true});
                       setProducts(product.data.products);
                 };
             
@@ -27,7 +27,7 @@ const FlashSales = () => {
 
     return (
         <div className="flex flex-col items-center justify-center p-6">
-            <h2 className="text-3xl font-bold mb-8">New Products</h2>
+            <h2 className="text-3xl font-bold mb-8">Women's Fashion</h2>
              <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500`}>
                 {itemToShow.map((item, idx) => (
                     <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200"
@@ -80,11 +80,11 @@ const FlashSales = () => {
              )}
 
              {(products.length === 0) && (
-                  <p className="text-center mt-10 text-gray-500">No new products found.</p>
+                  <p className="text-center mt-10 text-gray-500">No Women's fashion found.</p>
              )
          }
         </div>
     )
 }
 
-export default FlashSales
+export default WomenFashion
