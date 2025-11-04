@@ -48,7 +48,7 @@ routes.post('/login', async(req, res ) => {
             user_name: user.user_name,
             isAdmin: user.isAdmin
         };
-       res.status(200).json("Login successfully", { user: req.session.user });
+       res.status(200).json({ message: "Login successfully", user: req.session.user });
         
     } catch (error) {
         return res.status(500).json("Database Error");
