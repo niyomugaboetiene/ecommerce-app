@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 
 
 const FlashSales = () => {
@@ -30,35 +30,42 @@ const FlashSales = () => {
             <h2 className="text-3xl font-bold mb-8">New Products</h2>
              <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500`}>
                 {itemToShow.map((item, idx) => (
-                    <div key={idx} className="p-4 rounded-2xl hover:shadow-xl transition duration-200"
-                      onMouseEnter={() => setIsHoveredIndex(idx)}
-                      onMouseLeave={() => setIsHoveredIndex(null)}
-                    >
-                        <div className="w-full h-74 overflow-hidden rounded-lg mb-3"
-                            
-                        >
-                              <img src={`http://localhost:5000/${item.image}`} className="w-full h-full object-cover hover:scale-105 transition duration-200"
-                              />
-                            </div>
-         
-                          <p className="text-[15px] text-gray-600">Name: {item.product_name}</p>
-                          <p className="text-[15px] text-gray-600">Category: {item.category}</p>
-                   <div className="flex justify-between">
-                       <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
-                       <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
-                   </div> 
-                     <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
-                     {isHoveredIndex === idx && (
-                                <div className="flex justify-center">
-                                    <button className="mt-4 flex items-center gap-3 bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600">
-                                        <FaShoppingCart />
-                                        Add to Cart
-                                    </button>
-                                </div>
-                            )}
-                    </div>
-                    
-                ))}
+  <div
+    key={idx}
+    className="p-4 rounded-2xl hover:shadow-xl transition duration-200"
+    onMouseEnter={() => setIsHoveredIndex(idx)}
+    onMouseLeave={() => setIsHoveredIndex(null)}
+  >
+    <div className="relative w-full h-72 overflow-hidden rounded-lg mb-3">
+      <img
+        src={`http://localhost:5000/${item.image}`}
+        className="w-full h-full object-cover hover:scale-105 transition duration-200"
+      />
+      {isHoveredIndex === idx && (
+        <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition">
+          <FaHeart className="text-red-500" />
+        </button>
+      )}
+    </div>
+
+    <p className="text-[15px] text-gray-600">Name: {item.product_name}</p>
+    <p className="text-[15px] text-gray-600">Category: {item.category}</p>
+    <div className="flex justify-between">
+      <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
+      <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
+    </div>
+    <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
+
+    {isHoveredIndex === idx && (
+      <div className="flex justify-center mt-3 gap-3">
+        <button className="flex items-center gap-3 bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600 transition">
+          <FaShoppingCart />
+          Add to Cart
+        </button>
+      </div>
+    )}
+  </div>
+))}
              </div>
         
              {hasMoreItems && !showAll && (

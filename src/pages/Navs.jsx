@@ -88,12 +88,11 @@ const Navs = () => {
         </button>
       </div>
     )}
-  </div>
-)}
-
-      </div>
-
     </div>
+   )}
+
+   </div>
+  </div>
     );
 };
 
