@@ -8,7 +8,7 @@ import shoes1 from "../assets/clothes/shoes1.jpeg"
 import shoes2 from "../assets/clothes/shoes3.jpeg"
 import shoes3 from "../assets/clothes/shoes4.jpeg"
 import clothes1 from "../assets/clothes/clothes1.jpg"
-import clothes2 from "../assets/clothes/clothes2.jpg"
+import clothes2 from "../assets/electrics/women1.webp"
 import clothes3 from "../assets/clothes/clothes3.webp"
 import { Link } from "react-router-dom";
 
@@ -25,8 +25,8 @@ const recentlyViewed = [
    { image: pent1, description: "Modern phones for better price" },
    { image: pent2, description: "Modern keyboard for better price" },
    { image: shoes1, description: "Modern laptop for better price" },
-   { image: shoes3, description: "Women's clothing" },
-   { image: shoes2, description: "Women's clothing" }
+   { image: shoes3, description: "Women's Fashion" },
+   { image: shoes2, description: "Women's Fashion" }
 ];
 
 const Home = () => {
