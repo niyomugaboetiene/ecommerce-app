@@ -51,12 +51,19 @@ routes.post('/login', async(req, res ) => {
         req.session.user = {
             user_id: user.user_id,
             user_name: user.user_name,
-            isAdmin: user.isAdmin
+            isAdmin: user.isAdmin,
+            image: user.image
         };
        res.status(200).json({ message: "Login successfully", user: req.session.user });
         
     } catch (error) {
         return res.status(500).json({ error: error.message });
+    }
+});
+
+routes.get('/userInfo', async(req, res) => {
+    if (req.session.user) {
+        return({userInfo: req.session.user})
     }
 })
 export default routes;
