@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Navs = () => {
+  const [userInfo, setUserInfo] = useState([]);
+  useEffect(() => {
+      const GetUserInfo = async() => {
+          const res = await axios.get('/')
+      }
+  })
   return (
     <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
       

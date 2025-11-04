@@ -63,7 +63,9 @@ routes.post('/login', async(req, res ) => {
 
 routes.get('/userInfo', async(req, res) => {
     if (req.session.user) {
-        return({userInfo: req.session.user})
+        return res.status(200).json({ userInfo: req.session.user })
     }
-})
+    return
+});
+
 export default routes;
