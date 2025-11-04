@@ -67,7 +67,7 @@ import vest2 from "../assets/clothes/vest2.jpeg"
 import vest3 from "../assets/clothes/vest3.jpeg"
 import vest4 from "../assets/clothes/vest4.jpeg"
 import phone from "../assets/electrics/phone.jpg"
-
+import axios from "axios";
 import { useState } from "react";
 
 
@@ -150,6 +150,10 @@ const Images = [
 ];
 
 const OurProduct = () => {
+    
+    const GetAllProduct = async() => {
+        const product = await axios.get('http://localhost:5000/product/getProduct', {withCredentials: true});
+    };
     const [showAll, setShowAll] = useState(false);
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
 

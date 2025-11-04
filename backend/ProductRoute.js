@@ -43,6 +43,5 @@ route.get('/getProduct', async(req, res) => {
     } catch (error) {
         res.status(500).json({message: 'Database error'})
     }
-
-})
+});
 export default route;
