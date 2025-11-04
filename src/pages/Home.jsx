@@ -72,9 +72,9 @@ const Home = () => {
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Health & Beauty</Link>
         </nav>
 
-        {/* Image Carousel Section */}
-        <div className="flex-1 max-w-3xl"> 
-          <div className="relative">
+        {/* Image Carousel Section - Aligned to end/right */}
+        <div className="flex-1 flex justify-end"> 
+          <div className="relative max-w-3xl w-full">
             <div className="transition-opacity duration-500 ease-in-out">
               <div className="aspect-video relative"> 
                 <img 
