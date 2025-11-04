@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Navs = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const GetUserInfo = async () => {
@@ -24,9 +27,8 @@ const Navs = () => {
   }, []);
 
   const Logout = async() => {
-    const navigate = useNavigate();
     await axios.post('http://localhost:5000/user/logout', {withCredentials: true});
-    navigate('/login');
+    navigate('/sign-up');
 }
 
   return (
