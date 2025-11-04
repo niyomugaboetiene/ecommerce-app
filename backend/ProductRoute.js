@@ -123,9 +123,21 @@ route.get('/toy', async(req, res) => {
     try {
          const ToysProduct =  await ProductSchema.find({ category: `Baby's & Toys`});
          if (ToysProduct.length === 0) {
-            return res.status(404).json({ message: 'No Lifestyle products found.' });
+            return res.status(404).json({ message: 'No Toys products found.' });
          }
-         return res.status(200).json({message: 'Lifestyle products', ToysProduct});
+         return res.status(200).json({message: 'Toys products', ToysProduct});
+    } catch (error) {        
+        res.status(500).json({message: 'Database error'})
+    }
+
+})
+route.get('/health', async(req, res) => {
+    try {
+         const ToysProduct =  await ProductSchema.find({ category: `Heath & Beauty`});
+         if (ToysProduct.length === 0) {
+            return res.status(404).json({ message: 'No Toys products found.' });
+         }
+         return res.status(200).json({message: 'Toys products', ToysProduct});
     } catch (error) {        
         res.status(500).json({message: 'Database error'})
     }

@@ -14,6 +14,8 @@ import WomenFashion from "./pages/WomenFashion.jsx"
 import MenFashion from "./pages/MenFashion.jsx"
 import Electronics from "./pages/Electronics.jsx"
 import Lifestyle from "./pages/LifeStyle.jsx"
+import Toys from "./pages/Toys.jsx"
+import Health from "./pages/Health.jsx"
 
 function App() {
   return (
@@ -102,6 +104,22 @@ function App() {
                     <Lifestyle />
                   </div>
                   <Footer />
+                </div>
+              } />        
+              <Route path="/toy" element={
+                <div className="min-h-screen flex flex-col">
+                  <div className="flex-grow">
+                    <Toys />
+                  </div>
+                  <Footer />
+                </div>
+              } />   
+               <Route path="/health" element={
+                <div className="min-h-screen flex flex-col">
+                  <div className="flex-grow">
+                    <Hea />
+                  </div>
+                  <Health />
                 </div>
               } />
            </Routes>
