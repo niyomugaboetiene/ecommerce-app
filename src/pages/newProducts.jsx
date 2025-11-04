@@ -41,11 +41,9 @@ const FlashSales = () => {
                               />
                             </div>
          
-                    <div className="flex justify-between p-2">
                           <p className="text-center text-[15px] text-gray-600">Name: {item.product_name}</p>
                           <p className="text-center text-[15px] text-gray-600">Category: {item.category}</p>
-                    </div>
-                   <div className="flex justify-between p-2">
+                   <div className="flex justify-between">
                        <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
                        <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
                    </div> 
