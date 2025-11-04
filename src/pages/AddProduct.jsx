@@ -24,18 +24,31 @@ const AddProduct = () => {
     return (
         <div>
             <div>
-                <input type="text" 
-                   onChange={(e) => setProductName(e.target.value)}
-                />
-                <input type="text"
-                    onChange={(e) => setCategory(e.target.value)}
-                />
-                <input type="text" 
-                    onChange={(e) => setPrice(e.target.value)}
-                />
-                <input type="text"  
-                  onChange={(e) => setStock(e.target.value)}
-                />
+                <div>
+                   <label htmlFor="">Product Name</label>
+                    <input type="text" 
+                      onChange={(e) => setProductName(e.target.value)}
+                    />
+                </div>
+                 <div>
+                    <label htmlFor="">Category</label>
+                    <input type="text"
+                       onChange={(e) => setCategory(e.target.value)}
+                     />
+                 </div>
+                 <div>
+                   <label>Price</label>
+                   <input type="number" 
+                       onChange={(e) => setPrice(e.target.value)}
+                    />
+                 </div>
+                  <div>
+                      <label>Numbers in Stock</label>
+                      <input type="number"  
+                         onChange={(e) => setStock(e.target.value)}
+                      />
+                  </div>
+
                 <button onClick={Add}>Add</button>
             </div>
         </div>
