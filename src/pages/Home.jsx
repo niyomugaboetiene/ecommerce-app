@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import phone1 from "../assets/electrics/phone1.jpg";
 import keyboard1 from "../assets/electrics/keboard1.jpeg";
-import pc1 from "../assets/electrics/pc1.jpeg";
 import women1 from "../assets/clothes/women1.jpg";
-import camera2 from "../assets/electrics/camera2.jpeg"
-import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import pent1 from "../assets/clothes/pent1.jpeg"
 import pent2 from "../assets/clothes/pent2.jpeg"
 import shoes1 from "../assets/clothes/shoes1.jpeg"
@@ -18,7 +15,6 @@ import { Link } from "react-router-dom";
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
   { image: keyboard1, description: "Modern keyboard for better price" },
-  { image: pc1, description: "Modern laptop for better price" },
   { image: women1, description: "Women's clothing" },
   { image: clothes1, description: "Women's clothing" },
   { image: clothes2, description: "Women's clothing" },
@@ -71,8 +67,7 @@ const Home = () => {
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Health & Beauty</Link>
         </nav>
 
-        {/* Image Carousel Section - Aligned to end/right */}
-        <div className="flex-1 flex justify-end"> 
+         <div className="flex-1 flex justify-end"> 
           <div className="relative max-w-3xl w-full">
             <div className="transition-opacity duration-500 ease-in-out">
               <div className="aspect-video relative"> 
