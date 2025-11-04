@@ -17,15 +17,15 @@ const BestSeller = () => {
                       const product = await axios.get('http://localhost:5000/product/best-sold', {withCredentials: true});
                       setProducts(product.data.products);
                 };
-                
+
              GetBestSold();
             } catch (error) {
                 console.log("ERROR: ", error.message);
             }
         }, []);
 
-    const imageToSHow = showAll ? product : Images.slice(0, 8);
-    const hasMoreItems = Images.length > 8;
+    const imageToSHow = showAll ? products : products.slice(0, 8);
+    const hasMoreItems = products.length > 8;
     
     return (
 <div className="flex flex-col items-center justify-center p-9 mt-4">
@@ -38,11 +38,18 @@ const BestSeller = () => {
                 >
                     <div className="w-full h-74 overflow-hidden rounded-lg mb-4">
                         <img 
-                            src={item.image} 
+                            src={`http://localhost:5000/${item.image}`} 
                             className="w-full h-full object-cover hover:scale-110 transition duration-300"
                         />
                     </div>
-                    <p className="text-center text-lg text-gray-600">{item.decription}</p>
+                    <div className="flex justify-between p-2">
+                        <p className="text-center text-[15px] text-gray-600">Name: {item.product_name}</p>
+                         <p className="text-center text-[15px] text-gray-600">Category: {item.category}</p>
+                    </div>
+                   <div className="flex justify-between p-2">
+                       <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
+                       <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
+                   </div>
                     {isHoveredIndex === idx && (
                         <div className="flex justify-center mt-5">
                         <button 
