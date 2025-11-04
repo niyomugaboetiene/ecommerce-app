@@ -18,5 +18,4 @@ const ProductSchema = new mongoose.Schema({
 });
 
 ProductSchema.plugin(AutoIncrement, { inc_field: 'product_id' });
-
 export default mongoose.model('Product', ProductSchema);

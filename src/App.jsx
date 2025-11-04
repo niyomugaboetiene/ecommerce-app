@@ -117,9 +117,9 @@ function App() {
                <Route path="/health" element={
                 <div className="min-h-screen flex flex-col">
                   <div className="flex-grow">
-                    <Hea />
+                    <Health />
                   </div>
-                  <Health />
+                  <Footer />
                 </div>
               } />
            </Routes>
