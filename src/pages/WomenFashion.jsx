@@ -12,7 +12,7 @@ const WomenFashion = () => {
             try {
                  const GetNewProducts = async() => {
                       const product = await axios.get('http://localhost:5000/product/women', {withCredentials: true});
-                      setProducts(product.data.products);
+                      setProducts(product.data.womemProduct);
                 };
             
              GetNewProducts();

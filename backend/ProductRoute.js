@@ -68,7 +68,7 @@ route.get('/newProducts', async(req, res) => {
     }
 });
 
-route.get('/womem', async(req, res) => {
+route.get('/women', async(req, res) => {
     try {
          const womemProduct =  await ProductSchema.find({ category: `Women's Fashion`});
          if (womemProduct.length === 0) {
