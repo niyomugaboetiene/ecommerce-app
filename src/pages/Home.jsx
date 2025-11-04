@@ -59,7 +59,7 @@ const Home = () => {
     <div className="flex flex-col items-center justify-center p-9 mt-4 w-full max-w-7xl mx-auto">
       <div className="flex w-full gap-8">
         <nav className="flex flex-col w-1/4 pr-6 border-r-2 border-gray-200">
-          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Woman's Fashion</Link>
+          <Link to="women" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Woman's Fashion</Link>
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Men's Fashion</Link>
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Electronics</Link>
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Home & Lifestyle</Link>
