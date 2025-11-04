@@ -4,6 +4,7 @@ import ProductRoute from "./ProductRoute.js"
 import cors from "cors"
 
 const app = express();
+app.use('/Product_Image', express.static("Product_Image"));
 app.use(express.json());
 app.use(cors({
     credentials: true,

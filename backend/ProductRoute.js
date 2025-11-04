@@ -18,7 +18,9 @@ route.post('/add', uploads.single('image'), async(req, res) => {
     const { product_name, category, price } = req.body;
     const imagPath = req.file ? req.file.path : null;
     try {
-        await ProductSchema.create();
+        await ProductSchema.create({
+            product_name, category, price, image: imagPath
+        });
         res.status(201).json({
             message: 'Product Added successfully'
         });
