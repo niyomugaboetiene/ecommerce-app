@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import phone1 from "../assets/electrics/phone1.jpg";
-import keyboard1 from "../assets/electrics/keboard1.jpeg";
+import phone1 from "../assets/electrics/phone.webp";
+import keyboard1 from "../assets/electrics/mouse.jpg";
 import women1 from "../assets/clothes/women1.jpg";
 import pent1 from "../assets/clothes/pent1.jpeg"
 import pent2 from "../assets/clothes/pent2.jpeg"
@@ -14,11 +14,11 @@ import { Link } from "react-router-dom";
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
-  { image: keyboard1, description: "Modern keyboard for better price" },
-  { image: women1, description: "Women's clothing" },
-  { image: clothes1, description: "Women's clothing" },
-  { image: clothes2, description: "Women's clothing" },
-  { image: clothes3, description: "Women's clothing" },
+  { image: keyboard1, description: "Modern mouse for better price" },
+  { image: women1, description: "Women's Fashion" },
+  { image: clothes1, description: "Women's Fahion" },
+  { image: clothes2, description: "Women's Fashoin" },
+  { image: clothes3, description: "Women's Fashoin" },
 ];
 
 const recentlyViewed = [
