@@ -32,7 +32,7 @@ route.post('/add', uploads.single('image'), async(req, res) => {
     }
 });
 
-route.post('/getProduct', async(req, res) => {
+route.get('/getProduct', async(req, res) => {
     try {
       const products = await ProductSchema.find();
       if (products.length > 0) {
