@@ -15,11 +15,11 @@ const storage = multer.diskStorage({
 const uploads = multer({ storage });
 
 route.post('/add', uploads.single('image'), async(req, res) => {
-    const { product_name, category, price } = req.body;
+    const { product_name, category, price, stock } = req.body;
     const imagPath = req.file ? req.file.path : null;
     try {
         await ProductSchema.create({
-            product_name, category, price, image: imagPath
+            product_name, category, price, stock, image: imagPath
         });
         res.status(201).json({
             message: 'Product Added successfully'
@@ -32,4 +32,12 @@ route.post('/add', uploads.single('image'), async(req, res) => {
     }
 });
 
+route.post('/getProduct', async(req, res) => {
+      const products = await ProductSchema.find();
+      if (products.length > 0) {
+        res.status(200).json({ message: 'Product in the Database', products });
+      } else {
+        res.status(500).json({message: 'error in adding product'})
+      }
+})
 export default route;
