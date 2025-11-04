@@ -60,8 +60,8 @@ const Home = () => {
       <div className="flex w-full gap-8">
         <nav className="flex flex-col w-1/4 pr-6 border-r-2 border-gray-200">
           <Link to="women" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Woman's Fashion</Link>
-          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Men's Fashion</Link>
-          <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Electronics</Link>
+          <Link to="men" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Men's Fashion</Link>
+          <Link to="electronics" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Electronics</Link>
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Home & Lifestyle</Link>
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Baby's & Toys</Link>
           <Link className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Health & Beauty</Link>

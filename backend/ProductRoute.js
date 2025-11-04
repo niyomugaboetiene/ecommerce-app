@@ -93,4 +93,16 @@ route.get('/men', async(req, res) => {
     }
 
 })
+route.get('/electronics', async(req, res) => {
+    try {
+         const ElectronicsProduct =  await ProductSchema.find({ category: `Electronics`});
+         if (ElectronicsProduct.length === 0) {
+            return res.status(404).json({ message: 'No Electronics products found.' });
+         }
+         return res.status(200).json({message: 'electronics products', ElectronicsProduct});
+    } catch (error) {        
+        res.status(500).json({message: 'Database error'})
+    }
+
+})
 export default route;
