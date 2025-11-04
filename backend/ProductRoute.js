@@ -45,9 +45,12 @@ route.get('/getProduct', async(req, res) => {
     }
 });
 
-route.get('/newProducts', async(req, res) => {
+route.get('/best-sold', async(req, res) => {
     try {
-      const products = await ProductSchema.find().sort({ date: -1 });
+      const products = await ProductSchema.find({ timesAddedToCart: { $gt: 0 }}).sort({ timesAddedToCart: -1 }).limit(8);
+      if (products.length === 0) {
+          return res.status(404).json({ message: 'No best sold products found.' });
+      }
         res.status(200).json({ message: 'new Products in the Database', products });
       
     } catch (error) {
@@ -55,9 +58,9 @@ route.get('/newProducts', async(req, res) => {
     }
 });
 
-route.get('/best-sold', async(req, res) => {
+route.get('/newProducts', async(req, res) => {
     try {
-      const products = await ProductSchema.find().sort({ timesAddedToCart: -1 });
+      const products = await ProductSchema.find().sort({ date: -1 }).limit(12);
         res.status(200).json({ message: 'best sold Products in the Database', products });
       
     } catch (error) {
