@@ -33,11 +33,16 @@ route.post('/add', uploads.single('image'), async(req, res) => {
 });
 
 route.post('/getProduct', async(req, res) => {
+    try {
       const products = await ProductSchema.find();
       if (products.length > 0) {
         res.status(200).json({ message: 'Product in the Database', products });
       } else {
-        res.status(500).json({message: 'error in adding product'})
+        res.status(404).json({message: 'error in adding product'})
       }
+    } catch (error) {
+        res.status(500).json({message: 'Database error'})
+    }
+
 })
 export default route;
