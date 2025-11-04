@@ -6,7 +6,8 @@ const OurProduct = () => {
     const [products, setProducts] = useState([]);
     const [showAll, setShowAll] = useState(false);
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
-    const [cartMessage, setCartMessage] = useState("");
+    const [currentUser, setCurrentUser] = useState(null);
+
 
     useEffect(() => {
         try {
@@ -15,6 +16,18 @@ const OurProduct = () => {
                 setProducts(product.data.products);
             };
             GetAllProduct();
+        } catch (error) {
+            console.log("ERROR: ", error.message);
+        }
+    }, []);  
+
+   useEffect(() => {
+        try {
+            const GetCurrentUser = async () => {
+                const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+                setProducts(res.data.user);
+            };
+            GetCurrentUser();
         } catch (error) {
             console.log("ERROR: ", error.message);
         }
