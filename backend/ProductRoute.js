@@ -54,4 +54,14 @@ route.get('/newProducts', async(req, res) => {
         res.status(500).json({message: 'Database error'})
     }
 });
+
+route.get('/best-sold', async(req, res) => {
+    try {
+      const products = await ProductSchema.find().sort({ timesAddedToCart: -1 });
+        res.status(200).json({ message: 'best sold Products in the Database', products });
+      
+    } catch (error) {
+        res.status(500).json({message: 'Database error'})
+    }
+});
 export default route;
