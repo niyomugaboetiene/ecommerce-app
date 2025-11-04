@@ -33,7 +33,9 @@ const Navs = () => {
             <FaShoppingCart className="text-gray-700" />
           </div>
         </div>
-
+       <div>
+        <p></p>
+       </div>
       </div>
     </div>
   );

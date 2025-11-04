@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginAccount = () => {
     const [user_name, setUser_name] = useState("");
@@ -7,6 +8,7 @@ const LoginAccount = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("")
+    const navigate = useNavigate();
 
     const Login = async() => {
         if (!user_name || !password) {
@@ -25,6 +27,7 @@ const LoginAccount = () => {
                 setSuccess("");
             }, 6000);
             setIsLoading(false);
+            navigate("/")
         } catch (error) {
             setError("Error during login");
             setTimeout(() => {
