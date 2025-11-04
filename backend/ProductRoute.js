@@ -177,5 +177,6 @@ route.put('/update/product_id', AdminCheck, uploads.single("image"), async(req, 
     } catch (error) {
          res.status(500).json({ message: "Database error", error: error.message });
     }
-})
+});
+
 export default route;
