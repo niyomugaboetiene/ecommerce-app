@@ -65,7 +65,7 @@ routes.get('/userInfo', async(req, res) => {
     if (req.session.user) {
         return res.status(200).json({ userInfo: req.session.user })
     }
-    return
+    return res.status(401).json("Not logged in")
 });
 
 export default routes;

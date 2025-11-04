@@ -15,11 +15,11 @@ const Navs = () => {
           setUserInfo(res.data.userInfo);
           setUserInfo(false);
       }
+      GetUserInfo();
      } catch (error) {
         setError("failed to fetch data")
      }
-
-  })
+  }, []);
   return (
     <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
       
@@ -52,7 +52,12 @@ const Navs = () => {
           </div>
         </div>
        <div>
-        <p></p>
+        {userInfo.map((user, idx) => (
+          <div key={idx}>
+             <img src={user.image}/>
+             <p>{user.user_name}</p>
+          </div>
+        ))}
        </div>
       </div>
     </div>
