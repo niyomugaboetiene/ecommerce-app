@@ -66,23 +66,31 @@ const Navs = () => {
         {error && <p>{error}</p>}
  {userInfo && (
   <div className="relative">
-    <div className="flex items-center space-x-2 cursor-pointer" onClick={() => setIsMenuShown(!isMenuShow)}>
-      <img src={`http://localhost:5000/${userInfo.image}`} alt={userInfo.user_name} className="w-8 h-8 rounded-full" />
+    <div
+      className="flex items-center space-x-2 cursor-pointer"
+      onClick={() => setIsMenuShown(!isMenuShow)}
+    >
+      <img
+        src={`http://localhost:5000/${userInfo.image}`}
+        alt={userInfo.user_name}
+        className="w-10 h-10 rounded-full"
+      />
     </div>
 
     {isMenuShow && (
-      <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg px6 py-3 z-50 w-full">
-        <p className="font-medium">{userInfo.user_name}</p>
+      <div className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-lg px-6 py-4 z-50">
+        <p className="font-semibold text-lg mb-2">Username: {userInfo.user_name}</p>
         <button
           onClick={Logout}
-          className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-         >
-             Logout
-           </button>
-         </div>
-        )}
+          className="w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          Logout
+        </button>
       </div>
-      )}
+    )}
+  </div>
+)}
+
       </div>
 
     </div>
