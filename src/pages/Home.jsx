@@ -13,6 +13,7 @@ import shoes3 from "../assets/clothes/shoes4.jpeg"
 import clothes1 from "../assets/clothes/clothes1.jpg"
 import clothes2 from "../assets/clothes/clothes2.jpg"
 import clothes3 from "../assets/clothes/clothes3.webp"
+import { Link } from "react-router-dom";
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
@@ -59,38 +60,17 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-8">
-       <aside className="w-1/4 pr-4">
-         <h1 className="text-2xl font-bold mb-4 text-center">Special offer</h1>
-         <div 
-           className="h-[700px] relative group"
-           onMouseEnter={() => setIsCurrentHovered(true)}
-           onMouseLeave={() => setIsCurrentHovered(false)}
-         >
-            <img 
-              src={camera2} 
-              alt="special offer"
-              className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300  group-hover:scale-105"
-            />
-            
-            <button className="absolute top-4 right-4 bg-white p-3 rounded-full shadow-lg hover:bg-red-50 transition-colors">
-              <FaHeart className="text-gray-600 hover:text-red-500 text-xl hover:bg-red-50" />
-            </button>
+    <div className="flex min-h-screen px-8">
+         <div>
 
-            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/30 text-white p-4 rounded-lg flex flex-col items-center justify-end">
-                <p className="text-center font-bold text-lg mb-4">
-                  SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.
-                </p>
-                
-                {isCurrentHovered && (
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 mb-4">
-                    <FaShoppingCart />
-                    Add To Cart
-                  </button>
-                )}
-            </div>
-         </div>
-      </aside>
+           <nav className="grid">
+            <Link>Woman’s Fashion</Link>
+            <Link>Men’s Fashion</Link>
+            <Link>Electronics</Link>
+            <Link>Woman’s Fashion</Link>
+            <Link>Baby’s & Toys</Link>
+            <Link>Health & Beauty</Link>
+           </nav>
 
       <div className="w-2/4 max-w-4xl px-4"> 
         <div className="relative">
@@ -122,39 +102,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <aside className="w-1/4 pl-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Recently Viewed</h1>
-    <div 
-           className="h-[700px] relative group mt-4"
-           onMouseEnter={() => setIsRecentHovered(true)}
-           onMouseLeave={() => setIsRecentHovered(false)}
-         >
-            <img 
-              src={recentlyViewed[recentIndex].image} 
-              alt={recentlyViewed[recentIndex].description}
-              className="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300  group-hover:scale-105"
-            />
-            
-            <button className="absolute top-4 right-4 bg-white p-3 rounded-full shadow-lg hover:bg-red-50 transition-colors">
-              <FaHeart className="text-gray-600 hover:text-red-500 text-xl hover:bg-red-50" />
-            </button>
-
-            <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/30 text-white p-4 rounded-lg flex flex-col items-center justify-end">
-                <p className="text-center font-bold text-lg mb-4">
-                  SPECIAL OFFER: Get 40% OFF on all Canon cameras this week only! Limited stock available.
-                </p>
-                
-                {isRecentHovered && (
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 mb-4">
-                    <FaShoppingCart />
-                    Add To Cart
-                  </button>
-                )}
-            </div>
-         </div>
-      </aside>
     </div>
+  </div>
+
   );
 };
 
