@@ -43,13 +43,15 @@ const OurProduct = () => {
                             className="w-full h-full object-cover hover:scale-110 transition duration-300"
                         />
                     </div>
-                    <div>
-                        <p className="text-center text-lg text-gray-600">Name: {item.product_name}</p>
-                         <p className="text-center text-xs text-gray-600">Category: {item.category}</p>
+                    <div className="flex justify-between p-2">
+                        <p className="text-center text-[15px] text-gray-600">Name: {item.product_name}</p>
+                         <p className="text-center text-[15px] text-gray-600">Category: {item.category}</p>
                     </div>
-        
-                    <p className="text-center text-xs text-gray-600">Created at{item.date}</p>
-                    <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
+                   <div className="flex justify-between p-2">
+                       <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
+                       <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
+                   </div>
+
                     {isHoveredIndex === idx && (
                         <div className="flex justify-center mt-5">
                         <button 
