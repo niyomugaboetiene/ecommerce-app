@@ -150,9 +150,10 @@ const Images = [
 ];
 
 const OurProduct = () => {
-    
+    const [products, setProducts] = useState([]);
     const GetAllProduct = async() => {
         const product = await axios.get('http://localhost:5000/product/getProduct', {withCredentials: true});
+        setProducts(product);
     };
     const [showAll, setShowAll] = useState(false);
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
