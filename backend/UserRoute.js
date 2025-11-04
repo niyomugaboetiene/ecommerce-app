@@ -18,17 +18,19 @@ const uploads = multer({ storage });
 
 routes.post('/register', uploads.single('image'), async(req, res) => {
     try {
-    const { user_name, password } = req.body;
-    const isExist = UserSchema.findOne({ user_name });
-    if (isExist) {
-        return res.status(409).json({ message: 'username already taken' });
-    }
+    const { user_name, password, image } = req.body;
+    const isExist = await UserSchema.findOne({ user_name });
+        
+
     const salt =  await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const ImagePath = req.file ? req.file.path : null;
-    
+   
     if (!user_name || !password || !ImagePath) {
         res.status(400).json({ message: 'Missing dependecies' });
+    }
+    if (isExist) {
+        return res.status(409).json({ message: 'username already taken' });
     }
         await UserSchema.create({
             user_name, password: hashedPassword, image: ImagePath
