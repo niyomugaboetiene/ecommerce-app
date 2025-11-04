@@ -14,7 +14,7 @@ const OurProduct = () => {
             try {
                  const GetAllProduct = async() => {
                       const product = await axios.get('http://localhost:5000/product/getProduct', {withCredentials: true});
-                      setProducts(product);
+                      setProducts(product.data.products);
                 };
              GetAllProduct();
             } catch (error) {
