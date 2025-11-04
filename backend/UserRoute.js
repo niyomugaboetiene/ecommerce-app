@@ -19,6 +19,10 @@ const uploads = multer({ storage });
 routes.post('/register', uploads.single('image'), async(req, res) => {
     try {
     const { user_name, password } = req.body;
+    const isExist = UserSchema.findOne({ user_name });
+    if (isExist) {
+        return res.status(401).json({ message: 'username already taken' });
+    }
     const salt =  await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const ImagePath = req.file ? req.file.path : null;
@@ -51,7 +55,7 @@ routes.post('/login', async(req, res ) => {
        res.status(200).json({ message: "Login successfully", user: req.session.user });
         
     } catch (error) {
-        return res.status(500).json("Database Error");
+        return res.status(500).json({ error: error.message });
     }
 })
 export default routes;

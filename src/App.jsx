@@ -17,6 +17,7 @@ import Lifestyle from "./pages/LifeStyle.jsx";
 import Toys from "./pages/Toys.jsx";
 import Health from "./pages/Health.jsx";
 import RegisterAccount from "./pages/Register.jsx";
+import LoginAccount from "./pages/Login.jsx";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -60,8 +61,8 @@ function App() {
           <Route path="/lifestyle" element={<Lifestyle />} />
           <Route path="/toy" element={<Toys />} />
           <Route path="/health" element={<Health />} />
-          <Route path="/sign-up" element={<SignUp />} />
           <Route path="/register" element={<RegisterAccount />} />
+          <Route path="/sign-up" element={<LoginAccount />} />
         </Routes>
       </Layout>
     </BrowserRouter>
