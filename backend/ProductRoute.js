@@ -3,6 +3,18 @@ import express from "express"
 import multer from "multer";
 const route = express.Router();
 
+
+const AdminCheck = (req, res, next) => {
+    if (!req.session.user) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    if (!req.session.user.isAdmin) {
+              return res.status(403).json({ message: "Forbidden. Admins only." });
+    }
+
+    next();
+};
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'Product_Image/');
@@ -144,5 +156,21 @@ route.get('/health', async(req, res) => {
 
 });
 
-// route.put('/update')
+route.put('/update/product_id', AdminCheck, uploads.single("image"), async(req, res) => {
+    try {
+        const product_id = req.body;
+        const { product_name, price, stock } = req.body;
+        const ImagePath = req.file ? req.file.filename : null;
+        
+        const product = await ProductSchema.findOne({ product_id });
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+
+        if (product_name) product.product_name = product_name;
+        if (price) product.price = price;
+        if (stock) product.stock = stock;
+        if (ImagePath) product.image = ImagePath;
+    }
+})
 export default route;
