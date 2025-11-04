@@ -6,6 +6,7 @@ const OurProduct = () => {
     const [products, setProducts] = useState([]);
     const [showAll, setShowAll] = useState(false);
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
+    const [cartMessage, setCartMessage] = useState("");
 
     useEffect(() => {
         try {
@@ -19,76 +20,81 @@ const OurProduct = () => {
         }
     }, []);
 
+
     const imageToShow = showAll ? products : products.slice(0, 8);
     const hasMoreItems = products.length > 8;
 
     return (
         <div className="flex flex-col items-center justify-center p-9 mt-4">
-            <h1 className="text-center mt-16 text-3xl font-bold mb-12">Our Products</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500">
-                {imageToShow.map((item, idx) => (
-                    <div
-                        key={idx}
-                        className="rounded-2xl hover:shadow-2xl transition-all duration-300 p-4"
-                        onMouseEnter={() => setIsHoveredIndex(idx)}
-                        onMouseLeave={() => setIsHoveredIndex(null)}
-                    >
-                        <div className="relative w-full h-72 overflow-hidden rounded-lg mb-4">
-                            <img
-                                src={`http://localhost:5000/${item.image}`}
-                                className="w-full h-full object-cover hover:scale-110 transition duration-300"
-                            />
-                            {isHoveredIndex === idx && (
-                                <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition">
-                                    <FaHeart className="text-red-500" />
-                                </button>
-                            )}
-                        </div>
+      <h1 className="text-center mt-16 text-3xl font-bold mb-12">Our Products</h1>
 
-                        <p className="text-[15px] text-gray-600">Name: {item.product_name}</p>
-                        <p className="text-[15px] text-gray-600">Category: {item.category}</p>
-                        <div className="flex justify-between">
-                            <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
-                            <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
-                        </div>
-                        <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
+      {cartMessage && <p className="text-green-500 mb-4">{cartMessage}</p>}
 
-                        {isHoveredIndex === idx && (
-                            <div className="flex justify-center mt-5">
-                                <button
-                                    className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition"
-                                >
-                                    <FaShoppingCart />
-                                    Add To Cart
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500">
+        {imageToShow.map((item, idx) => (
+          <div
+            key={idx}
+            className="rounded-2xl hover:shadow-2xl transition-all duration-300 p-4"
+            onMouseEnter={() => setIsHoveredIndex(idx)}
+            onMouseLeave={() => setIsHoveredIndex(null)}
+          >
+            <div className="relative w-full h-72 overflow-hidden rounded-lg mb-4">
+              <img
+                src={`http://localhost:5000/${item.image}`}
+                className="w-full h-full object-cover hover:scale-110 transition duration-300"
+              />
+              {isHoveredIndex === idx && (
+                <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition">
+                  <FaHeart className="text-red-500" />
+                </button>
+              )}
             </div>
 
-            {hasMoreItems && !showAll && (
-                <button
-                    onClick={() => setShowAll(true)}
-                    className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
-                >
-                    Show All
-                </button>
-            )}
+            <p className="text-[15px] text-gray-600">Name: {item.product_name}</p>
+            <p className="text-[15px] text-gray-600">Category: {item.category}</p>
+            <div className="flex justify-between">
+              <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
+              <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
+            </div>
+            <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
 
-            {showAll && (
+            {isHoveredIndex === idx && (
+              <div className="flex justify-center mt-5">
                 <button
-                    onClick={() => setShowAll(false)}
-                    className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
+                  onClick={() => addToCart(item.product_id)}
+                  className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition"
                 >
-                    Show Less
+                  <FaShoppingCart />
+                  Add To Cart
                 </button>
+              </div>
             )}
+          </div>
+        ))}
+      </div>
 
-            {products.length === 0 && (
-                <p className="text-center mt-10 text-gray-500">No products found.</p>
-            )}
-        </div>
+      {hasMoreItems && !showAll && (
+        <button
+          onClick={() => setShowAll(true)}
+          className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
+        >
+          Show All
+        </button>
+      )}
+
+      {showAll && (
+        <button
+          onClick={() => setShowAll(false)}
+          className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
+        >
+          Show Less
+        </button>
+      )}
+
+      {products.length === 0 && (
+        <p className="text-center mt-10 text-gray-500">No products found.</p>
+      )}
+    </div>
     );
 };
 
