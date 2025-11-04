@@ -4,7 +4,7 @@ import { useState } from "react";
 const RegisterAccount = () => {
     const [user_name, setUser_name] = useState("");
     const [password, setPassword] = useState("");
-    const [isLoaing, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("")
     const [image, setImage] = useState(null);
@@ -22,8 +22,7 @@ const RegisterAccount = () => {
         try {
             setIsLoading(true);
             await axios.post('http://localhost:5000/user/register', formData, {
-                withCredentials: true
-            }, {
+                withCredentials: true,
                headers: { "Content-Type": "multipart/form-data" },
             });
             
@@ -65,11 +64,11 @@ const RegisterAccount = () => {
                       <label>Choose your image</label>
                       <input type="file"  
                          onChange={(e) => setImage(e.target.files[0])}
-                         accept="images/*"
+                         accept="image/*"
                       />
                   </div>
 
-                <button onClick={Register}>{isLoaing ? "Registring.." : "Register"}</button>
+                <button onClick={Register}>{isLoading ? "Registering.." : "Register"}</button>
                 {error && (<p>{error}</p>)}
                 {success && (<p>{success}</p>)}
             </div>
