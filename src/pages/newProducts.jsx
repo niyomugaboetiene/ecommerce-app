@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
 
@@ -24,6 +24,10 @@ const FlashSales = () => {
 
     const itemToShow = showAll ? products : products.slice(0, 8);
     const hasMoreItems = products.length > 8;
+
+    if (products.length === 0) {
+           return <p className="text-center mt-10 text-gray-500">No new products found.</p>;
+    }
     return (
         <div className="flex flex-col items-center justify-center p-6">
             <h2 className="text-3xl font-bold mb-8">New Products</h2>
@@ -36,7 +40,7 @@ const FlashSales = () => {
                         <div className="w-full h-74 overflow-hidden rounded-lg mb-3"
                             
                         >
-                              <img src={`localhost:5000/${item.image}`} className="w-full h-full object-cover hover:scale-105 transition duration-200"
+                              <img src={`http://localhost:5000/${item.image}`} className="w-full h-full object-cover hover:scale-105 transition duration-200"
                               />
                             </div>
          
