@@ -99,7 +99,7 @@ const Footer = () => {
             <div className="border-t border-gray-700">
                 <div className="max-w-7xl mx-auto px-6 py-4">
                         <p className="text-gray-400 text-sm text-center">
-                            © 2024 Shop Sphere. All rights reserved.
+                            © 2025 Shop Sphere. All rights reserved.
                         </p>
                 </div>
             </div>

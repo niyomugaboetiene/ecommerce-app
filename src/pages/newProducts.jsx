@@ -84,7 +84,7 @@ const FlashSales = () => {
              {(products.length === 0) && (
                   <p className="text-center mt-10 text-gray-500">No new products found.</p>
              )
-    }
+         }
         </div>
     )
 }

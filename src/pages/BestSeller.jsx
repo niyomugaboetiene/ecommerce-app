@@ -50,6 +50,8 @@ const BestSeller = () => {
                        <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
                        <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
                    </div>
+                    <p className="text-center text-xs text-gray-600">${item.price}</p>
+
                     {isHoveredIndex === idx && (
                         <div className="flex justify-center mt-5">
                         <button 
@@ -82,6 +84,10 @@ const BestSeller = () => {
                     Show less
                 </button>
             )}
+
+             {(products.length === 0) && (
+                  <p className="text-center mt-10 text-gray-500">No best sold products found.</p>
+             )}
         </div>
     )
 
