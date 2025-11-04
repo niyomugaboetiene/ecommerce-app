@@ -26,9 +26,7 @@ const AddProduct = () => {
         formData.append("image", image);
         try {
             setIsLoading(true);
-            await axios.post('http://localhost:5000/product/add', {
-                formData
-            }, {
+            await axios.post('http://localhost:5000/product/add', formData, {
                 withCredentials: true
             }, {
                headers: { "Content-Type": "multipart/form-data" },
@@ -79,6 +77,7 @@ const AddProduct = () => {
                   </div>
 
                 <button onClick={Add}>{isLoaing ? "Adding.." : "Add"}</button>
+                {error && (<p>{error}</p>)}
             </div>
         </div>
     )
