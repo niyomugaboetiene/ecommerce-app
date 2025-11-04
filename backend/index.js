@@ -9,14 +9,20 @@ const app = express();
 app.use('/Product_Image', express.static("Product_Image"));
 app.use('/User_Image', express.static("User_Image"));
 app.use(express.json());
+import MongoStore from "connect-mongo";
 app.use(session({
     secret: 'my-secret-key',
     saveUninitialized: true,
     resave: false,
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://127.0.0.1:27017/ecommerce-app',
+        collectionName: 'sessions'
+    }),
     cookie: {
         secure: false,
         httpOnly: true,
-        sameSite: 'lax'
+        sameSite: 'lax',
+        maxAge: 1000 * 60 * 60 * 24, 
     }
 }));
 
