@@ -49,7 +49,7 @@ const FlashSales = () => {
                        <p className="text-center text-xs text-gray-600">{new Date(item.date).toLocaleDateString()}</p>
                        <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
                    </div> 
-
+                     <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
                      {isHoveredIndex === idx && (
                                 <div className="flex justify-center">
                                     <button className="mt-4 flex items-center gap-3 bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600">

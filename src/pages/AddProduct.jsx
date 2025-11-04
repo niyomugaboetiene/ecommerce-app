@@ -10,9 +10,9 @@ const AddProduct = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("")
     const [image, setImage] = useState(null);
+    const categories = ["Speaker", "Women's Fashion", "Phones", "Shoes", "Men's Fashion", "Medecine", "Baby's & Toys", "Heath & Beauty", "Electronics"];
 
     const Add = async() => {
-
         if (!product_name || !category || !price || !stock || !image) {
             alert("All fields are required");
             return;
@@ -31,7 +31,11 @@ const AddProduct = () => {
             }, {
                headers: { "Content-Type": "multipart/form-data" },
             });
-
+            
+            setSuccess("Product added successfully");
+            setTimeout(() => {
+                setSuccess("");
+            }, 6000);
             setIsLoading(false);
         } catch (error) {
             console.error("ERROR:", error.message);
@@ -56,16 +60,19 @@ const AddProduct = () => {
                     />
                 </div>
                  <div>
-                    <label>Category</label>
-                    <input type="text"
-                       onChange={(e) => setCategory(e.target.value)}
+                    <label>Price</label>
+                    <input type="number"
+                       onChange={(e) => setPrice(e.target.value)}
                      />
                  </div>
                  <div>
-                   <label>Price</label>
-                   <input type="number" 
-                       onChange={(e) => setPrice(e.target.value)}
-                    />
+                   <label>Category</label>
+                   <select onChange={(e) => setCategory(e.target.value)}>
+                        <option value="">Select Category</option>
+                        {categories.map((cat, idx) => (
+                            <option key={idx} value={cat}>{cat}</option>
+                        ))}
+                   </select>
                  </div>
                   <div>
                       <label>Numbers in Stock</label>
@@ -83,6 +90,7 @@ const AddProduct = () => {
 
                 <button onClick={Add}>{isLoaing ? "Adding.." : "Add"}</button>
                 {error && (<p>{error}</p>)}
+                {success && (<p>{success}</p>)}
             </div>
         </div>
     )
