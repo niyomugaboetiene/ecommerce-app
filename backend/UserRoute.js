@@ -43,7 +43,12 @@ routes.post('/login', async(req, res ) => {
         const user = await UserSchema.findOne({ user_name });
         const isMatch = await  bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json("Login failed");
-        res.status(200).json("Login successfully");
+        req.session.user = {
+            user_id: user.user_id,
+            user_name: user.user_name,
+            isAdmin: user.isAdmin
+        };
+       res.status(200).json("Login successfully", { user: req.session.user });
         
     } catch (error) {
         return res.status(500).json("Database Error");
