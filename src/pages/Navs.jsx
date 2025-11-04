@@ -4,36 +4,37 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Navs = () => {
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState(null);
   const [loading, setIsLoading] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+
   useEffect(() => {
-     try {
-      const GetUserInfo = async() => {
+    const GetUserInfo = async () => {
+      try {
         setIsLoading(true);
-          const res = await axios.get('http://localhost:5000/user/userInfo', {withCredentials: true});
-          setUserInfo(res.data.userInfo);
-          setUserInfo(false);
+        const res = await axios.get('http://localhost:5000/user/userInfo', { withCredentials: true });
+        setUserInfo(res.data.userInfo);
+      } catch (err) {
+        setError("Failed to fetch data");
+      } finally {
+        setIsLoading(false);
       }
-      GetUserInfo();
-     } catch (error) {
-        setError("failed to fetch data")
-     }
+    };
+    GetUserInfo();
   }, []);
+
   return (
     <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
-      
       <p className="text-2xl font-bold text-black">Shop Sphere</p>
 
       <div className="flex space-x-8 font-medium text-gray-700">
-        <Link to="/" className="hover:underline active:underline transition-colors">Home</Link>
-        <Link to="/contact" className="hover:underline active:underline transition-colors">Contact</Link>
-        <Link to="/about" className="hover:underline active:underline transition-colors">About</Link>
-        <Link to="/sign-up" className="hover:underline active:underline transition-colors">Sign Up</Link>
+        <Link to="/" className="hover:underline transition-colors">Home</Link>
+        <Link to="/contact" className="hover:underline transition-colors">Contact</Link>
+        <Link to="/about" className="hover:underline transition-colors">About</Link>
+        <Link to="/sign-up" className="hover:underline transition-colors">Sign Up</Link>
       </div>
 
       <div className="flex items-center space-x-4">
-        
         <div className="flex items-center bg-gray-100 rounded-lg p-2 w-72">
           <input
             type="text"
@@ -51,14 +52,14 @@ const Navs = () => {
             <FaShoppingCart className="text-gray-700" />
           </div>
         </div>
-       <div>
-        {userInfo.map((user, idx) => (
-          <div key={idx}>
-             <img src={user.image}/>
-             <p>{user.user_name}</p>
+
+        {loading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+        {userInfo && (
+          <div className="flex items-center space-x-2">
+            <img src={`http://localhost:5000/${userInfo.image}`} alt={userInfo.user_name} className="w-8 h-8 rounded-full" />
           </div>
-        ))}
-       </div>
+        )}
       </div>
     </div>
   );

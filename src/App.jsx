@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navs from "./pages/Navs";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
-import SignUp from "./pages/Sign-up";
 import Home from "./pages/Home";
 import FlashSales from "./pages/newProducts.jsx";
 import BestSeller from "./pages/BestSeller";
