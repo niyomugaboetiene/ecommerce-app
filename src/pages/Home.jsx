@@ -61,9 +61,8 @@ const Home = () => {
 
   return (
     <div className="flex min-h-screen px-8">
-         <div>
-
-           <nav className="grid">
+         <div className="flex gird grid-cols-2">
+           <nav className="flex flex-1 flex-col">
             <Link>Woman’s Fashion</Link>
             <Link>Men’s Fashion</Link>
             <Link>Electronics</Link>
