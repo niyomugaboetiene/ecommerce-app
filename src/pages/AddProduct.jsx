@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const AddProduct = () => {
-    const [productName, setProductName] = useState("");
+    const [product_name, setProduct_name] = useState("");
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
     const [stock, setStock] = useState("");
@@ -10,8 +10,8 @@ const AddProduct = () => {
 
     const Add = async() => {
         try {
-            const res = await axios.post('http://localhost:5000/product/add', {
-                productName, category, price, stock
+            await axios.post('http://localhost:5000/product/add', {
+                product_name, category, price, stock
             }, {
                 withCredentials: true
             })
@@ -27,7 +27,7 @@ const AddProduct = () => {
                 <div>
                    <label htmlFor="">Product Name</label>
                     <input type="text" 
-                      onChange={(e) => setProductName(e.target.value)}
+                      onChange={(e) => setProduct_name(e.target.value)}
                     />
                 </div>
                  <div>

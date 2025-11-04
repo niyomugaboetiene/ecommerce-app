@@ -4,7 +4,7 @@ const route = express.Router();
 
 route.post('/add', async(req, res) => {
     try {
-        const product = await ProductSchema.create(req.body);
+        await ProductSchema.create(req.body);
         res.status(201).json({
             message: 'Product Added successfully'
         });
