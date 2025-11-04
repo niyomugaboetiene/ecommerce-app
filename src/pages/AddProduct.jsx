@@ -13,6 +13,11 @@ const AddProduct = () => {
 
     const Add = async() => {
 
+        if (!product_name || !category || !price || !stock || !image) {
+            alert("All fields are required");
+            return;
+        }
+
         const formData = new FormData();
         formData.append('product_name', product_name);
         formData.append("category", category);
