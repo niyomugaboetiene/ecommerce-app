@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const AddProduct = () => {
+const RegisterAccount = () => {
     const [user_name, setUser_name] = useState("");
     const [password, setPassword] = useState("");
     const [isLoaing, setIsLoading] = useState(false);
@@ -9,7 +9,7 @@ const AddProduct = () => {
     const [success, setSuccess] = useState("")
     const [image, setImage] = useState(null);
 
-    const Add = async() => {
+    const Register = async() => {
         if (!product_name || !category || !price || !stock || !image) {
             alert("All fields are required");
             return;
@@ -21,20 +21,20 @@ const AddProduct = () => {
         formData.append("image", image);
         try {
             setIsLoading(true);
-            await axios.post('http://localhost:5000/product/add', formData, {
+            await axios.post('http://localhost:5000/user/register', formData, {
                 withCredentials: true
             }, {
                headers: { "Content-Type": "multipart/form-data" },
             });
             
-            setSuccess("Product added successfully");
+            setSuccess("Account created successfully");
             setTimeout(() => {
                 setSuccess("");
             }, 6000);
             setIsLoading(false);
         } catch (error) {
             console.error("ERROR:", error.message);
-            setError("Error during add product");
+            setError("Error during Registring");
             setTimeout(() => {
                 setError("");
             }, 6000);
@@ -49,41 +49,27 @@ const AddProduct = () => {
         <div>
             <div>
                 <div>
-                   <label>Product Name</label>
+                   <label>User name</label>
                     <input type="text" 
-                      onChange={(e) => setProduct_name(e.target.value)}
+                      onChange={(e) => setUser_name(e.target.value)}
                     />
                 </div>
                  <div>
-                    <label>Price</label>
-                    <input type="number"
-                       onChange={(e) => setPrice(e.target.value)}
+                    <label>Password</label>
+                    <input type="text"
+                       onChange={(e) => setPassword(e.target.value)}
                      />
                  </div>
-                 <div>
-                   <label>Category</label>
-                   <select onChange={(e) => setCategory(e.target.value)}>
-                        <option value="">Select Category</option>
-                        {categories.map((cat, idx) => (
-                            <option key={idx} value={cat}>{cat}</option>
-                        ))}
-                   </select>
-                 </div>
-                  <div>
-                      <label>Numbers in Stock</label>
-                      <input type="number"  
-                         onChange={(e) => setStock(e.target.value)}
-                      />
-                  </div>            
+        
                      <div>
-                      <label>Numbers in Stock</label>
+                      <label>Choose your image</label>
                       <input type="file"  
                          onChange={(e) => setImage(e.target.files[0])}
                          accept="images/*"
                       />
                   </div>
 
-                <button onClick={Add}>{isLoaing ? "Registring.." : "Register"}</button>
+                <button onClick={Register}>{isLoaing ? "Registring.." : "Register"}</button>
                 {error && (<p>{error}</p>)}
                 {success && (<p>{success}</p>)}
             </div>
@@ -91,4 +77,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default RegisterAccount

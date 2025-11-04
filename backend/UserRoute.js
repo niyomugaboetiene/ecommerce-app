@@ -1,4 +1,5 @@
 import exress from "express";
+import multer from "multer";
 import UserSchema from "./userSchema.js";
 const routes = exress.Router();
 
