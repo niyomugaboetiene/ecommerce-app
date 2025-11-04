@@ -5,7 +5,7 @@ const AutoIncrement = AutoIncrementFactory(mongoose);
 const UserSchema = new mongoose.Schema({
     user_id: { type: Number, unique: true },
     user_name: { type: String, required: true },
-    password: { type: Number, required: true },
+    password: { type: String, required: true },
     image: { type: String },
     isAdmin: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now() }

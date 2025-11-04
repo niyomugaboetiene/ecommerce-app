@@ -32,7 +32,6 @@ const RegisterAccount = () => {
             }, 6000);
             setIsLoading(false);
         } catch (error) {
-            console.error("ERROR:", error.message);
             setError("Error during Registering");
             setTimeout(() => {
                 setError("");
@@ -68,7 +67,7 @@ const RegisterAccount = () => {
                       />
                   </div>
 
-                <button onClick={Register}>{isLoading ? "Registering.." : "Register"}</button>
+                <button onClick={Register}>{isLoading ? "Registering..." : "Register"}</button>
                 {error && (<p>{error}</p>)}
                 {success && (<p>{success}</p>)}
             </div>
