@@ -43,7 +43,6 @@ const MenFashion = () => {
                         onMouseEnter={() => setIsHoveredIndex(idx)}
                         onMouseLeave={() => setIsHoveredIndex(null)}
                     >
-                        {/* Product Image */}
                         <div className="relative w-full h-72 overflow-hidden rounded-lg mb-3">
                             <img
                                 src={`http://localhost:5000/${item.image}`}
@@ -68,7 +67,6 @@ const MenFashion = () => {
 
                         <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
 
-                        {/* Add to Cart Button */}
                         {isHoveredIndex === idx && (
                             <div className="flex justify-center mt-4">
                                 <button className="flex items-center gap-3 bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600 transition">
@@ -81,7 +79,6 @@ const MenFashion = () => {
                 ))}
             </div>
 
-            {/* Show All / Show Less Buttons */}
             {hasMoreItems && !showAll && (
                 <button
                     onClick={() => setShowAll(true)}
