@@ -1,7 +1,7 @@
-import exress from "express";
+import express from "express";
 import multer from "multer";
 import UserSchema from "./userSchema.js";
-const routes = exress.Router();
+const routes = express.Router();
 
 
 const storage = multer.diskStorage({
@@ -20,7 +20,7 @@ routes.post('/register', uploads.single('image'), async(req, res) => {
     const { user_name, password } = req.body;
     const ImagePath = req.file ? req.file.path : null;
     
-    if (!user_name || !password || ImagePath) {
+    if (!user_name || !password || !ImagePath) {
         res.status(400).json({ message: 'Missing dependecies' });
     }
         await UserSchema.create({
