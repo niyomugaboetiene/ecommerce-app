@@ -84,6 +84,9 @@ const OurProduct = () => {
                     Show less
                 </button>
             )}
+            {(products.length === 0) && (
+                  <p className="text-center mt-10 text-gray-500">No products found.</p>
+             )}
         </div>
     )
 

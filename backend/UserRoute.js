@@ -23,7 +23,8 @@ routes.post('/register', uploads.single('image'), async(req, res) => {
             user_name, password, image: ImagePath
         });
     } catch(error) {
-        
-    }
-        
+         res.status(500).json({message: 'Database error'});
+    }      
 })
+
+export default routes;

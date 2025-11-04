@@ -1,6 +1,7 @@
 import express from "express"
 import mongoose from "mongoose";
 import ProductRoute from "./ProductRoute.js"
+import UserRoute from "./UserRoute.js";
 import cors from "cors"
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors({
 }));
 
 app.use('/product', ProductRoute);
+app.use('/user', UserRoute);
 
 mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app')
 .then(() => {
