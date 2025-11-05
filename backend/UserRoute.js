@@ -81,10 +81,16 @@ routes.get('/userInfo', (req, res) => {
 });
 
 routes.post('/logout', (req, res) => {
-    if (req.session.destroy) {
-        return res.status(200).json({ message: 'Logged out successfully' });
-    }
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Logout error:', err);
+            return res.status(500).json({ message: 'Failed to logout', error: err.message });
+        }
+        res.clearCookie('connect.sid'); 
+        res.status(200).json({ message: 'Logged out successfully' });
+    });
 });
+
 
 routes.post('/cart/add', async(req, res) => {
     if (!req.session.user) return res.status(401).json({ message: 'Login first' });

@@ -27,10 +27,16 @@ const Navs = () => {
     GetUserInfo();
   }, []);
 
-  const Logout = async() => {
-    await axios.post('http://localhost:5000/user/logout', {},{ withCredentials: true });
-    navigate('/sign-up');
-}
+const Logout = async () => {
+  try {
+    await axios.post('http://localhost:5000/user/logout', {}, { withCredentials: true });
+    setUserInfo(null); 
+    navigate('/sign-up'); 
+  } catch (err) {
+    console.error("Logout failed:", err.message);
+  }
+};
+
 
   return (
       <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">

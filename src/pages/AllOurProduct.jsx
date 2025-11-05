@@ -40,6 +40,7 @@ const AddToCart = async(product_id) => {
       setError(errorMessage);
     }
 };
+
     const fetchCurrentUser = async () => {
       try {
         const res = await axios.get("http://localhost:5000/user/userInfo", {
