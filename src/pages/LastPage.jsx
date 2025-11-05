@@ -8,6 +8,8 @@ const LastPage = () => {
   const [currentUser, setCurrentUser] = useState([]);
   const [currentProduct, setCurrentProduct] = useState([]);
   const navigate = useNavigate();
+  const product_id = 20;
+
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
@@ -24,21 +26,22 @@ const LastPage = () => {
     fetchCurrentUser();
   }, []);
 
-  
-    useEffect(() => {
-    const fetchProducts = async () => {
-      const product_id = 20;
-      try {
-        const res = await axios.get(`http://localhost:5000/product/getProduct/${product_id}`, {
-          withCredentials: true,
-        });
-        setCurrentProduct(res.data.products);
-      } catch (error) {
-        console.log("Error fetching products:", error.message);
-      }
-    };
-    fetchProducts();
-  }, []);
+
+useEffect(() => {
+  const fetchProducts = async () => {
+    const product_id = 20;
+    try {
+      const res = await axios.get(`http://localhost:5000/product/getProduct/${product_id}`, {
+        withCredentials: true,
+      });
+      setCurrentProduct(res.data.product);
+    } catch (error) {
+      console.log("Error fetching product:", error.message);
+    }
+  };
+  fetchProducts();
+}, []);
+
 
   return (
     <div className="flex justify-center items-center min-h-screen p-4">
@@ -53,7 +56,7 @@ const LastPage = () => {
           {currentUser?.isAdmin && (
             <>   
              <button
-              onClick={() => navigate(`/update/${item.product_id}`)}
+              onClick={() => navigate(`/updates`)}
               className="absolute top-20 right-6 bg-yellow-500 hover:bg-yellow-700 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
               title="Edit product"
             >

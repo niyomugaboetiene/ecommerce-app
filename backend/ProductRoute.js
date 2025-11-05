@@ -57,19 +57,22 @@ route.get('/getProduct', async(req, res) => {
     }
 });
 
-route.get('/getProduct/:product_id', async(req, res) => {
-    const { product_id } = req.params;
-    try {
-      const products = await ProductSchema.findOne({ product_id: product_id });
-      if (products.length > 0) {
-        res.status(200).json({ message: 'Product in the Database', products });
-      } else {
-        res.status(404).json({message: 'error in fetching product'})
-      }
-    } catch (error) {
-        res.status(500).json({message: 'Database error'})
+route.get('/getProduct/:product_id', async (req, res) => {
+  const { product_id } = req.params;
+  try {
+    const product = await ProductSchema.findOne({ product_id: Number(product_id) });
+
+    if (product) {
+      res.status(200).json({ message: 'Product found', product });
+    } else {
+      res.status(404).json({ message: 'Product not found' });
     }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Database error', error: error.message });
+  }
 });
+
 
 route.get('/best-sold', async(req, res) => {
     try {
