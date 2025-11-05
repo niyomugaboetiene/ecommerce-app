@@ -103,7 +103,7 @@ const AddToCart = async(product_id) => {
                   className="absolute top-12 right-2 bg-white p-2 rounded-full shadow hover:bg-yellow-100 transition"
                   title="Edit Product"
                 >
-                  <FaEdit  className="text-yellow-500"/>
+                   <FaEdit  className="text-yellow-500"/>
                 </button>
             )}     
              {isHoveredIndex === idx && currentUser?.isAdmin && (

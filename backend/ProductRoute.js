@@ -1,6 +1,7 @@
 import ProductSchema from "./productSchema.js";
 import express from "express"
 import multer from "multer";
+import userSchema from "./userSchema.js";
 const route = express.Router();
 
 
@@ -219,35 +220,37 @@ route.delete('/delete/:product_id', AdminCheck, async(req, res) => {
     }
 });
 
-route.post('/cart/add/:product_id', async(req, res) => {
-    try {
-        const { product_id } = req.params;
-        const { quality } = req.body;
+route.post('/cart/add/:product_id', async (req, res) => {
+  try {
+    const { product_id } = req.params;
+    const { quality } = req.body;
 
-        const user_id = req.session.user.user_id;
-        if (!user_id) {
-            return res.status(401).json({ message: "User not logged in" });
-        }
-      
-        const user = await UserSchema.findOne({ user_id });
-        if (!user) {
-              return res.status(404).json({ message: "User not found" });
-        }
-
-        const existingItem = user.cart.find((item) => item.product_id === Number(product_id));
-        if (existingItem) {
-            existingItem.quality += 1 || 1;
-        } else {
-            user.cart.push({ product_id: Number(product_id), quality: quality || 1 });
-        }
-
-        await user.save();
-        res.status(200).json({ message: "Product added to cart", cart: user.cart });
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Database error", error: error.message });
+    if (!req.session.user || !req.session.user.user_id) {
+      return res.status(401).json({ message: "User not logged in" });
     }
-})
+    const user_id = req.session.user.user_id;
+    console.log("user session", user_id);
+
+    const user = await userSchema.findOne({ user_id });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const existingItem = user.cart.find(item => item.product_id === Number(product_id));
+
+    if (existingItem) {
+      existingItem.quality += quality || 1;
+    } else {
+      user.cart.push({ product_id: Number(product_id), quality: quality || 1 });
+    }
+
+    await user.save();
+    res.status(200).json({ message: "Product added to cart", cart: user.cart });
+
+  } catch (error) {
+    console.error("Add to Cart Error:", error);
+    res.status(500).json({ message: "Database error", error: error.message });
+  }
+});
 
 export default route;
