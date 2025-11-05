@@ -219,5 +219,30 @@ route.delete('/delete/:product_id', AdminCheck, async(req, res) => {
     }
 });
 
+route.post('/cart/add/:product_id', async(req, res) => {
+    try {
+        const { product_id } = req.body;
+        const quality = req.body;
+
+        const user_id = req.session.user.user_id;
+        if (!user_id) {
+            return res.status(401).json({ message: "User not logged in" });
+        }
+
+        const existingItem = user.cart.find((item) => item.product_id === Number(product_id));
+        if (existingItem) {
+            existingItem.quality += 1 || 1;
+        } else {
+            user.cart.push({ product_id: Number(product_id), quality: quality || 1 });
+        }
+
+        await user.save();
+        res.status(200).json({ message: "Product added to cart", cart: user.cart });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Database error", error: error.message });
+    }
+})
 
 export default route;
