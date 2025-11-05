@@ -55,7 +55,7 @@ const OurProduct = () => {
   };
 
   const editProduct = (productId) => {
-    navigate(`/admin/edit-product/${productId}`);
+    navigate(`/update/${productId}`);
   };
 
   const productsToShow = showAll ? products : products.slice(0, 8);
