@@ -140,8 +140,8 @@ const AddToCart = async(product_id) => {
                 <button
                   onClick={() => AddToCart(item.product_id)}
                 >
-               {cartMessage ? <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition"><FaShoppingCart /> Add To Cart</div> 
-               : <div className="bg-yellow-500 px-4 py-2 rounded-lg text-black hover:bg-yellow-600 transition">Added To Cart</div> }   
+               {cartMessage ? <div className="bg-yellow-500 px-4 py-2 rounded-lg text-black hover:bg-yellow-600 transition">Added To Cart</div>
+                : <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition"><FaShoppingCart /> Add To Cart</div>  }   
                 </button>
               </div>
             )}
