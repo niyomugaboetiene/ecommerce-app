@@ -185,5 +185,22 @@ route.put('/update/:product_id', AdminCheck, uploads.single("image"), async(req,
     }
 });
 
+route.put('/delete/:product_id', AdminCheck, async(req, res) => {
+    try {
+        const { product_id } = req.params;
+
+        const product  = await ProductSchema.findOneAndDelete(
+            { product_id: Number(product_id) },
+        );  
+
+        if (!product) return res.status(404).json({ message: "Product not found" });
+
+        res.status(200).json({ message: "Product deleted successfully", product });
+    } catch (error) {
+         console.error(error);
+         res.status(500).json({ message: "Database error", error: error.message });
+    }
+});
+
 
 export default route;

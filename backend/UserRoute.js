@@ -104,12 +104,4 @@ routes.post('/cart/add', async(req, res) => {
     res.status(200).json({ message: "Added to cart", cart: user.cart });
 });
 
-routes.get('/cart', async (req, res) => {
-    if (!req.session.user) return res.status(401).json({ message: "Login first" });
-
-    const user = await UserSchema.findOne({ user_id: req.session.user.user_id });
-    res.status(200).json({ cart: user.cart });
-
-})
-
 export default routes;
