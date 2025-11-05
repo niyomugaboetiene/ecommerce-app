@@ -7,9 +7,10 @@ const UpdateProduct = () => {
     const [price, setPrice] = useState("");
     const [stock, setStock] = useState("");
     const [image, setImage] = useState(null);
-    const [isLoading, setIsLoading] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const { product_id } = useParams();
+    const [success, setSuccess] = useState("");
 
     const Update = async() => {
         try {
@@ -30,6 +31,7 @@ const UpdateProduct = () => {
            setPrice("");
            setStock("");
            setImage(null);
+           setSuccess("Updated successfully");
         } catch (error) {
             const message = error.message;
             setError(message);
@@ -56,9 +58,11 @@ const UpdateProduct = () => {
                </div>
                <div>
                     <label>Choose and image</label>
-                    <input type="file" onChange={(e) => setImage(e.target.value)} accept="image/*"/>
+                    <input type="file" onChange={(e) => setImage(e.target.files[0])} accept="image/*"/>
                </div>
-               <button onChange={Update}>Update</button>
+               <button onClick={Update}>{isLoading ? "Updating..." : "Update" }</button>
+               {error && <p className="text-red-500">{error}</p>}
+               {success && <p className="text-green-500">{success}</p>}
             </div>
         </div>
     )
