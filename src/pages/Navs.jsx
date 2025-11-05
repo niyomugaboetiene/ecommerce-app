@@ -63,9 +63,11 @@ const Logout = async () => {
           <div className="bg-white p-2 rounded-full cursor-pointer hover:bg-red-100 transition">
             <FaHeart className="text-red-500" />
           </div>
-          <div className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition">
+          <button className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
+              onClick={() => navigate('/cart')}    
+          >
             <FaShoppingCart className="text-gray-700" />
-          </div>
+          </button>
         </div>
 
         {loading && <p>Loading...</p>}

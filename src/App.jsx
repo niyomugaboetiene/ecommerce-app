@@ -19,6 +19,7 @@ import RegisterAccount from "./pages/Register.jsx";
 import LoginAccount from "./pages/Login.jsx";
 import UpdateProduct from "./pages/UpdateProduct.jsx";
 import SpecificUpdation from "./pages/SpecificUpdate.jsx";
+import CartPage from "./pages/Cart.jsx";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -66,6 +67,7 @@ function App() {
           <Route path="/sign-up" element={<LoginAccount />} />
           <Route path="/update/:product_id" element={<UpdateProduct />} />
           <Route path="/updates" element={<SpecificUpdation />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>

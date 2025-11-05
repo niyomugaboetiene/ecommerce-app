@@ -253,4 +253,56 @@ route.post('/cart/add/:product_id', async (req, res) => {
   }
 });
 
+
+route.get('/cart', async (req, res) => {
+    try {
+        if (!req.session.user) {
+            return res.status(401).json({ message: 'Login first' });
+        }
+
+        const user = await userSchema.findOne({ user_id: req.session.user.user_id });
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        const cartWithDetails = await Promise.all(
+            user.cart.map(async (item) => {
+                const product = await ProductSchema.findOne({ product_id: item.product_id });
+                return {
+                    product_id: item.product_id,
+                    quality: item.quality,
+                    product_name: product?.product_name || 'Unknown',
+                    price: product?.price || 0,
+                    image: product?.image || '',
+                };
+            })
+        );
+
+        res.status(200).json({ cart: cartWithDetails });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Database error", error: error.message });
+    }
+});
+
+route.post('/cart/remove', async (req, res) => {
+    try {
+        if (!req.session.user) {
+            return res.status(401).json({ message: 'Login first' });
+        }
+
+        const { product_id } = req.body;
+        const user = await userSchema.findOne({ user_id: req.session.user.user_id });
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        user.cart = user.cart.filter(item => item.product_id !== product_id);
+
+        await user.save();
+        res.status(200).json({ message: 'Removed from cart', cart: user.cart });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Database error', error: error.message });
+    }
+});
+
+
+
 export default route;
