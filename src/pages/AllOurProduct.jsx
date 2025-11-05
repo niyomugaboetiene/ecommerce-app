@@ -11,7 +11,6 @@ const OurProduct = () => {
   const [cartMessage, setCartMessage] = useState("");
   const navigate = useNavigate();
 
-  // Fetch all products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -26,7 +25,6 @@ const OurProduct = () => {
     fetchProducts();
   }, []);
 
-  // Fetch current logged-in user
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
@@ -34,6 +32,7 @@ const OurProduct = () => {
           withCredentials: true,
         });
         setCurrentUser(res.data.user);
+        console.log("current user", res.data)
       } catch (error) {
         console.log("Error fetching user info:", error.message);
       }
@@ -56,7 +55,6 @@ const OurProduct = () => {
   };
 
   const editProduct = (productId) => {
-    // Navigate to an edit page or open a modal
     navigate(`/admin/edit-product/${productId}`);
   };
 
@@ -76,13 +74,11 @@ const OurProduct = () => {
             onMouseEnter={() => setIsHoveredIndex(idx)}
             onMouseLeave={() => setIsHoveredIndex(null)}
           >
-            {/* Product Image */}
             <div className="relative w-full h-72 overflow-hidden rounded-lg mb-4">
               <img
                 src={`http://localhost:5000/${item.image}`}
                 className="w-full h-full object-cover hover:scale-110 transition duration-300"
               />
-              {/* Heart icon */}
               {isHoveredIndex === idx && (
                 <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition">
                   <FaHeart className="text-red-500" />
@@ -90,7 +86,6 @@ const OurProduct = () => {
               )}
             </div>
 
-            {/* Product Info */}
             <p className="text-[15px] text-gray-600">Name: {item.product_name}</p>
             <p className="text-[15px] text-gray-600">Category: {item.category}</p>
             <div className="flex justify-between">
@@ -101,7 +96,6 @@ const OurProduct = () => {
             </div>
             <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
 
-            {/* Add to Cart Button */}
             {isHoveredIndex === idx && (
               <div className="flex justify-center mt-5">
                 <button
@@ -114,7 +108,6 @@ const OurProduct = () => {
               </div>
             )}
 
-            {/* Admin Edit Button */}
             {isHoveredIndex === idx && currentUser?.isAdmin && (
               <div className="flex justify-center mt-2">
                 <button
@@ -130,7 +123,6 @@ const OurProduct = () => {
         ))}
       </div>
 
-      {/* Show More / Show Less */}
       {products.length > 8 && !showAll && (
         <button
           onClick={() => setShowAll(true)}
