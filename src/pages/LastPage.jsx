@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import ecommerce from "../assets/speakers/speaker2.png";
 import axios from "axios";
-import { FaTrash, FaEdit } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const LastPage = () => {
   const [currentUser, setCurrentUser] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
@@ -32,16 +34,9 @@ const LastPage = () => {
           />
 
           {currentUser?.isAdmin && (
-            <>
-            <button
-              onClick={() => editProduct(item.product_id)}
-              className="absolute top-6 right-6 bg-red-600 hover:bg-red-700 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
-              title="Delete product"
-            >
-              <FaTrash className="text-xl" />
-            </button>       
+            <>   
              <button
-              onClick={() => editProduct(item.product_id)}
+              onClick={() => navigate(`/update/${item.product_id}`)}
               className="absolute top-20 right-6 bg-yellow-500 hover:bg-yellow-700 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
               title="Edit product"
             >
