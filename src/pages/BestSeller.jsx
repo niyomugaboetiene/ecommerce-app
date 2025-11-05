@@ -68,6 +68,7 @@ const BestSeller = () => {
                             <div className="flex justify-center mt-5">
                                 <button
                                     className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition"
+                                    onClick={() => AddToCart(item.product_id)}
                                 >
                                     <FaShoppingCart />
                                     Add To Cart
