@@ -161,7 +161,7 @@ route.put('/update/:product_id', AdminCheck, uploads.single("image"), async(req,
         const { product_id } = req.params;
         const { product_name, category, price, stock } = req.body;
 
-        const newData = { };
+        const newData = {};
 
         if (product_name) newData.product_name = product_name;
         if (category) newData.category = category;
@@ -172,7 +172,7 @@ route.put('/update/:product_id', AdminCheck, uploads.single("image"), async(req,
 
         const product  = await ProductSchema.findOneAndUpdate(
             { product_id: Number(product_id) },
-            newData,
+            { $set: newData },
             { new: true }
         );  
 
