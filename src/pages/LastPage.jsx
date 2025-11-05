@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const LastPage = () => {
   const [currentUser, setCurrentUser] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,12 +24,28 @@ const LastPage = () => {
     fetchCurrentUser();
   }, []);
 
+  
+    useEffect(() => {
+    const fetchProducts = async () => {
+      const product_id = 20;
+      try {
+        const res = await axios.get(`http://localhost:5000/product/getProduct/${product_id}`, {
+          withCredentials: true,
+        });
+        setCurrentProduct(res.data.products);
+      } catch (error) {
+        console.log("Error fetching products:", error.message);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div className="flex justify-center items-center min-h-screen p-4">
       <div className="bg-black rounded-lg w-full max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 relative">
           <img
-            src={ecommerce}
+            src={`http://localhost:5000/${currentProduct.image}`}
             alt="Speaker product"
             className="w-full max-w-[400px] mx-auto object-cover rounded-lg transition-transform duration-300 hover:scale-105"
           />
