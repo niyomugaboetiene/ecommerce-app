@@ -155,27 +155,31 @@ route.get('/health', async(req, res) => {
     }
 
 });
-
 route.put('/update/:product_id', AdminCheck, uploads.single("image"), async(req, res) => {
     try {
         const { product_id } = req.params;
         const { product_name, category, price, stock } = req.body;
-        const newData = {
-            product_name, 
-            category,
-            price, 
-            stock,
-        };
 
-        const imagePath = req.file ? req.file.path : null;
+        const newData = { product_name, category, price, stock };
 
-        if (imagePath) imagePath.image = imagePath;
+        if (req.file) {
+            newData.image = req.file.path; 
+        }
 
-        const product  = await ProductSchema.findOneAndUpdate({ product_id: product_id }, newData, { new: true });  
-        if (product)   res.status(200).json({ message: "Product updated successfully", product });
+        const product  = await ProductSchema.findOneAndUpdate(
+            { product_id: Number(product_id) },
+            newData,
+            { new: true }
+        );  
+
+        if (!product) return res.status(404).json({ message: "Product not found" });
+
+        res.status(200).json({ message: "Product updated successfully", product });
     } catch (error) {
+         console.error(error);
          res.status(500).json({ message: "Database error", error: error.message });
     }
 });
+
 
 export default route;
