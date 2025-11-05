@@ -21,6 +21,5 @@ const DeleteProduct = () => {
         } finally {
             setIsLoading(false);
         }
-
     }
 }

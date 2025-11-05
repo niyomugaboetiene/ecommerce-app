@@ -40,6 +40,21 @@ const OurProduct = () => {
     fetchCurrentUser();
   }, []);
 
+    const Delete = async() => {
+       try {
+           setIsLoading(true);
+           await axios.delete(`http://localhost:5000/product/delete/${product_id}`, { withCredentials: true });
+           setIsLoading(false);
+           navigate('/');
+        } catch (error) {
+            const errorMessage = error.messsage;
+            setError(errorMessage);
+            setIsLoading(false);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
   const editProduct = (productId) => {
     navigate(`/update/${productId}`);
   };
