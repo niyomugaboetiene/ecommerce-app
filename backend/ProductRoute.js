@@ -190,7 +190,7 @@ route.delete('/delete/:product_id', AdminCheck, async(req, res) => {
         const { product_id } = req.params;
 
         const product  = await ProductSchema.findOneAndDelete(
-            { product_id: Number(product_id) },
+            { product_id: product_id },
         );  
 
         if (!product) return res.status(404).json({ message: "Product not found" });

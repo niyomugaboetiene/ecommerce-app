@@ -9,6 +9,8 @@ const OurProduct = () => {
   const [isHoveredIndex, setIsHoveredIndex] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [cartMessage, setCartMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +28,9 @@ const OurProduct = () => {
   }, []);
 
   useEffect(() => {
+      fetchCurrentUser();
+  }, []);
+
     const fetchCurrentUser = async () => {
       try {
         const res = await axios.get("http://localhost:5000/user/userInfo", {
@@ -37,14 +42,15 @@ const OurProduct = () => {
         console.log("Error fetching user info:", error.message);
       }
     };
-    fetchCurrentUser();
-  }, []);
 
-    const Delete = async() => {
+
+    const Delete = async(product_id) => {
        try {
+           window.confirm("You want to delete this product ?");
            setIsLoading(true);
            await axios.delete(`http://localhost:5000/product/delete/${product_id}`, { withCredentials: true });
            setIsLoading(false);
+           setProducts((prev) => prev.filter((p) => p.product_id !== product_id));
            navigate('/');
         } catch (error) {
             const errorMessage = error.messsage;
@@ -92,7 +98,7 @@ const OurProduct = () => {
             )}     
              {isHoveredIndex === idx && currentUser?.isAdmin && (
                 <button
-                  onClick={() => editProduct(item.product_id)}
+                  onClick={() => Delete(item.product_id)}
                   className="absolute top-22 right-2 bg-white p-2 rounded-full shadow hover:bg-blue-100 transition"
                   title="Delete Product"
                 >
@@ -154,6 +160,13 @@ const OurProduct = () => {
 
       {products.length === 0 && (
         <p className="text-center mt-10 text-gray-500">No products found.</p>
+      )}
+
+      {isLoading && (
+        <p>Loading.....</p>
+      )}    
+        {error && (
+        <p>{error}</p>
       )}
     </div>
   );
