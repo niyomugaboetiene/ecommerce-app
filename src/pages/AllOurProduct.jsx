@@ -91,9 +91,9 @@ const OurProduct = () => {
              {isHoveredIndex === idx && currentUser?.isAdmin && (
                 <button
                   onClick={() => editProduct(item.product_id)}
-                  className="absolute top-22 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition"
+                  className="absolute top-22 right-2 bg-white p-2 rounded-full shadow hover:bg-blue-100 transition"
                 >
-                  <FaTrash  className="text-red-500"/>
+                  <FaTrash  className="text-blue-500"/>
                 </button>
             )}
               {isHoveredIndex === idx && (

@@ -1,6 +1,26 @@
+import { useState, useEffect } from "react";
 import ecommerce from "../assets/speakers/speaker2.png";
+import axios from "axios";
+import { FaTrash } from "react-icons/fa";
 
 const LastPage =  () => {
+    const [currentUser, setCurrentUser] = useState([]);
+
+    useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/user/userInfo", {
+          withCredentials: true,
+        });
+        setCurrentUser(res.data.userInfo);
+        console.log("current user", res.data)
+      } catch (error) {
+        console.log("Error fetching user info:", error.message);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+
     return (
  <div className="flex justify-center items-center min-h-screen p-4">
             <div className="bg-black rounded-lg w-full max-w-7xl">
@@ -17,6 +37,15 @@ const LastPage =  () => {
                         <button className="bg-blue-500 py-3 px-6 text-white rounded-lg transition duration-200 hover:bg-blue-600 hover:scale-105">
                             Buy Now
                         </button>
+
+                        {currentUser?.isAdmin && (
+                           <button
+                              onClick={() => editProduct(item.product_id)}
+                                className=""
+                             >
+                               <FaTrash  className="text-blue-500"/>
+                        </button>
+                      )}
                     </div>
                 </div>
             </div>
