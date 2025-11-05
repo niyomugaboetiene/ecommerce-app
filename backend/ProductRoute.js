@@ -155,16 +155,20 @@ route.get('/health', async(req, res) => {
     }
 
 });
+
 route.put('/update/:product_id', AdminCheck, uploads.single("image"), async(req, res) => {
     try {
         const { product_id } = req.params;
         const { product_name, category, price, stock } = req.body;
 
-        const newData = { product_name, category, price, stock };
+        const newData = { };
 
-        if (req.file) {
-            newData.image = req.file.path; 
-        }
+        if (product_name) newData.product_name = product_name;
+        if (category) newData.category = category;
+        if (price) newData.price = price;
+        if (stock) newData.stock = stock;
+        if (req.file) newData.image = req.file.path; 
+        
 
         const product  = await ProductSchema.findOneAndUpdate(
             { product_id: Number(product_id) },
