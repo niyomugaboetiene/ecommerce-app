@@ -1,4 +1,4 @@
-import { FaShoppingCart, FaHeart, FaEdit } from "react-icons/fa";
+import { FaShoppingCart, FaHeart, FaEdit, FaTrash } from "react-icons/fa";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +31,7 @@ const OurProduct = () => {
         const res = await axios.get("http://localhost:5000/user/userInfo", {
           withCredentials: true,
         });
-        setCurrentUser(res.data.user);
+        setCurrentUser(res.data.userInfo);
         console.log("current user", res.data)
       } catch (error) {
         console.log("Error fetching user info:", error.message);
@@ -79,6 +79,23 @@ const OurProduct = () => {
                 src={`http://localhost:5000/${item.image}`}
                 className="w-full h-full object-cover hover:scale-110 transition duration-300"
               />
+
+            {isHoveredIndex === idx && currentUser?.isAdmin && (
+                <button
+                  onClick={() => editProduct(item.product_id)}
+                  className="absolute top-12 right-2 bg-white p-2 rounded-full shadow hover:bg-yellow-100 transition"
+                >
+                  <FaEdit  className="text-yellow-500"/>
+                </button>
+            )}     
+             {isHoveredIndex === idx && currentUser?.isAdmin && (
+                <button
+                  onClick={() => editProduct(item.product_id)}
+                  className="absolute top-22 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition"
+                >
+                  <FaTrash  className="text-red-500"/>
+                </button>
+            )}
               {isHoveredIndex === idx && (
                 <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition">
                   <FaHeart className="text-red-500" />
@@ -108,17 +125,6 @@ const OurProduct = () => {
               </div>
             )}
 
-            {isHoveredIndex === idx && currentUser?.isAdmin && (
-              <div className="flex justify-center mt-2">
-                <button
-                  onClick={() => editProduct(item.product_id)}
-                  className="flex items-center gap-2 bg-yellow-500 px-4 py-2 rounded-lg text-white hover:bg-yellow-600 transition"
-                >
-                  <FaEdit />
-                  Edit
-                </button>
-              </div>
-            )}
           </div>
         ))}
       </div>
