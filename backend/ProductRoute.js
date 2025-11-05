@@ -221,12 +221,17 @@ route.delete('/delete/:product_id', AdminCheck, async(req, res) => {
 
 route.post('/cart/add/:product_id', async(req, res) => {
     try {
-        const { product_id } = req.body;
-        const quality = req.body;
+        const { product_id } = req.params;
+        const { quality } = req.body;
 
         const user_id = req.session.user.user_id;
         if (!user_id) {
             return res.status(401).json({ message: "User not logged in" });
+        }
+      
+        const user = await UserSchema.findOne({ user_id });
+        if (!user) {
+              return res.status(404).json({ message: "User not found" });
         }
 
         const existingItem = user.cart.find((item) => item.product_id === Number(product_id));

@@ -8,7 +8,7 @@ const OurProduct = () => {
   const [showAll, setShowAll] = useState(false);
   const [isHoveredIndex, setIsHoveredIndex] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
-  const [cartMessage, setCartMessage] = useState("");
+  const [cartMessage, setCartMessage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -31,6 +31,15 @@ const OurProduct = () => {
       fetchCurrentUser();
   }, []);
 
+const AddToCart = async(product_id) => {
+    try {
+        await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
+        setCartMessage(true);
+    } catch (error) {
+      const errorMessage = error.message;
+      setError(errorMessage);
+    }
+};
     const fetchCurrentUser = async () => {
       try {
         const res = await axios.get("http://localhost:5000/user/userInfo", {
@@ -128,11 +137,10 @@ const OurProduct = () => {
             {isHoveredIndex === idx && (
               <div className="flex justify-center mt-5">
                 <button
-                  onClick={() => addToCart(item.product_id)}
+                  onClick={() => AddToCart(item.product_id)}
                   className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition"
                 >
-                  <FaShoppingCart />
-                  Add To Cart
+               {cartMessage ? <div><FaShoppingCart /> Add To Cart</div> : "Added To Cart" }   
                 </button>
               </div>
             )}
