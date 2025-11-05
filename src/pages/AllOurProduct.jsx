@@ -40,20 +40,6 @@ const OurProduct = () => {
     fetchCurrentUser();
   }, []);
 
-  const addToCart = async (productId) => {
-    try {
-      await axios.post(
-        "http://localhost:5000/cart/add",
-        { productId },
-        { withCredentials: true }
-      );
-      setCartMessage("Product added to cart!");
-      setTimeout(() => setCartMessage(""), 4000);
-    } catch (error) {
-      console.log("Error adding to cart:", error.message);
-    }
-  };
-
   const editProduct = (productId) => {
     navigate(`/update/${productId}`);
   };
