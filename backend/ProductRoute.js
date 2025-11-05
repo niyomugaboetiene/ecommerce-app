@@ -158,9 +158,9 @@ route.get('/health', async(req, res) => {
 //  uploads.single("image"),
 route.put('/update/:product_id', AdminCheck, async(req, res) => {
     try {
-        const product_id = req.params;
-        const updated  = await ProductSchema.findByIdAndUpdate({ product_id}, req.body, { new: true });  
-        if (updated)   res.status(200).json({ message: "Product updated successfully", product });
+        const { product_id } = req.params;
+        const product  = await ProductSchema.findOneAndUpdate({ product_id: product_id }, req.body, { new: true });  
+        if (product)   res.status(200).json({ message: "Product updated successfully", product });
     } catch (error) {
          res.status(500).json({ message: "Database error", error: error.message });
     }
