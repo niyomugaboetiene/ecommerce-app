@@ -84,6 +84,7 @@ const OurProduct = () => {
                 <button
                   onClick={() => editProduct(item.product_id)}
                   className="absolute top-12 right-2 bg-white p-2 rounded-full shadow hover:bg-yellow-100 transition"
+                  title="Edit Product"
                 >
                   <FaEdit  className="text-yellow-500"/>
                 </button>
@@ -92,12 +93,15 @@ const OurProduct = () => {
                 <button
                   onClick={() => editProduct(item.product_id)}
                   className="absolute top-22 right-2 bg-white p-2 rounded-full shadow hover:bg-blue-100 transition"
+                  title="Delete Product"
                 >
                   <FaTrash  className="text-blue-500"/>
                 </button>
             )}
               {isHoveredIndex === idx && (
-                <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition">
+                <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition"
+                 title="Like Product"
+                >
                   <FaHeart className="text-red-500" />
                 </button>
               )}
