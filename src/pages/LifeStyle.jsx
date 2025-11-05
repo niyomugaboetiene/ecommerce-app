@@ -76,7 +76,7 @@ const Lifestyle = () => {
                             <div className="flex justify-center mt-4">
                                 <button 
                                   className="flex items-center gap-3 bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600"
-                                  onClick={() => AddToCart(pro)}
+                                  onClick={() => AddToCart(item.product_id)}
                                   >
                                     <FaShoppingCart />
                                     Add to Cart

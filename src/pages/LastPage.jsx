@@ -79,7 +79,10 @@ const AddToCart = async(product_id) => {
             <p className="text-2xl text-white font-bold mb-8">
               Enhance your music experience by clicking to buy now button
             </p>
-            <button className="bg-blue-500 py-3 px-6 text-white rounded-lg transition duration-200 hover:bg-blue-600 hover:scale-105">
+            <button 
+                className="bg-blue-500 py-3 px-6 text-white rounded-lg transition duration-200 hover:bg-blue-600 hover:scale-105"
+                onClick={() => AddToCart(20)}
+            >
               Buy Now
             </button>
           </div>
