@@ -59,7 +59,6 @@ const AddToCart = async(product_id) => {
                                 className="w-full h-full object-cover hover:scale-105 transition duration-200"
                             />
 
-                            {/* Heart Icon */}
                             {isHoveredIndex === idx && (
                                 <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition">
                                     <FaHeart className="text-red-500" />
@@ -79,7 +78,10 @@ const AddToCart = async(product_id) => {
 
                         {isHoveredIndex === idx && (
                             <div className="flex justify-center mt-4">
-                                <button className="flex items-center gap-3 bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600 transition">
+                                <button 
+                                    className="flex items-center gap-3 bg-blue-500 px-6 py-3 text-white rounded-lg hover:bg-blue-600 transition"
+                                    onClick={() => AddToCart(item.product_id)}
+                                >
                                     <FaShoppingCart />
                                     Add to Cart
                                 </button>
