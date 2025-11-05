@@ -5,6 +5,7 @@ import axios from "axios";
 const BestSeller = () => {
     const [showAll, setShowAll] = useState(false);
     const [products, setProducts] = useState([]);
+    const [cartMessage, setCartMessage] = useState(false);
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
 
     useEffect(() => {
@@ -18,6 +19,16 @@ const BestSeller = () => {
             console.log("ERROR: ", error.message);
         }
     }, []);
+
+    const AddToCart = async(product_id) => {
+        try {
+            await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
+            setCartMessage(true);
+        } catch (error) {
+          const errorMessage = error.message;
+          setError(errorMessage);
+        }
+    };
 
     const imageToShow = showAll ? products : products.slice(0, 8);
     const hasMoreItems = products.length > 8;

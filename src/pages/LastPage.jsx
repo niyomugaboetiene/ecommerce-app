@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ecommerce from "../assets/speakers/speaker2.png";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const LastPage = () => {
   const [currentUser, setCurrentUser] = useState([]);
   const [currentProduct, setCurrentProduct] = useState([]);
+  const [cartMessage, setCartMessage] = useState(false);
   const navigate = useNavigate();
   const product_id = 20;
 
@@ -42,6 +42,15 @@ useEffect(() => {
   fetchProducts();
 }, []);
 
+const AddToCart = async(product_id) => {
+    try {
+        await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
+        setCartMessage(true);
+    } catch (error) {
+      const errorMessage = error.message;
+      setError(errorMessage);
+    }
+};
 
   return (
     <div className="flex justify-center items-center min-h-screen p-4">
