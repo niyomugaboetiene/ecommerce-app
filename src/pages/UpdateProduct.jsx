@@ -32,15 +32,26 @@ const UpdateProduct = () => {
     return (
         <div>
             <div>
-                <label>Enter new product name</label>
-                <input type="text" onChange={(e) => setProduct_name(e.target.value)} />
-                <label>Enter new Price</label>
-                <input type="number" onChange={(e) => setPrice(e.target.value)} />
-                <label>Enter new Stock Number</label>
-                <input type="number" onChange={(e) => setStock(e.target.value)} />
-                <label>Choose and image</label>
-                <input type="file" onChange={(e) => setImage(e.target.value)} />
+                <div>
+                   <label>Enter new product name</label>
+                   <input type="text" onChange={(e) => setProduct_name(e.target.value)} />
+                </div>
+               <div>
+                    <label>Enter new Price</label>
+                    <input type="number" onChange={(e) => setPrice(e.target.value)} />
+               </div>
+               <div>
+                    <label>Enter new Stock Number</label>
+                    <input type="number" onChange={(e) => setStock(e.target.value)} />
+               </div>
+               <div>
+                    <label>Choose and image</label>
+                    <input type="file" onChange={(e) => setImage(e.target.value)} />
+               </div>
+               <button onChange={Update}>Update</button>
             </div>
         </div>
     )
 }
+
+export default UpdateProduct;
