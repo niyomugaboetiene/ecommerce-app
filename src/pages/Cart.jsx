@@ -70,7 +70,6 @@ const CartPage = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <p className="font-bold">Subtotal: ${item.price * item.quality}</p>
               <button
                 onClick={() => removeFromCart(item.product_id)}
                 className="text-red-500 hover:text-red-700"
