@@ -46,14 +46,15 @@ const OurProduct = () => {
 
     const Delete = async(product_id) => {
        try {
-           window.confirm("You want to delete this product ?");
+           const confirmDelete = window.confirm("You want to delete this product ?");
+           if (!confirmDelete) return;
            setIsLoading(true);
            await axios.delete(`http://localhost:5000/product/delete/${product_id}`, { withCredentials: true });
            setIsLoading(false);
            setProducts((prev) => prev.filter((p) => p.product_id !== product_id));
            navigate('/');
         } catch (error) {
-            const errorMessage = error.messsage;
+            const errorMessage = error.message;
             setError(errorMessage);
             setIsLoading(false);
         } finally {
