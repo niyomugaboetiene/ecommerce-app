@@ -40,7 +40,6 @@ const CartPage = () => {
     }
   };
 
-  // Calculate total
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quality, 0);
 
   if (isLoading) return <p className="text-center mt-10">Loading...</p>;
