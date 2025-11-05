@@ -185,7 +185,7 @@ route.put('/update/:product_id', AdminCheck, uploads.single("image"), async(req,
     }
 });
 
-route.put('/delete/:product_id', AdminCheck, async(req, res) => {
+route.delete('/delete/:product_id', AdminCheck, async(req, res) => {
     try {
         const { product_id } = req.params;
 
