@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Toys = () => {
