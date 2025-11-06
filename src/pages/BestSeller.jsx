@@ -25,6 +25,10 @@ const BestSeller = () => {
         try {
             await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
             setCartMessage(true);
+            setTimeout(() => {
+                setCartMessage("");
+            }, 4000);
+            
         } catch (error) {
           const errorMessage = error.message;
           setError(errorMessage);
@@ -56,6 +60,11 @@ useEffect(() => {
     return (
         <div className="flex flex-col items-center justify-center p-9 mt-4">
             <h1 className="text-center mt-16 text-3xl font-bold mb-12">Best Sold Products</h1>
+
+            {cartMessage && (
+                <p className="text-green-500">Product added successfully</p>
+            )}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500">
                 {imageToShow.map((item, idx) => (
                     <div

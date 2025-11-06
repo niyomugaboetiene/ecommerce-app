@@ -36,10 +36,10 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full bg-gradient-to-b from-green-900 via-green-500 to-green-400 px-4 py-12 flex items-center justify-center"
+      className="min-h-screen w-full px-4 py-12 flex items-center justify-center"
     >
       <motion.div
-        className="max-w-6xl w-full bg-gray-800/70 rounded-xl shadow-lg p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8"
+        className="max-w-6xl w-full bg-green-800/70 rounded-xl shadow-lg p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
