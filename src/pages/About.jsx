@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaRocket, FaHeart, FaGem, FaCompass, FaShoppingBag, FaUsers, FaAward, FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import github from "../assets/github.jpeg"
 import axios from "axios";
 
 const AboutUs = () => {
@@ -228,7 +229,7 @@ const AboutUs = () => {
             </h2>
           </div>
           
-          <div className="bg-green-500 rounded-2xl p-12 shadow-sm border border-gray-200">
+          <div className="bg-green-500 rounded-2xl p-12 shadow-sm border border-gray-200 hover:translate-y-4 transition duration-200">
             <div className="prose prose-lg max-w-none text-white">
               <p className="text-xl leading-relaxed mb-6">
                 ShopSphere was born from a simple observation: most e-commerce platforms were either 
@@ -255,22 +256,20 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-green-500">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-6 text-gray-900">
+            <h2 className="text-4xl font-black mb-6 text-white">
               The Mind Behind ShopSphere
             </h2>
-            <p className="text-xl text-gray-600">The visionary architect crafting your shopping experience</p>
+            <p className="text-xl text-white">The visionary architect crafting your shopping experience</p>
           </div>
           
-          <div className="grid grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 gap-8 hover:translate-y-2 ">
             {teamMembers.map((member, index) => (
               <div key={index} className="group">
                 <div className="flex flex-col lg:flex-row items-center gap-12 p-12 bg-gray-50 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-500">
-                  <div className="w-48 h-48 rounded-3xl bg-gray-900 flex items-center justify-center text-white text-5xl font-black shadow-2xl group-hover:scale-105 transition-transform duration-300">
-                    {member.avatar}
-                  </div>
+                  <img src={github} className="w-48 h-48 rounded-3xl bg-gray-900 flex items-center justify-center text-white text-5xl font-black shadow-2xl group-hover:scale-105 transition-transform duration-300" />
                   
                   <div className="flex-1 text-center lg:text-left">
                     <h3 className="text-3xl font-black text-gray-900 mb-3">{member.name}</h3>
