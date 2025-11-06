@@ -1,4 +1,4 @@
-import { FaShoppingCart, FaHeart, FaEdit, FaTrash } from "react-icons/fa";
+import { FaShoppingCart, FaHeart, FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ const OurProduct = () => {
   const [cartMessage, setCartMessage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [userCart, setUserCart] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,52 +29,90 @@ const OurProduct = () => {
   }, []);
 
   useEffect(() => {
-      fetchCurrentUser();
+    fetchCurrentUser();
   }, []);
 
-const AddToCart = async(product_id) => {
+  useEffect(() => {
+    if (currentUser) {
+      fetchUserCart();
+    }
+  }, [currentUser]);
+
+  const fetchUserCart = async () => {
     try {
-        await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
-        setCartMessage(true);
+      const res = await axios.get("http://localhost:5000/product/cart", {
+        withCredentials: true,
+      });
+      setUserCart(res.data.cart || []);
+    } catch (error) {
+      console.log("Error fetching user cart:", error.message);
+    }
+  };
+
+  const AddToCart = async (product_id) => {
+    try {
+      setIsLoading(true);
+      await axios.post(
+        `http://localhost:5000/product/cart/add/${product_id}`,
+        { quality: 1 },
+        { withCredentials: true }
+      );
+      setCartMessage(true);
+      
+      // Refresh cart data after adding
+      await fetchUserCart();
+      
+      // Hide success message after 2 seconds
+      setTimeout(() => {
+        setCartMessage(false);
+      }, 2000);
     } catch (error) {
       const errorMessage = error.message;
       setError(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
-};
+  };
 
-    const fetchCurrentUser = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/user/userInfo", {
-          withCredentials: true,
-        });
-        setCurrentUser(res.data.userInfo);
-        console.log("current user", res.data)
-      } catch (error) {
-        console.log("Error fetching user info:", error.message);
-      }
-    };
-
-
-    const Delete = async(product_id) => {
-       try {
-           const confirmDelete = window.confirm("You want to delete this product ?");
-           if (!confirmDelete) return;
-           setIsLoading(true);
-           await axios.delete(`http://localhost:5000/product/delete/${product_id}`, { withCredentials: true });
-           setIsLoading(false);
-           setProducts((prev) => prev.filter((p) => p.product_id !== product_id));
-           navigate('/');
-        } catch (error) {
-            const errorMessage = error.message;
-            setError(errorMessage);
-            setIsLoading(false);
-        } finally {
-            setIsLoading(false);
-        }
+  const fetchCurrentUser = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/user/userInfo", {
+        withCredentials: true,
+      });
+      setCurrentUser(res.data.userInfo);
+      console.log("current user", res.data);
+    } catch (error) {
+      console.log("Error fetching user info:", error.message);
     }
+  };
+
+  const Delete = async (product_id) => {
+    try {
+      const confirmDelete = window.confirm("You want to delete this product ?");
+      if (!confirmDelete) return;
+      setIsLoading(true);
+      await axios.delete(`http://localhost:5000/product/delete/${product_id}`, {
+        withCredentials: true,
+      });
+      setIsLoading(false);
+      setProducts((prev) => prev.filter((p) => p.product_id !== product_id));
+      navigate("/");
+    } catch (error) {
+      const errorMessage = error.message;
+      setError(errorMessage);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const editProduct = (productId) => {
     navigate(`/update/${productId}`);
+  };
+
+  // Check if product is in cart
+  const isProductInCart = (productId) => {
+    return userCart.some(item => item.product_id === productId);
   };
 
   const productsToShow = showAll ? products : products.slice(0, 8);
@@ -82,7 +121,9 @@ const AddToCart = async(product_id) => {
     <div className="flex flex-col items-center justify-center p-9 mt-4">
       <h1 className="text-center mt-16 text-3xl font-bold mb-12">Our Products</h1>
 
-      {cartMessage && <p className="text-green-500 mb-4">{cartMessage}</p>}
+      {cartMessage && (
+        <p className="text-green-500 mb-4">Product added to cart successfully!</p>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500">
         {productsToShow.map((item, idx) => (
@@ -98,27 +139,28 @@ const AddToCart = async(product_id) => {
                 className="w-full h-full object-cover hover:scale-110 transition duration-300"
               />
 
-            {isHoveredIndex === idx && currentUser?.isAdmin && (
+              {isHoveredIndex === idx && currentUser?.isAdmin && (
                 <button
                   onClick={() => editProduct(item.product_id)}
                   className="absolute top-12 right-2 bg-white p-2 rounded-full shadow hover:bg-yellow-100 transition"
                   title="Edit Product"
                 >
-                   <FaEdit  className="text-yellow-500"/>
+                  <FaEdit className="text-yellow-500" />
                 </button>
-            )}     
-             {isHoveredIndex === idx && currentUser?.isAdmin && (
+              )}
+              {isHoveredIndex === idx && currentUser?.isAdmin && (
                 <button
                   onClick={() => Delete(item.product_id)}
                   className="absolute top-22 right-2 bg-white p-2 rounded-full shadow hover:bg-blue-100 transition"
                   title="Delete Product"
                 >
-                  <FaTrash  className="text-blue-500"/>
+                  <FaTrash className="text-blue-500" />
                 </button>
-            )}
+              )}
               {isHoveredIndex === idx && (
-                <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition"
-                 title="Like Product"
+                <button
+                  className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition"
+                  title="Like Product"
                 >
                   <FaHeart className="text-red-500" />
                 </button>
@@ -137,15 +179,19 @@ const AddToCart = async(product_id) => {
 
             {isHoveredIndex === idx && (
               <div className="flex justify-center mt-5">
-                <button
-                  onClick={() => AddToCart(item.product_id)}
-                >
-               {cartMessage ? <div className="bg-yellow-500 px-4 py-2 rounded-lg text-black hover:bg-yellow-600 transition">Added To Cart</div>
-                : <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition"><FaShoppingCart /> Add To Cart</div>  }   
+                <button onClick={() => AddToCart(item.product_id)} disabled={isLoading}>
+                  {isProductInCart(item.product_id) ? (
+                    <div className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition">
+                      <FaPlus /> Increase Quantity
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition">
+                      <FaShoppingCart /> Add To Cart
+                    </div>
+                  )}
                 </button>
               </div>
             )}
-
           </div>
         ))}
       </div>
@@ -172,12 +218,8 @@ const AddToCart = async(product_id) => {
         <p className="text-center mt-10 text-gray-500">No products found.</p>
       )}
 
-      {isLoading && (
-        <p>Loading.....</p>
-      )}    
-        {error && (
-        <p>{error}</p>
-      )}
+      {isLoading && <p>Loading.....</p>}
+      {error && <p className="text-red-500">{error}</p>}
     </div>
   );
 };
