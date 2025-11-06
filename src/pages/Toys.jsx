@@ -14,7 +14,7 @@ const Toys = () => {
     useEffect(() => {
             try {
                  const GetNewProducts = async() => {
-                      const product = await axios.get('http://localhost:5000/product/toys', {withCredentials: true});
+                      const product = await axios.get('http://localhost:5000/product/toy', {withCredentials: true});
                       setProducts(product.data.ToysProduct);
                 };
             
