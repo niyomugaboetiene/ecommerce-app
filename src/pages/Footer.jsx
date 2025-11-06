@@ -1,13 +1,6 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaTwitch, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
-const handleContactClick = () => {
-  window.scrollTo({
-    top: document.documentElement.scrollHeight,
-    behavior: 'smooth'
-  });
-  
-  window.open('https://niyomugaboetiene.onrender.com/contact', '_blank');
-};
+
 const Footer = () => {
     return (
         <footer className="bg-black text-white">

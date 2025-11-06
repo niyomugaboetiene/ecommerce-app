@@ -40,6 +40,7 @@ const SearchResults = () => {
     } catch (error) {
       setError(error.message);
       console.log("Add to cart error:", error.message);
+      navigate('/sign-up')
     }
   };
 

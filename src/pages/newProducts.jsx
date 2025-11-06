@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { FaHeart, FaShoppingCart, FaPlus } from "react-icons/fa";
+import { FaShoppingCart, FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 const FlashSales = () => {
@@ -9,7 +10,9 @@ const FlashSales = () => {
     const [cartMessage, setCartMessage] = useState(false);
     const [products, setProducts] = useState([]);
     const [userCart, setUserCart] = useState([]);
+    const navigate = useNavigate();
 
+  
     useEffect(() => {
             try {
                  const GetNewProducts = async() => {
@@ -30,6 +33,7 @@ const AddToCart = async(product_id) => {
     } catch (error) {
       const errorMessage = error.message;
       setError(errorMessage);
+      navigate('/sign-up')
     }
 };
 

@@ -33,6 +33,7 @@ const AddToCart = async(product_id) => {
     } catch (error) {
       const errorMessage = error.message;
       setError(errorMessage);
+      navigate('/sign-up')
     }
 };
 

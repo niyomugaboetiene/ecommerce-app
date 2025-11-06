@@ -35,6 +35,7 @@ const Lifestyle = () => {
     } catch (error) {
       const errorMessage = error.message;
       setError(errorMessage);
+      navigate('/sign-up')
     }
 };
 const fetchUserCart = async () => {

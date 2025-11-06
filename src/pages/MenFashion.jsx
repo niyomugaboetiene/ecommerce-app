@@ -38,6 +38,7 @@ const MenFashion = () => {
         } catch (error) {
             const errorMessage = error.message;
             setError(errorMessage);
+            navigate('/sign-up')
         } finally {
             setIsLoading(false);
         }
