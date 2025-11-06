@@ -1,6 +1,13 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaTwitch, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+const handleContactClick = () => {
+  window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: 'smooth'
+  });
+  
+  window.open('https://niyomugaboetiene.onrender.com/contact', '_blank');
+};
 const Footer = () => {
     return (
         <footer className="bg-black text-white">
@@ -59,7 +66,7 @@ const Footer = () => {
                         <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/terms">
                             Terms of Use
                         </Link>
-                        <Link rel="noopener noreferrer" target="_blank" className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="https://niyomugaboetiene.onrender.com/contact">
+                        <Link rel="noopener noreferrer" target="_blank" className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" onClick={handleContactClick}>
                             Contact Us
                         </Link>
                         <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/about">

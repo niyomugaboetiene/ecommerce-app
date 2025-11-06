@@ -21,6 +21,8 @@ import SpecificUpdation from "./pages/SpecificUpdate.jsx";
 import CartPage from "./pages/Cart.jsx";
 import SearchResults from "./pages/SearchBar.jsx";
 import AboutUs from "./pages/About";
+import PrivacyPolicy from "./pages/PrivancyPolicy..jsx";
+import TermsOfUse from "./pages/TermsOfUse.jsx";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -70,6 +72,8 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/privancy" element={<PrivacyPolicy />} />
         </Routes>
       </Layout>
     </BrowserRouter>
