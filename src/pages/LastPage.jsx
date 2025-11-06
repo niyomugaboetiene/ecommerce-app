@@ -8,7 +8,6 @@ const LastPage = () => {
   const [currentProduct, setCurrentProduct] = useState([]);
   const [cartMessage, setCartMessage] = useState(false);
   const navigate = useNavigate();
-  const product_id = 20;
 
 
   useEffect(() => {
@@ -51,6 +50,8 @@ const AddToCart = async(product_id) => {
       setError(errorMessage);
     }
 };
+
+
 
   return (
     <div className="flex justify-center items-center min-h-screen p-4">

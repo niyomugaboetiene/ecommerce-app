@@ -8,6 +8,7 @@ const Health = () => {
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
     const [products, setProducts] = useState([]);
     const [cartMessage, setCartMessage] = useState(false);
+    const [userCart, setUserCart] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,14 +28,35 @@ const AddToCart = async(product_id) => {
     try {
         await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
         setCartMessage(true);
+        await fetchUserCart();
     } catch (error) {
       const errorMessage = error.message;
       setError(errorMessage);
     }
 };
 
+const fetchUserCart = async () => {
+  try {
+    const res = await axios.get("http://localhost:5000/product/cart", {
+      withCredentials: true,
+    });
+    setUserCart(res.data.cart || []);
+  } catch (error) {
+    console.log("Error fetching user cart:", error.message);
+  }
+};
+useEffect(() => {
+    fetchUserCart();
+}, []);
+
+
+    const isProductInCart = (product_id) => {
+           return userCart.some(item => item.product_id === product_id);
+    };
+   
     const itemToShow = showAll ? products : products.slice(0, 8);
     const hasMoreItems = products.length > 8;
+
 
     return (
         <div className="flex flex-col items-center justify-center p-6">
@@ -70,19 +92,22 @@ const AddToCart = async(product_id) => {
                        <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
                    </div> 
                      <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
-
-                     {isHoveredIndex === idx && (
-                          <div className="flex justify-center mt-5">
-                            <button
-                                onClick={() => AddToCart(item.product_id)}
-                            >
-                               {cartMessage ? <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition"><FaShoppingCart /> Add To Cart</div> 
-                               : <div className="bg-yellow-500 px-4 py-2 rounded-lg text-black hover:bg-yellow-600 transition">Added To Cart</div> }   
-                            </button>
-                          </div>
-                       )}
-                    </div>
-                    
+                        {isHoveredIndex === idx && (
+                            <div className="flex justify-center mt-5">
+                                  <button onClick={() => AddToCart(item.product_id)} disabled={isLoading}>
+                                          {isProductInCart(item.product_id) ? (
+                                           <div className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition">
+                                                             <FaPlus /> Increase Quantity
+                                           </div>
+                                         ) : (
+                                 <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition">
+                                          <FaShoppingCart /> Add To Cart
+                                 </div>
+                           )}
+                         </button>
+                        </div>
+                         )}
+                    </div>                    
                 ))}
              </div>
         

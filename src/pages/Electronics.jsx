@@ -22,6 +22,7 @@ const Electronics = () => {
             console.log("ERROR: ", error.message);
         }
     }, []);
+
 const fetchUserCart = async () => {
   try {
     const res = await axios.get("http://localhost:5000/product/cart", {
@@ -100,21 +101,21 @@ const isProductInCart = (product_id) => {
                         </div>
                         <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
 
-{isHoveredIndex === idx && (
-  <div className="flex justify-center mt-5">
-    <button onClick={() => AddToCart(item.product_id)} disabled={isLoading}>
-      {isProductInCart(item.product_id) ? (
-        <div className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition">
-          <FaPlus /> Increase Quantity
-        </div>
-      ) : (
-        <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition">
-          <FaShoppingCart /> Add To Cart
-        </div>
-      )}
-    </button>
-  </div>
-)}
+                        {isHoveredIndex === idx && (
+                            <div className="flex justify-center mt-5">
+                                  <button onClick={() => AddToCart(item.product_id)} disabled={isLoading}>
+                                          {isProductInCart(item.product_id) ? (
+                                           <div className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition">
+                                                             <FaPlus /> Increase Quantity
+                                           </div>
+                                         ) : (
+                                 <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition">
+                                          <FaShoppingCart /> Add To Cart
+                                 </div>
+                           )}
+                         </button>
+                        </div>
+                         )}
                     </div>
                 ))}
             </div>
