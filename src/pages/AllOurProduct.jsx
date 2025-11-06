@@ -59,10 +59,8 @@ const OurProduct = () => {
       );
       setCartMessage(true);
       
-      // Refresh cart data after adding
       await fetchUserCart();
       
-      // Hide success message after 2 seconds
       setTimeout(() => {
         setCartMessage(false);
       }, 2000);
@@ -110,7 +108,6 @@ const OurProduct = () => {
     navigate(`/update/${productId}`);
   };
 
-  // Check if product is in cart
   const isProductInCart = (productId) => {
     return userCart.some(item => item.product_id === productId);
   };
