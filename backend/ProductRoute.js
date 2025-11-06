@@ -236,6 +236,14 @@ route.post('/cart/add/:product_id', async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
+    const product = await ProductSchema.findOne({ product_id: Number(product_id) });
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    product.timesAddedToCart += 1;
+    await product.save();
+
     const existingItem = user.cart.find(item => item.product_id === Number(product_id));
 
     if (existingItem) {
@@ -252,7 +260,6 @@ route.post('/cart/add/:product_id', async (req, res) => {
     res.status(500).json({ message: "Database error", error: error.message });
   }
 });
-
 
 route.get('/cart', async (req, res) => {
     try {
