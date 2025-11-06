@@ -2,8 +2,12 @@ import express from "express"
 import mongoose from "mongoose";
 import ProductRoute from "./ProductRoute.js"
 import UserRoute from "./UserRoute.js";
+import nodemailer  from "nodemailer"
 import cors from "cors"
+import dotenv from "dotenv"
+dotenv.config();
 import session  from "express-session";
+
 
 const app = express();
 app.use('/Product_Image', express.static("Product_Image"));
@@ -11,11 +15,11 @@ app.use('/User_Image', express.static("User_Image"));
 app.use(express.json());
 import MongoStore from "connect-mongo";
 app.use(session({
-    secret: 'my-secret-key',
+    secret: process.env.SECRET_KEY,
     saveUninitialized: true,
     resave: false,
     store: MongoStore.create({
-        mongoUrl: 'mongodb://127.0.0.1:27017/ecommerce-app',
+        mongoUrl: process.env.MONGO_URL,
         collectionName: 'sessions'
     }),
     cookie: {
@@ -34,11 +38,39 @@ app.use(cors({
 app.use('/product', ProductRoute);
 app.use('/user', UserRoute);
 
-mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app')
+mongoose.connect(MONGO_URL)
 .then(() => {
     console.log('Connected successfully');
 }).catch((error) => {
     console.error(`Error: ${error}`);
 });
 
-app.listen(5000, () => console.log('http://localhost:5000'))
+app.post("/send", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.USER,
+      pass: process.env.APP_PAS,
+    },
+  });
+
+  const mailOptions = {
+    from: email,
+    to: process.env.USER,
+    subject: `Message from ${name}`,
+    text: message,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).send("Message sent successfully!");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Failed to send message.");
+  }
+});
+
+const PORT = process.env.PORT
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`))

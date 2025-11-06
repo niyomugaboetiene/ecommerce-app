@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navs from "./pages/Navs";
-import About from "./pages/About";
 import Home from "./pages/Home";
 import FlashSales from "./pages/newProducts.jsx";
 import BestSeller from "./pages/BestSeller";
@@ -21,6 +20,7 @@ import SpecificUpdation from "./pages/SpecificUpdate.jsx";
 import CartPage from "./pages/Cart.jsx";
 import SearchResults from "./pages/SearchBar.jsx";
 import AboutUs from "./pages/About";
+import Contact from "./pages/Contact.jsx";
 import TermsOfUse from "./pages/TermsOfUse.jsx";
 
 function Layout({ children }) {
@@ -56,7 +56,6 @@ function App() {
               </>
             }
           />
-          <Route path="/about" element={<About />} />
           <Route path="/add" element={<AddProduct />} />
           <Route path="/women" element={<WomenFashion />} />
           <Route path="/men" element={<MenFashion />} />
@@ -72,6 +71,7 @@ function App() {
           <Route path="/search" element={<SearchResults />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
     </BrowserRouter>
