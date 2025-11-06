@@ -1,6 +1,7 @@
 import { FaShoppingCart, FaPlus } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const BestSeller = () => {
     const [showAll, setShowAll] = useState(false);
@@ -8,6 +9,7 @@ const BestSeller = () => {
     const [cartMessage, setCartMessage] = useState(false);
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
     const [userCart, setUserCart] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         try {
@@ -32,10 +34,12 @@ const BestSeller = () => {
         } catch (error) {
           const errorMessage = error.message;
           setError(errorMessage);
+          navigate('/sign-up')
+
         }
     };
 
-    const fetchUserCart = async () => {
+const fetchUserCart = async () => {
   try {
     const res = await axios.get("http://localhost:5000/product/cart", {
       withCredentials: true,

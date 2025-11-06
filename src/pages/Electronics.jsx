@@ -46,9 +46,11 @@ const AddToCart = async(product_id) => {
     setTimeout(() => {
       setCartMessage(false);
     }, 2000);
+    
   } catch (error) {
     const errorMessage = error.message;
     setError(errorMessage);
+    navigate('/sign-up')
   } finally {
     setIsLoading(false);
   }

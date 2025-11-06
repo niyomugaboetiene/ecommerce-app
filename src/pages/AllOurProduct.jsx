@@ -66,7 +66,8 @@ const OurProduct = () => {
       }, 2000);
     } catch (error) {
       const errorMessage = error.message;
-      setError(errorMessage);
+      setError("Login first");
+      navigate('/sign-up')
     } finally {
       setIsLoading(false);
     }
@@ -118,6 +119,7 @@ const OurProduct = () => {
     <div className="flex flex-col items-center justify-center p-9 mt-4">
       <h1 className="text-center mt-16 text-3xl font-bold mb-12 text-green-500">Our Products</h1>
 
+      {error && <p className="text-red-500">{error}</p>}
       {cartMessage && (
         <p className="text-green-500 mb-4">Product added to cart successfully!</p>
       )}
@@ -208,7 +210,6 @@ const OurProduct = () => {
       )}
 
       {isLoading && <p>Loading.....</p>}
-      {error && <p className="text-red-500">{error}</p>}
     </div>
   );
 };
