@@ -13,8 +13,6 @@ const ProductSchema = new mongoose.Schema({
     image: { type: String },
     stock: { type: Number, default: 0 },
     timesAddedToCart: { type: Number, default: 0 },
-
-
 });
 
 ProductSchema.plugin(AutoIncrement, { inc_field: 'product_id' });
