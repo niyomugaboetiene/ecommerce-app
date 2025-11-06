@@ -60,9 +60,6 @@ const Logout = async () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="bg-white p-2 rounded-full cursor-pointer hover:bg-red-100 transition">
-            <FaHeart className="text-red-500" />
-          </div>
           <button className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
               onClick={() => navigate('/cart')}    
           >

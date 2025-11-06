@@ -1,4 +1,4 @@
-import { FaShoppingCart, FaHeart, FaEdit, FaTrash, FaPlus } from "react-icons/fa";
+import { FaShoppingCart, FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -152,14 +152,6 @@ const OurProduct = () => {
                   title="Delete Product"
                 >
                   <FaTrash className="text-blue-500" />
-                </button>
-              )}
-              {isHoveredIndex === idx && (
-                <button
-                  className="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-red-100 transition"
-                  title="Like Product"
-                >
-                  <FaHeart className="text-red-500" />
                 </button>
               )}
             </div>
