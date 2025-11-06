@@ -20,6 +20,7 @@ import LoginAccount from "./pages/Login.jsx";
 import UpdateProduct from "./pages/UpdateProduct.jsx";
 import SpecificUpdation from "./pages/SpecificUpdate.jsx";
 import CartPage from "./pages/Cart.jsx";
+import SearchResults from "./pages/SearchBar.jsx";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -68,6 +69,7 @@ function App() {
           <Route path="/update/:product_id" element={<UpdateProduct />} />
           <Route path="/updates" element={<SpecificUpdation />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/search" element={<SearchResults />} />
         </Routes>
       </Layout>
     </BrowserRouter>
