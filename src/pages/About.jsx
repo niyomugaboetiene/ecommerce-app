@@ -111,11 +111,11 @@ const AboutUs = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white text-blue-800">
+    <div className="min-h-screen bg-white text-green-500">
       <section className="relative py-24 bg-gradient-to-br from-gray-50 to-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 text-center">
           
-          <h1 className="text-6xl md:text-7xl font-black mb-6 text-blue-600 bg-grad">
+          <h1 className="text-6xl md:text-7xl font-black mb-6 text-green-500 bg-grad">
             ShopSphere
           </h1>
           
@@ -127,7 +127,7 @@ const AboutUs = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button 
               onClick={() => document.getElementById('values').scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-blue-500 text-white rounded-lg hover:scale-105 active:rounded-full transition-alln duration-300"
+              className="px-8 py-4 bg-green-500 text-white rounded-lg hover:scale-105 active:rounded-full transition-alln duration-300"
             >
               Contact Us
             </button>
