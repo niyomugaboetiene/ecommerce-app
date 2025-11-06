@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaShippingFast, FaShieldAlt, FaHeadset, FaRecycle, FaStar, FaAward, FaUsers, FaShoppingBag } from "react-icons/fa";
+import { FaRocket, FaHeart, FaGem, FaCompass, FaShoppingBag, FaUsers, FaAward, FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -11,6 +11,7 @@ const AboutUs = () => {
     yearsExperience: 0
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [activeFeature, setActiveFeature] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,24 +20,22 @@ const AboutUs = () => {
 
   const fetchStoreStats = async () => {
     try {
-      // Simulating API calls for stats - you can replace with actual endpoints
       const productsRes = await axios.get("http://localhost:5000/product/getProduct", {
         withCredentials: true,
       });
       
       setStats({
         totalProducts: productsRes.data.products?.length || 1500,
-        happyCustomers: 12500,
-        ordersDelivered: 8900,
-        yearsExperience: 3
+        happyCustomers: 5,
+        ordersDelivered: 0,
+        yearsExperience: 1
       });
     } catch (error) {
       console.log("Error fetching stats:", error.message);
-      // Fallback stats
       setStats({
-        totalProducts: 1500,
-        happyCustomers: 12500,
-        ordersDelivered: 8900,
+        totalProducts: 50,
+        happyCustomers: 3,
+        ordersDelivered: 0,
         yearsExperience: 3
       });
     } finally {
@@ -44,84 +43,91 @@ const AboutUs = () => {
     }
   };
 
+  const coreValues = [
+    {
+      icon: <FaRocket className="text-2xl" />,
+      title: "Innovation",
+      description: "Constantly evolving with cutting-edge technology and modern design principles.",
+      color: "text-gray-800"
+    },
+    {
+      icon: <FaHeart className="text-2xl" />,
+      title: "Customer First",
+      description: "Every decision is made with our customers' experience in mind.",
+      color: "text-gray-800"
+    },
+    {
+      icon: <FaGem className="text-2xl" />,
+      title: "Quality",
+      description: "Only the finest products and most reliable services make it to our platform.",
+      color: "text-gray-800"
+    },
+    {
+      icon: <FaCompass className="text-2xl" />,
+      title: "Vision",
+      description: "Building the future of e-commerce with scalable, sustainable solutions.",
+      color: "text-gray-800"
+    }
+  ];
+
   const features = [
     {
-      icon: <FaShippingFast className="text-3xl text-blue-500" />,
-      title: "Fast Shipping",
-      description: "Free shipping on orders over $50. Delivery within 2-3 business days."
+      title: "Seamless Shopping",
+      description: "Intuitive interface designed for effortless browsing and purchasing.",
     },
     {
-      icon: <FaShieldAlt className="text-3xl text-green-500" />,
-      title: "Secure Payment",
-      description: "Your payment information is protected with 256-bit SSL encryption."
+      title: "Secure Transactions",
+      description: "Bank-level security protecting every transaction and personal data.",
     },
     {
-      icon: <FaHeadset className="text-3xl text-purple-500" />,
+      title: "Fast Delivery",
+      description: "Optimized logistics network ensuring quick and reliable deliveries.",
+    },
+    {
       title: "24/7 Support",
-      description: "Our customer support team is available round the clock to help you."
-    },
-    {
-      icon: <FaRecycle className="text-3xl text-orange-500" />,
-      title: "Easy Returns",
-      description: "30-day return policy. No questions asked returns for all products."
+      description: "Round-the-clock customer service for whenever you need assistance.",
     }
   ];
 
   const teamMembers = [
-//     {
-//       name: "Sarah Johnson",
-//       role: "CEO & Founder",
-//       image: "/api/placeholder/150/150",
-//       description: "Passionate about creating the best shopping experience for our customers."
-//     },
-//     {
-//       name: "Mike Chen",
-//       role: "Head of Technology",
-//       image: "/api/placeholder/150/150",
-//       description: "Ensuring our platform is fast, secure, and user-friendly."
-//     },
-    // {
-    //   name: "Emily Davis",
-    //   role: "Product Manager",
-    //   image: "/api/placeholder/150/150",
-    //   description: "Curating the best products from around the world for our customers."
-    // },
     {
       name: "Niyomugabo Etiene",
-      role: "Software Developer",
-      image: "/api/placeholder/150/150",
-      description: "all realted to software and programming of our e-commerce."
+      role: "Full-Stack Developer",
+      specialties: ["React", "Node.js", "MongoDB", "UI/UX"],
+      avatar: "NE",
+      quote: "Building digital experiences that matter"
     }
   ];
 
-
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-gray-800 mx-auto mb-4"></div>
+          <p className="text-gray-600 text-lg">Loading our story...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">About Our Store</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
-            Your trusted partner for quality products, exceptional service, and unforgettable shopping experiences since 2020.
+    <div className="min-h-screen bg-white text-blue-800">
+      <section className="relative py-24 bg-gradient-to-br from-gray-50 to-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          
+          <h1 className="text-6xl md:text-7xl font-black mb-6 text-blue-600 bg-grad">
+            ShopSphere
+          </h1>
+          
+          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-gray-600">
+            Where modern e-commerce meets exceptional user experience. 
+            We're redefining online shopping with clean design and powerful technology.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button 
-              onClick={() => navigate('/')}
-              className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 transform hover:-translate-y-1 shadow-lg"
-            >
-              Start Shopping
-            </button>
-            <button 
-              onClick={() => navigate('/contact')}
-              className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
+              onClick={() => document.getElementById('values').scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 bg-blue-500 text-white rounded-lg hover:scale-105 active:rounded-full transition-alln duration-300"
             >
               Contact Us
             </button>
@@ -129,145 +135,208 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-green-500">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: <FaShoppingBag />, value: stats.totalProducts, label: "Products Available" },
-              { icon: <FaUsers />, value: stats.happyCustomers, label: "Happy Customers" },
-              { icon: <FaAward />, value: stats.ordersDelivered, label: "Orders Delivered" },
-              { icon: <FaStar />, value: stats.yearsExperience, label: "Years Experience" }
+              { icon: <FaShoppingBag />, value: stats.totalProducts, label: "Products", suffix: "+" },
+              { icon: <FaUsers />, value: stats.happyCustomers, label: "Happy Clients", suffix: "+" },
+              { icon: <FaAward />, value: stats.ordersDelivered, label: "Orders", suffix: "+" },
+              { icon: <FaStar />, value: stats.yearsExperience, label: "Years", suffix: "+" }
             ].map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-500 transition-all duration-300">
-                  <div className="text-2xl text-blue-500 group-hover:text-white transition-colors duration-300">
+              <div 
+                key={index} 
+                className="text-center group p-6 hover:border hover:border-green-100 hover:scale-105 rounded-2xl transition-all duration-300"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gray-200 transition-colors duration-300">
+                  <div className="text-2xl text-white-700">
                     {stat.icon}
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value.toLocaleString()}+</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-4xl font-black text-white mb-2">{stat.value}{stat.suffix}</div>
+                <div className="text-white font-medium">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="values" className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black mb-6 text-gray-900">
+              Our Core Values
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              The principles that guide every aspect of ShopSphere
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {coreValues.map((value, index) => (
+              <div 
+                key={index}
+                className="group p-8 bg-white border border-gray-200 rounded-2xl hover:border-gray-300 hover:shadow-xl transition-all duration-500"
+              >
+                <div className="w-14 h-14 mb-6 rounded-xl bg-gray-100 flex items-center justify-center text-gray-700 group-hover:bg-gray-200 transition-colors duration-300">
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black mb-6 text-gray-900">
+              Why Choose ShopSphere?
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              {features.map((feature, index) => (
+                <div 
+                  key={index}
+                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
+                    activeFeature === index 
+                      ? 'bg-gray-900 text-white shadow-2xl' 
+                      : 'bg-gray-50 text-gray-800 hover:bg-gray-100'
+                  }`}
+                  onMouseEnter={() => setActiveFeature(index)}
+                >
+                  <div className="flex items-center gap-4">
+
+                    <div>
+                      <h3 className={`text-xl font-bold mb-2 ${activeFeature === index ? 'text-white' : 'text-gray-900'}`}>
+                        {feature.title}
+                      </h3>
+                      <p className={activeFeature === index ? 'text-gray-300' : 'text-gray-600'}>
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="bg-gray-100 rounded-2xl p-12 text-center">
+              <div className="text-8xl mb-6">
+                {features[activeFeature].image}
+              </div>
+              <h3 className="text-2xl font-black text-gray-900 mb-4">
+                {features[activeFeature].title}
+              </h3>
+              <p className="text-gray-600 text-lg">
+                {features[activeFeature].description}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
-                <p>
-                  Founded in 2025, our e-commerce platform began with a simple mission: to make online shopping 
-                  accessible, enjoyable, and trustworthy for everyone. What started as a small venture has grown 
-                  into a comprehensive marketplace serving thousands of customers worldwide.
-                </p>
-                <p>
-                  We believe that shopping should be more than just a transaction—it should be an experience. 
-                  That's why we carefully curate our product selection, partner with reputable suppliers, and 
-                  provide exceptional customer service at every step.
-                </p>
-                <p>
-                  Today, we're proud to offer a wide range of products across multiple categories, from fashion 
-                  and electronics to home goods and beauty products, all while maintaining our commitment to 
-                  quality and customer satisfaction.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-blue-500 rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-white rounded-full"></span>
-                    Curated quality products from trusted brands
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-white rounded-full"></span>
-                    Competitive prices with regular discounts
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-white rounded-full"></span>
-                    Fast and reliable shipping worldwide
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-white rounded-full"></span>
-                    Exceptional 24/7 customer support
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-white rounded-full"></span>
-                    Secure payment and easy returns
-                  </li>
-                </ul>
-              </div>
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black mb-6 text-gray-900">
+              Our Story
+            </h2>
+          </div>
+          
+          <div className="bg-white rounded-2xl p-12 shadow-sm border border-gray-200">
+            <div className="prose prose-lg max-w-none text-gray-600">
+              <p className="text-xl leading-relaxed mb-6">
+                ShopSphere was born from a simple observation: most e-commerce platforms were either 
+                <span className="font-semibold text-gray-900"> overly complex</span> or 
+                <span className="font-semibold text-gray-900"> lacking in modern design</span>. 
+                We set out to change that.
+              </p>
+              
+              <p className="text-xl leading-relaxed mb-6">
+                Founded in 2024, our mission has been clear: create an e-commerce experience that's 
+                <span className="font-semibold text-gray-900"> intuitive, fast, and beautiful</span>. 
+                Every pixel, every line of code, every product selection is carefully curated to 
+                ensure you have the best possible shopping experience.
+              </p>
+              
+              <p className="text-xl leading-relaxed">
+                Today, ShopSphere stands as a testament to what happens when 
+                <span className="font-semibold text-gray-900"> modern technology</span> meets 
+                <span className="font-semibold text-gray-900"> thoughtful design</span>. 
+                We're not just building a store; we're crafting an experience.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Shop With Us?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We're committed to providing you with the best shopping experience possible
-            </p>
+            <h2 className="text-4xl font-black mb-6 text-gray-900">
+              The Mind Behind ShopSphere
+            </h2>
+            <p className="text-xl text-gray-600">The visionary architect crafting your shopping experience</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center group p-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-white group-hover:shadow-lg transition-all duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-            <p className="text-xl text-gray-600">The passionate people behind your shopping experience</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <div className="grid grid-cols-1 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="text-center group">
-                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-t from-blue-200 to-blue-500 rounded-full flex items-center justify-center text-white text-4xl font-bold">
-                  {member.name.split(' ').map(n => n[0]).join('')}
+              <div key={index} className="group">
+                <div className="flex flex-col lg:flex-row items-center gap-12 p-12 bg-gray-50 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-500">
+                  <div className="w-48 h-48 rounded-3xl bg-gray-900 flex items-center justify-center text-white text-5xl font-black shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                    {member.avatar}
+                  </div>
+                  
+                  <div className="flex-1 text-center lg:text-left">
+                    <h3 className="text-3xl font-black text-gray-900 mb-3">{member.name}</h3>
+                    <div className="text-gray-600 text-xl font-bold mb-4">{member.role}</div>
+                    <div className="text-lg text-gray-500 italic mb-6">"{member.quote}"</div>
+                    
+                    <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
+                      {member.specialties.map((skill, skillIndex) => (
+                        <span 
+                          key={skillIndex}
+                          className="px-4 py-2 bg-white border border-gray-300 rounded-full text-gray-700 text-sm font-medium hover:bg-gray-100 transition-colors duration-300"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <p className="text-gray-600 text-lg leading-relaxed">
+                      Passionate about creating digital experiences that blend cutting-edge technology 
+                      with intuitive design. Every feature in ShopSphere is crafted with attention to 
+                      detail and user experience in mind.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                <div className="text-blue-600 font-medium mb-3">{member.role}</div>
-                <p className="text-gray-600 text-sm leading-relaxed">{member.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-linear-to-r from-blue-600 to-purple-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Shopping?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who trust us for their shopping needs. 
-            Discover quality products at great prices today!
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-5xl font-black mb-8">
+            Ready to Experience ShopSphere?
+          </h2>
+          
+          <p className="text-xl text-black mb-12 max-w-2xl mx-auto leading-relaxed">
+            Join the community of smart shoppers who choose quality, design, and innovation.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button 
               onClick={() => navigate('/')}
-              className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 transform hover:-translate-y-1 shadow-lg"
+              className="group px-12 py-6 bg-white text-black rounded-2xl font-black text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl flex items-center gap-4"
             >
-              Browse Products
-            </button>
-            <button 
-              onClick={() => navigate('/contact')}
-              className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
-            >
-              Get In Touch
+              Start Shopping Now
+              <FaRocket className="group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </div>
         </div>
