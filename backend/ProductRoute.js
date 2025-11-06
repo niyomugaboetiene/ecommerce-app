@@ -203,6 +203,41 @@ route.put('/update/:product_id', AdminCheck, uploads.single("image"), async(req,
     }
 });
 
+route.put('/updates/:product_id',  async(req, res) => {
+    try {
+        const { product_id } = req.params;
+        const { quality } = req.body;
+
+       if (!req.session.user || !req.session.user.user_id) {
+              return res.status(404).json({ message: 'User not logged in' });
+       }
+
+       const user_id = req.session.user.user_id;
+       const user = await userSchema.findOne({ user_id });
+
+       if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+       }
+
+       const cartItem = user.cart.find(item => item.product_id === Number(product_id));
+
+       if (!cartItem) {
+        return res.status(404).json({ error: 'Product not found' });
+       }
+
+       cartItem.quality = quality;
+       await user.save();
+
+       return res.status(200).json({
+        message: 'Cart updated successfully',
+        cart: user.cart
+       })
+    } catch (error) {
+        console.error("Update Cart Error:", error);
+        res.status(500).json({ message: "Database error", error: error.message });
+    }
+});
+
 route.delete('/delete/:product_id', AdminCheck, async(req, res) => {
     try {
         const { product_id } = req.params;
