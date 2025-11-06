@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navs from "./pages/Navs";
-import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import FlashSales from "./pages/newProducts.jsx";
@@ -56,7 +55,6 @@ function App() {
               </>
             }
           />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/add" element={<AddProduct />} />
           <Route path="/women" element={<WomenFashion />} />

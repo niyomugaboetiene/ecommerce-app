@@ -313,7 +313,7 @@ const AboutUs = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button 
               onClick={() => navigate('/')}
-              className="group px-12 py-6 bg-green-500 text-black rounded-2xl font-black text-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl flex items-center gap-4"
+              className="group px-12 py-6 bg-green-500 text-white rounded-2xl font-black text-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl flex items-center gap-4"
             >
               Start Shopping Now
               <FaRocket className="group-hover:translate-x-1 transition-transform duration-300" />

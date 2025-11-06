@@ -59,7 +59,7 @@ const Footer = () => {
                         <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/terms">
                             Terms of Use
                         </Link>
-                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/contact">
+                        <Link rel="noopener noreferrer" target="_blank" className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="https://niyomugaboetiene.onrender.com/contact">
                             Contact Us
                         </Link>
                         <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/about">
