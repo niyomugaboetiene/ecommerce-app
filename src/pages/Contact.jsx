@@ -36,7 +36,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full bg-gradient-to-b from-gray-900 via-black to-gray-900 px-4 py-12 flex items-center justify-center"
+      className="min-h-screen w-full bg-gradient-to-b from-green-900 via-green-500 to-green-400 px-4 py-12 flex items-center justify-center"
     >
       <motion.div
         className="max-w-6xl w-full bg-gray-800/70 rounded-xl shadow-lg p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8"
@@ -46,7 +46,7 @@ const Contact = () => {
       > 
         <div className="space-y-6">
           <motion.h2 
-            className="text-4xl font-bold text-cyan-500 mb-8"
+            className="text-4xl font-bold text-green-500 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -70,7 +70,7 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-gray-900/80 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300"
+                className="w-full px-4 py-3 rounded-lg bg-gray-900/80 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300"
                 placeholder="Enter your name"
                 disabled={isSubmitting}
               />
@@ -91,7 +91,7 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-gray-900/80 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300"
+                className="w-full px-4 py-3 rounded-lg bg-gray-900/80 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300"
                 placeholder="Enter your email"
                 disabled={isSubmitting}
               />
@@ -112,7 +112,7 @@ const Contact = () => {
                 onChange={handleChange}
                 rows="5"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-gray-900/80 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300"
+                className="w-full px-4 py-3 rounded-lg bg-gray-900/80 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300"
                 placeholder="Write your message here..."
                 disabled={isSubmitting}
               />
@@ -121,7 +121,7 @@ const Contact = () => {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 bg-cyan-600 hover:bg-cyan-700 rounded-lg text-white font-semibold shadow-lg transition duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-green-600 hover:bg-green-700 rounded-lg text-white font-semibold shadow-lg transition duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
@@ -183,7 +183,7 @@ const Contact = () => {
 
         <div className="flex flex-col justify-center">
           <motion.h2 
-            className="text-4xl font-bold text-cyan-500 mb-8"
+            className="text-4xl font-bold text-green-500 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -198,8 +198,8 @@ const Contact = () => {
             transition={{ delay: 0.5 }}
           >
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-cyan-600/20 rounded-full">
-                <FaMapMarkerAlt className="text-cyan-400 text-xl" />
+              <div className="p-3 bg-green-600/20 rounded-full">
+                <FaMapMarkerAlt className="text-green-400 text-xl" />
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-white mb-1">Location</h3>
@@ -208,8 +208,8 @@ const Contact = () => {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-cyan-600/20 rounded-full">
-                <FaEnvelope className="text-cyan-400 text-xl" />
+              <div className="p-3 bg-green-600/20 rounded-full">
+                <FaEnvelope className="text-green-400 text-xl" />
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-white mb-1">Email</h3>
@@ -218,8 +218,8 @@ const Contact = () => {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-cyan-600/20 rounded-full">
-                <FaPhoneAlt className="text-cyan-400 text-xl" />
+              <div className="p-3 bg-green-600/20 rounded-full">
+                <FaPhoneAlt className="text-green-400 text-xl" />
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-white mb-1">Phone</h3>
@@ -234,7 +234,7 @@ const Contact = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-            <h3 className="text-xl font-semibold text-white mb-4">Connect With Me</h3>
+            <h3 className="text-xl font-semibold text-white mb-4">Connect With Us</h3>
             <div className="flex space-x-4">
               <a 
                 href="https://linkedin.com" 

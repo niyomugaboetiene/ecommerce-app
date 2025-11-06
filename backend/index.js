@@ -38,7 +38,7 @@ app.use(cors({
 app.use('/product', ProductRoute);
 app.use('/user', UserRoute);
 
-mongoose.connect(MONGO_URL)
+mongoose.connect(process.env.MONGO_URL)
 .then(() => {
     console.log('Connected successfully');
 }).catch((error) => {
@@ -51,14 +51,14 @@ app.post("/send", async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.USER,
-      pass: process.env.APP_PAS,
+      user: process.env.EMAIL_USER,
+      pass: process.env.APP_PASS,
     },
   });
 
   const mailOptions = {
     from: email,
-    to: process.env.USER,
+    to: process.env.EMAIL_USER,
     subject: `Message from ${name}`,
     text: message,
   };

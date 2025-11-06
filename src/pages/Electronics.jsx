@@ -102,7 +102,7 @@ const isProductInCart = (product_id) => {
                                                              <FaPlus /> Increase Quantity
                                            </div>
                                          ) : (
-                                 <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition">
+                                 <div className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition">
                                           <FaShoppingCart /> Add To Cart
                                  </div>
                            )}
@@ -116,7 +116,7 @@ const isProductInCart = (product_id) => {
             {hasMoreItems && !showAll && (
                 <button
                     onClick={() => setShowAll(true)}
-                    className="mb-5 mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg hover:shadow-xl hover:bg-blue-600 transition duration-200"
+                    className="mb-5 mt-6 px-6 py-3 bg-green-500 text-white rounded-lg hover:shadow-xl hover:bg-green-600 transition duration-200"
                 >
                     View All
                 </button>
@@ -124,7 +124,7 @@ const isProductInCart = (product_id) => {
 
             {showAll && (
                 <button
-                    className="mb-8 py-3 px-6 bg-blue-500 text-white rounded-lg hover:shadow-xl hover:bg-blue-600 transition duration-200"
+                    className="mb-8 py-3 px-6 bg-green-500 text-white rounded-lg hover:shadow-xl hover:bg-green-600 transition duration-200"
                     onClick={() => setShowAll(false)}
                 >
                     View Less

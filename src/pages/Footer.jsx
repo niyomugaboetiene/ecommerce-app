@@ -13,30 +13,30 @@ const Footer = () => {
         <footer className="bg-black text-white">
             <div className="mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                 <div className="space-y-6">
-                    <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
+                    <h1 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-green-700 bg-clip-text text-transparent">
                         Shop Sphere
                     </h1>
                     <div className="space-y-3">
                         <input 
                             type="email" 
-                            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 placeholder-gray-400" 
+                            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200 placeholder-gray-400" 
                             placeholder="Enter your email"
                         />
-                        <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:scale-105 font-medium shadow-lg">
+                        <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-200 transform hover:scale-105 font-medium shadow-lg">
                             Subscribe
                         </button>
                     </div>
                 </div>
 
                 <div className="space-y-6">
-                    <h1 className="text-xl font-semibold border-l-4 border-blue-500 pl-3">Support</h1>
+                    <h1 className="text-xl font-semibold border-l-4 border-green-500 pl-3">Support</h1>
                     <div className="space-y-3 text-gray-300">
                         <p className="flex items-center space-x-2">
-                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                             <span>RwandaMart in Rwanda</span>
                         </p>
                         <p className="flex items-center space-x-2">
-                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                             <span>+250 728 184 299</span>
                         </p>
                     </div>
@@ -78,7 +78,7 @@ const Footer = () => {
                         Follow us on social media for updates and promotions
                     </p>
                     <div className="grid grid-cols-3 gap-4">
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-blue-600 hover:scale-110 transform duration-200 transition-all group w-15">
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-green-600 hover:scale-110 transform duration-200 transition-all group w-15">
                             <FaFacebook className="text-xl group-hover:scale-110 ms-2 transform duration-200" />
                         </button>
                         <button className="p-3 bg-gray-800 rounded-lg hover:bg-pink-600 hover:scale-110 transform duration-200 transition-all group w-15">

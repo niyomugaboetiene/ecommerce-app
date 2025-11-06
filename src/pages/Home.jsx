@@ -78,7 +78,7 @@ const Home = () => {
         <div className="self-end mb-6">
           <Link 
             to="/add"
-            className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-white hover:shadow-lg transition duration-200"
+            className="flex items-center gap-2 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg text-white hover:shadow-lg transition duration-200"
           >
             <span>+</span> Add Product
           </Link>
@@ -87,12 +87,12 @@ const Home = () => {
 
       <div className="flex w-full gap-8">
         <nav className="flex flex-col w-1/4 pr-6 border-r-2 border-gray-200">
-          <Link to="women" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Woman's Fashion</Link>
-          <Link to="men" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Men's Fashion</Link>
-          <Link to="electronics" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Electronics</Link>
-          <Link to="lifestyle" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Home & Lifestyle</Link>
-          <Link to="toy" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Baby's & Toys</Link>
-          <Link to="health" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Health & Beauty</Link>
+          <Link to="women" className="py-3 hover:text-green-500 transition-colors text-lg font-medium">Woman's Fashion</Link>
+          <Link to="men" className="py-3 hover:text-green-500 transition-colors text-lg font-medium">Men's Fashion</Link>
+          <Link to="electronics" className="py-3 hover:text-green-500 transition-colors text-lg font-medium">Electronics</Link>
+          <Link to="lifestyle" className="py-3 hover:text-green-500 transition-colors text-lg font-medium">Home & Lifestyle</Link>
+          <Link to="toy" className="py-3 hover:text-green-500 transition-colors text-lg font-medium">Baby's & Toys</Link>
+          <Link to="health" className="py-3 hover:text-green-500 transition-colors text-lg font-medium">Health & Beauty</Link>
         </nav>
 
          <div className="flex-1 flex justify-end"> 
@@ -117,7 +117,7 @@ const Home = () => {
                 <button
                   key={index}
                   className={`w-3 h-3 rounded-full ${
-                    index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
+                    index === currentIndex ? 'bg-green-500' : 'bg-gray-300'
                   }`}
                   onClick={() => setCurrentIndex(index)}
                 />

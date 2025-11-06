@@ -69,7 +69,7 @@ const CartPage = () => {
 
   if (isLoading) return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500"></div>
     </div>
   );
 
@@ -100,7 +100,7 @@ const CartPage = () => {
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div className="grid grid-cols-12 gap-4 px-6 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold">
+          <div className="grid grid-cols-12 gap-4 px-6 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold">
             <div className="col-span-5">Product</div>
             <div className="col-span-2 text-center">Price</div>
             <div className="col-span-3 text-center">Quantity</div>
@@ -146,7 +146,7 @@ const CartPage = () => {
                 </div>
 
                 <div className="col-span-1 text-center">
-                  <span className="text-lg font-bold text-blue-600">
+                  <span className="text-lg font-bold text-green-600">
                     ${(item.price * item.quality).toFixed(2)}
                   </span>
                 </div>
@@ -171,7 +171,7 @@ const CartPage = () => {
               </div>
               <div className="text-right">
                 <p className="text-2xl font-bold text-gray-900">
-                  Total: <span className="text-blue-600">${totalPrice.toFixed(2)}</span>
+                  Total: <span className="text-green-600">${totalPrice.toFixed(2)}</span>
                 </p>
                 <p className="text-sm text-gray-500 mt-1">Shipping calculated at checkout</p>
               </div>

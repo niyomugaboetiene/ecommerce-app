@@ -101,7 +101,7 @@ const SearchResults = () => {
                         <FaPlus /> Increase Quantity
                       </div>
                     ) : (
-                      <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition">
+                      <div className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition">
                         <FaShoppingCart /> Add To Cart
                       </div>
                     )}

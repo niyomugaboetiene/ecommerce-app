@@ -88,7 +88,7 @@ useEffect(() => {
                                                              <FaPlus /> Increase Quantity
                                            </div>
                                          ) : (
-                                 <div className="flex items-center gap-2 bg-blue-500 px-4 py-2 rounded-lg text-white hover:bg-blue-600 transition">
+                                 <div className="flex items-center gap-2 bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-600 transition">
                                           <FaShoppingCart /> Add To Cart
                                  </div>
                            )}
@@ -102,7 +102,7 @@ useEffect(() => {
             {hasMoreItems && !showAll && (
                 <button
                     onClick={() => setShowAll(true)}
-                    className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
+                    className="mt-6 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
                 >
                     Show All
                 </button>
@@ -111,7 +111,7 @@ useEffect(() => {
             {showAll && (
                 <button
                     onClick={() => setShowAll(false)}
-                    className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
+                    className="mt-6 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg hover:shadow-lg transition duration-200 text-white"
                 >
                     Show Less
                 </button>

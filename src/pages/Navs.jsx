@@ -49,7 +49,7 @@ const Navs = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
-      <p className="text-2xl font-bold text-black">Shop Sphere</p>
+      <p className="text-2xl font-bold text-green-500">Shop Sphere</p>
 
       <div className="flex space-x-8 font-medium text-gray-700">
         <Link to="/" className="hover:underline transition-colors">Home</Link>

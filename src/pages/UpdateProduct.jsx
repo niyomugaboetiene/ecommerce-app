@@ -53,7 +53,7 @@ const UpdateProduct = () => {
                     <label className="block text-[15px] text-gray-600 mb-2">Enter new product name</label>
                     <input 
                         type="text" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                         onChange={(e) => setProduct_name(e.target.value)}
                         value={product_name}
                     />
@@ -63,7 +63,7 @@ const UpdateProduct = () => {
                     <label className="block text-[15px] text-gray-600 mb-2">Enter new Price</label>
                     <input 
                         type="number" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                         onChange={(e) => setPrice(e.target.value)}
                         value={price}
                     />
@@ -73,7 +73,7 @@ const UpdateProduct = () => {
                     <label className="block text-[15px] text-gray-600 mb-2">Enter new Stock Number</label>
                     <input 
                         type="number" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                         onChange={(e) => setStock(e.target.value)}
                         value={stock}
                     />
@@ -83,7 +83,7 @@ const UpdateProduct = () => {
                     <label className="block text-[15px] text-gray-600 mb-2">Choose an image</label>
                     <input 
                         type="file" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                         onChange={(e) => setImage(e.target.files[0])} 
                         accept="image/*"
                     />
@@ -92,7 +92,7 @@ const UpdateProduct = () => {
                <button 
                     onClick={Update}
                     disabled={isLoading}
-                    className="w-full bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-white hover:shadow-lg transition duration-200 disabled:bg-blue-300 disabled:cursor-not-allowed"
+                    className="w-full bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg text-white hover:shadow-lg transition duration-200 disabled:bg-green-300 disabled:cursor-not-allowed"
                 >
                     {isLoading ? "Updating..." : "Update Product"}
                 </button>
