@@ -77,7 +77,7 @@ route.get('/getProduct/:product_id', async (req, res) => {
 
 route.get('/best-sold', async(req, res) => {
     try {
-      const products = await ProductSchema.find({ timesAddedToCart: { $gt: 0 }}).sort({ timesAddedToCart: -1 }).limit(8);
+      const products = await ProductSchema.find({ timesAddedToCart: { $gte: 5 }}).sort({ timesAddedToCart: -1 }).limit(8);
       if (products.length === 0) {
           return res.status(404).json({ message: 'No best sold products found.' });
       }

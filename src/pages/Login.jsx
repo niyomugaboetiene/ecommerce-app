@@ -71,6 +71,12 @@ const LoginAccount = () => {
                     className="w-full bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-white hover:shadow-lg transition duration-200 disabled:bg-blue-300 disabled:cursor-not-allowed"
                 >
                     {isLoading ? "Logging in..." : "Login"}
+                </button>    
+                <button 
+                    onClick={() => navigate('/register')}
+                    className="w-full mt-4 text-blue-500 hover:underline transition duration-200 disabled:bg-blue-300 disabled:cursor-not-allowed"
+                >
+                   Create an account
                 </button>
 
                 {error && (
