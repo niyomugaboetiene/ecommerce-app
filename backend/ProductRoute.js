@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 
 const uploads = multer({ storage });
 
-route.post('/add', uploads.single('image'), async(req, res) => {
+route.post('/add', AdminCheck, uploads.single('image'), async(req, res) => {
     const { product_name, category, price, stock } = req.body;
     const imagPath = req.file ? req.file.path : null;
     try {
