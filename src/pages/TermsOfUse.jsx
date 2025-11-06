@@ -35,7 +35,7 @@ We reserve the right to refuse service, terminate accounts, or remove content at
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative py-20 bg-gradient-to-br from-gray-50 to-white border-b border-gray-100">
+      <section className="relative py-20 bg-linear-to-br from-gray-50 to-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-black mb-6 text-green-500">
             Terms of Use
