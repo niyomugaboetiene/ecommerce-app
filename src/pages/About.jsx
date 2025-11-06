@@ -197,11 +197,11 @@ const AboutUs = () => {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ">
-            <div className="space-y-6 hover:border">
+            <div className="space-y-6 hover:border-2">
               {features.map((feature, index) => (
                 <div 
                   key={index}
-                  className=""
+                  className="border-2"
                 >
                   <div className="flex items-center gap-4 ">
                     <div>
