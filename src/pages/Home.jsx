@@ -11,6 +11,7 @@ import clothes1 from "../assets/clothes/clothes1.jpg"
 import clothes2 from "../assets/electrics/women1.webp"
 import clothes3 from "../assets/clothes/clothes3.webp"
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Images = [
   { image: phone1, description: "Modern phones for better price" },
@@ -34,6 +35,22 @@ const Home = () => {
   const [recentIndex, setRecentIndex] = useState(0);
   const [isCurrentHovered, setIsCurrentHovered] = useState(false);
   const [isRecentHovered, setIsRecentHovered] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    fetchCurrentUser();
+  }, []);
+
+  const fetchCurrentUser = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/user/userInfo", {
+        withCredentials: true,
+      });
+      setCurrentUser(res.data.userInfo);
+    } catch (error) {
+      console.log("Error fetching user info:", error.message);
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,6 +74,17 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-9 mt-4 w-full max-w-7xl mx-auto">
+      {currentUser?.isAdmin && (
+        <div className="self-end mb-6">
+          <Link 
+            to="/add"
+            className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-white hover:shadow-lg transition duration-200"
+          >
+            <span>+</span> Add Product
+          </Link>
+        </div>
+      )}
+
       <div className="flex w-full gap-8">
         <nav className="flex flex-col w-1/4 pr-6 border-r-2 border-gray-200">
           <Link to="women" className="py-3 hover:text-blue-500 transition-colors text-lg font-medium">Woman's Fashion</Link>
