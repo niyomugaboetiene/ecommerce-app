@@ -21,6 +21,7 @@ import UpdateProduct from "./pages/UpdateProduct.jsx";
 import SpecificUpdation from "./pages/SpecificUpdate.jsx";
 import CartPage from "./pages/Cart.jsx";
 import SearchResults from "./pages/SearchBar.jsx";
+import AboutUs from "./pages/About";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -70,6 +71,7 @@ function App() {
           <Route path="/updates" element={<SpecificUpdation />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/search" element={<SearchResults />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
       </Layout>
     </BrowserRouter>

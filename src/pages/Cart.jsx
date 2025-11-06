@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaTrash, FaPlus, FaMinus, FaShoppingBag } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -178,7 +180,7 @@ const CartPage = () => {
 
           <div className="bg-gray-50 px-6 py-6 border-t border-gray-200">
             <div className="flex justify-end space-x-4">
-              <button className="px-8 py-3 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-semibold">
+              <button onClick={() => navigate("/")} className="px-8 py-3 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-semibold">
                 Continue Shopping
               </button>
             </div>

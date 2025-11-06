@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaYoutube, FaTwitter, FaTwitch, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter, FaTwitch, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -41,7 +41,7 @@ const Footer = () => {
                         <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/account">
                             My Account
                         </Link>
-                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/auth">
+                        <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/sign-up">
                             Login/Register
                         </Link>
                         <Link className="block hover:text-white hover:translate-x-2 transform duration-200 transition-all" to="/cart">
