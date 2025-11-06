@@ -196,14 +196,14 @@ const AboutUs = () => {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ">
-            <div className="space-y-6 hover:border-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
               {features.map((feature, index) => (
                 <div 
                   key={index}
-                  className="border-2"
+                  className=""
                 >
-                  <div className="flex items-center gap-4 ">
+                  <div className="flex items-center gap-4 hover:scale-105 transition duration-200 hover:translate-x-3">
                     <div>
                       <h3 className={`text-xl font-bold mb-2 text-white`}>
                         {feature.title}
@@ -223,13 +223,13 @@ const AboutUs = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-6 text-gray-900">
+            <h2 className="text-4xl font-black mb-6 text-green-400">
               Our Story
             </h2>
           </div>
           
-          <div className="bg-white rounded-2xl p-12 shadow-sm border border-gray-200">
-            <div className="prose prose-lg max-w-none text-gray-600">
+          <div className="bg-green-500 rounded-2xl p-12 shadow-sm border border-gray-200">
+            <div className="prose prose-lg max-w-none text-white">
               <p className="text-xl leading-relaxed mb-6">
                 ShopSphere was born from a simple observation: most e-commerce platforms were either 
                 <span className="font-semibold text-gray-900"> overly complex</span> or 
