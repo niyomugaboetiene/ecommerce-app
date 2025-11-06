@@ -28,7 +28,7 @@ const AddToCart = async(product_id) => {
         await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
         setCartMessage(true);
         setTimeout(() => {
-            
+
         })
     } catch (error) {
       const errorMessage = error.message;
@@ -66,7 +66,7 @@ useEffect(() => {
             >
                 &larr; Back
             </button>
-            <h2 className="text-3xl font-bold mb-8">Women's Fashion</h2>
+            <h2 className="text-3xl font-bold mb-8 text-green-500">Women's Fashion</h2>
            {cartMessage && (
                   <p className="text-green-500">Product Added successfully</p>
             )}

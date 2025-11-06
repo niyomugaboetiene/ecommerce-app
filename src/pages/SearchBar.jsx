@@ -56,7 +56,7 @@ const SearchResults = () => {
         &larr; Back
       </button>
 
-      <h2 className="text-3xl font-bold mb-8">Search Results</h2>
+      <h2 className="text-3xl font-bold mb-8 text-green-500">Search Results</h2>
 
       {products.length === 0 ? (
         <p className="text-gray-500 text-lg">No products found.</p>
