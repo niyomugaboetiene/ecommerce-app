@@ -8,6 +8,7 @@ const Lifestyle = () => {
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
     const [products, setProducts] = useState([]);
     const [cartMessage, setCartMessage] = useState(false);
+    const [userCart, setUserCart] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -50,6 +51,7 @@ useEffect(() => {
     const isProductInCart = (product_id) => {
            return userCart.some(item => item.product_id === product_id);
     };
+
     const itemToShow = showAll ? products : products.slice(0, 8);
     const hasMoreItems = products.length > 8;
 
