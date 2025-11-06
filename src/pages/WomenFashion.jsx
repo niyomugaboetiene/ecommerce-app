@@ -27,6 +27,9 @@ const AddToCart = async(product_id) => {
     try {
         await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
         setCartMessage(true);
+        setTimeout(() => {
+            
+        })
     } catch (error) {
       const errorMessage = error.message;
       setError(errorMessage);
@@ -64,6 +67,9 @@ useEffect(() => {
                 &larr; Back
             </button>
             <h2 className="text-3xl font-bold mb-8">Women's Fashion</h2>
+           {cartMessage && (
+                  <p className="text-green-500">Product Added successfully</p>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500">
                 {itemToShow.map((item, idx) => (
                     <div

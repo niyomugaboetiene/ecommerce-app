@@ -58,6 +58,9 @@ useEffect(() => {
     return (
         <div className="flex flex-col items-center justify-center p-6">
             <h2 className="text-3xl font-bold mb-8">New Products</h2>
+            {cartMessage && (
+                   <p className="text-green-500">Product Added successfully</p>
+            )}
              <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500`}>
                 {itemToShow.map((item, idx) => (
   <div
@@ -80,9 +83,6 @@ useEffect(() => {
       <p className="text-center text-xs text-gray-600">Stock: {item.stock}</p>
     </div>
     <p className="text-center text-sm text-gray-600 font-bold">${item.price}</p>
-
-
-
                 {isHoveredIndex === idx && (
                         <div className="flex justify-center mt-5">
                               <button onClick={() => AddToCart(item.product_id)}>

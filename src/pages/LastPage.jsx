@@ -45,6 +45,10 @@ const AddToCart = async(product_id) => {
     try {
         await axios.post(`http://localhost:5000/product/cart/add/${product_id}`, { quality: 1 }, { withCredentials: true });
         setCartMessage(true);
+        setTimeout(() => {
+          setCartMessage("");
+        }, 3000);
+
     } catch (error) {
       const errorMessage = error.message;
       setError(errorMessage);
@@ -56,6 +60,9 @@ const AddToCart = async(product_id) => {
   return (
     <div className="flex justify-center items-center min-h-screen p-4">
       <div className="bg-black rounded-lg w-full max-w-7xl">
+            {cartMessage && (
+              <p className="text-green-500 text-center">Product Added successfully</p>
+            )}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 relative">
           <img
             src={`http://localhost:5000/${currentProduct.image}`}
