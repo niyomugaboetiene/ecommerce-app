@@ -81,7 +81,6 @@ const Navs = () => {
         </button>
 
         {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
 
         {userInfo && (
           <div className="relative">

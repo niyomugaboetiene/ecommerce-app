@@ -78,7 +78,7 @@ const Footer = () => {
                         Follow us on social media for updates and promotions
                     </p>
                     <div className="grid grid-cols-3 gap-4">
-                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-green-600 hover:scale-110 transform duration-200 transition-all group w-15">
+                        <button className="p-3 bg-gray-800 rounded-lg hover:bg-green-600 hover:scale-110 transform duration-200 transition-all group w-15" onClick="www.facebook.com">
                             <FaFacebook className="text-xl group-hover:scale-110 ms-2 transform duration-200" />
                         </button>
                         <button className="p-3 bg-gray-800 rounded-lg hover:bg-pink-600 hover:scale-110 transform duration-200 transition-all group w-15">
