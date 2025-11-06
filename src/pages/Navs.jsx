@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

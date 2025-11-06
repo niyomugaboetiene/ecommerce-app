@@ -345,6 +345,34 @@ route.post('/cart/remove', async (req, res) => {
     }
 });
 
+route.get('/search', async(req, res) => {
+    try {
+        const { query, category } = req.query;
 
+        let searchFIlter = {};
+
+        if (query) {
+            searchFIlter.$or = [
+                { product_name: { $regex: query, $option: 'i'}},
+                { category: { $regex: query, $option: 'i'}},
+                { decription: { $regex: query, $option: 'i'}},
+            ]
+        }
+
+        if (category) {
+            searchFIlter.category = { $regex: category, $option: 'i'};
+        }
+
+    const product = await ProductSchema.find(searchFIlter);
+    res.status(200).json({
+        message: 'Search result',
+        product,
+        total: product.length
+    });
+    } catch (error) {
+        console.error('Search error:', error);
+        res.status(500).json({ message: 'Search failed', error: error.message });
+    }
+})
 
 export default route;
