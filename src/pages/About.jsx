@@ -126,7 +126,6 @@ const AboutUs = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button 
-              onClick={() => document.getElementById('values').scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 bg-green-500 text-white rounded-lg hover:scale-105 active:rounded-full transition-alln duration-300"
             >
               Contact Us
@@ -146,7 +145,7 @@ const AboutUs = () => {
             ].map((stat, index) => (
               <div 
                 key={index} 
-                className="text-center group p-6 hover:border hover:border-green-100 hover:scale-105 rounded-2xl transition-all duration-300"
+                className="text-center group p-6 hover:border hover:border-green-100 hover:translate-y-3 rounded-2xl transition-all duration-300"
               >
                 <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gray-200 transition-colors duration-300">
                   <div className="text-2xl text-white-700">
@@ -164,7 +163,7 @@ const AboutUs = () => {
       <section id="values" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-6 text-gray-900">
+            <h2 className="text-4xl font-black mb-6 text-green-500">
               Our Core Values
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -172,50 +171,44 @@ const AboutUs = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-rows-1 md:grid-rows-2 lg:grid-rows-4 gap-6">
             {coreValues.map((value, index) => (
               <div 
                 key={index}
-                className="group p-8 bg-white border border-gray-200 rounded-2xl hover:border-gray-300 hover:shadow-xl transition-all duration-500"
+                className="group p-8 bg-green-500 border rounded-2xl hover:shadow-2xl hover:translate-x-3 transition-all duration-500"
               >
-                <div className="w-14 h-14 mb-6 rounded-xl bg-gray-100 flex items-center justify-center text-gray-700 group-hover:bg-gray-200 transition-colors duration-300">
+                <div className="w-14 h-14 mb-6 rounded-xl bg-gray-100 flex items-center justify-center hover:scale-105 transition duration-200 text-green-500">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                <p className="text-white leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-green-500">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-6 text-gray-900">
+            <h2 className="text-4xl font-black mb-6 text-white">
               Why Choose ShopSphere?
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ">
+            <div className="space-y-6 hover:border">
               {features.map((feature, index) => (
                 <div 
                   key={index}
-                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
-                    activeFeature === index 
-                      ? 'bg-gray-900 text-white shadow-2xl' 
-                      : 'bg-gray-50 text-gray-800 hover:bg-gray-100'
-                  }`}
-                  onMouseEnter={() => setActiveFeature(index)}
+                  className=""
                 >
-                  <div className="flex items-center gap-4">
-
+                  <div className="flex items-center gap-4 ">
                     <div>
-                      <h3 className={`text-xl font-bold mb-2 ${activeFeature === index ? 'text-white' : 'text-gray-900'}`}>
+                      <h3 className={`text-xl font-bold mb-2 text-white`}>
                         {feature.title}
                       </h3>
-                      <p className={activeFeature === index ? 'text-gray-300' : 'text-gray-600'}>
+                      <p className="text-white">
                         {feature.description}
                       </p>
                     </div>
@@ -223,19 +216,7 @@ const AboutUs = () => {
                 </div>
               ))}
             </div>
-            
-            <div className="bg-gray-100 rounded-2xl p-12 text-center">
-              <div className="text-8xl mb-6">
-                {features[activeFeature].image}
-              </div>
-              <h3 className="text-2xl font-black text-gray-900 mb-4">
-                {features[activeFeature].title}
-              </h3>
-              <p className="text-gray-600 text-lg">
-                {features[activeFeature].description}
-              </p>
-            </div>
-          </div>
+           </div>
         </div>
       </section>
 
