@@ -229,7 +229,7 @@ const AboutUs = () => {
             </h2>
           </div>
           
-          <div className="bg-green-500 rounded-2xl p-12 shadow-sm border border-gray-200 hover:translate-y-4 transition duration-200">
+          <div className="bg-green-500 rounded-2xl p-12 shadow-sm border border-gray-200 hover:-translate-y-4 transition duration-200">
             <div className="prose prose-lg max-w-none text-white">
               <p className="text-xl leading-relaxed mb-6">
                 ShopSphere was born from a simple observation: most e-commerce platforms were either 
@@ -265,7 +265,7 @@ const AboutUs = () => {
             <p className="text-xl text-white">The visionary architect crafting your shopping experience</p>
           </div>
           
-          <div className="grid grid-cols-1 gap-8 hover:translate-y-2 ">
+          <div className="grid grid-cols-1 gap-8 hover:translate-y-2 transition duration-200">
             {teamMembers.map((member, index) => (
               <div key={index} className="group">
                 <div className="flex flex-col lg:flex-row items-center gap-12 p-12 bg-gray-50 rounded-3xl border border-gray-200 hover:border-gray-300 transition-all duration-500">
@@ -313,7 +313,7 @@ const AboutUs = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button 
               onClick={() => navigate('/')}
-              className="group px-12 py-6 bg-white text-black rounded-2xl font-black text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl flex items-center gap-4"
+              className="group px-12 py-6 bg-green-500 text-black rounded-2xl font-black text-lg transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl flex items-center gap-4"
             >
               Start Shopping Now
               <FaRocket className="group-hover:translate-x-1 transition-transform duration-300" />
