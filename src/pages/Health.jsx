@@ -70,7 +70,7 @@ useEffect(() => {
             >
                 &larr; Back
             </button>
-            <h2 className="text-3xl font-bold mb-8">Health & Beauty Products</h2>
+            <h2 className="text-3xl font-bold mb-8 text-green-500">Health & Beauty Products</h2>
             {cartMessage && (
               <p className="text-green-500">Product Added successfully</p>
             )}

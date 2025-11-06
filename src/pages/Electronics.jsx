@@ -69,7 +69,7 @@ const isProductInCart = (product_id) => {
             >
                 &larr; Back
             </button>
-            <h2 className="text-3xl font-bold mb-8">Electronics Products</h2>
+            <h2 className="text-3xl font-bold mb-8 text-green-500">Electronics Products</h2>
             {cartMessage && (
                 <p className="text-green-500">Product added successfully</p>
             )}

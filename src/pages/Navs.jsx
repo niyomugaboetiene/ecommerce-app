@@ -52,10 +52,10 @@ const Navs = () => {
       <p className="text-2xl font-bold text-green-500">Shop Sphere</p>
 
       <div className="flex space-x-8 font-medium text-gray-700">
-        <Link to="/" className="hover:underline transition-colors">Home</Link>
-        <Link to="/contact" className="hover:underline transition-colors">Contact</Link>
-        <Link to="/about" className="hover:underline transition-colors">About</Link>
-        <Link to="/sign-up" className="hover:underline transition-colors">Sign Up</Link>
+        <Link to="/" className="hover:underline transition-colors hover:text-green-500">Home</Link>
+        <Link to="/contact" className="hover:underline transition-colors hover:text-green-500">Contact</Link>
+        <Link to="/about" className="hover:underline transition-colors hover:text-green-500">About</Link>
+        <Link to="/sign-up" className="hover:underline transition-colors hover:text-green-500">Sign Up</Link>
       </div>
 
       <div className="flex items-center space-x-4">

@@ -28,7 +28,7 @@ const BestSeller = () => {
             setTimeout(() => {
                 setCartMessage("");
             }, 4000);
-            
+
         } catch (error) {
           const errorMessage = error.message;
           setError(errorMessage);
@@ -59,7 +59,7 @@ useEffect(() => {
 
     return (
         <div className="flex flex-col items-center justify-center p-9 mt-4">
-            <h1 className="text-center mt-16 text-3xl font-bold mb-12">Best Sold Products</h1>
+            <h1 className="text-center mt-16 text-3xl font-bold mb-12 text-green-500">Best Sold Products</h1>
 
             {cartMessage && (
                 <p className="text-green-500">Product added successfully</p>

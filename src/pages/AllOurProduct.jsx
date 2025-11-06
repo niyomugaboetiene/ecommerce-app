@@ -116,7 +116,7 @@ const OurProduct = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-9 mt-4">
-      <h1 className="text-center mt-16 text-3xl font-bold mb-12">Our Products</h1>
+      <h1 className="text-center mt-16 text-3xl font-bold mb-12 text-green-500">Our Products</h1>
 
       {cartMessage && (
         <p className="text-green-500 mb-4">Product added to cart successfully!</p>
