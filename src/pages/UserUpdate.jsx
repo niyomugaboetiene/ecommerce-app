@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const UpdateUserInfo = () => {
@@ -7,7 +7,7 @@ const UpdateUserInfo = () => {
   const [user_name, setUser_name] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
 
   const Update = async (e) => {
@@ -19,6 +19,7 @@ const UpdateUserInfo = () => {
           user_name: user_name,
           OldPassword: oldPassword,
           NewPassword: newPassword,
+          image: image
         },
         {
           withCredentials: true, 
@@ -29,11 +30,31 @@ const UpdateUserInfo = () => {
       );
 
       setMessage(res.data.message);
+      setOldPassword("");
+      setNewPassword("");
+      setImage(null);
     } catch (err) {
       setMessage(err.response?.data?.message || "Something went wrong");
       console.error(err);
     }
   };
+
+   const [currentUser, setCurrentUser] = useState([]);
+    const fetchCurrentUser = async () => {
+        try {
+          const res = await axios.get("http://localhost:5000/user/userInfo", {
+            withCredentials: true,
+          });
+          setCurrentUser(res.data.userInfo);
+          console.log("current user", res.data);
+        } catch (error) {
+          console.log("Error fetching user info:", error.message);
+        }
+      };
+
+      useEffect(() => {
+        fetchCurrentUser();
+      }, []);
 
   return (
     <div className="flex flex-col items-center justify-center p-8">
@@ -43,7 +64,7 @@ const UpdateUserInfo = () => {
         <input
           type="text"
           placeholder="New username"
-          value={user_name}
+          value={currentUser.user_name}
           onChange={(e) => setUser_name(e.target.value)}
           className="border p-2 rounded"
         />

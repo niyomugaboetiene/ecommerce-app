@@ -73,7 +73,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/updateProduct/:user_id" element={<UpdateUserInfo />} />
+          <Route path="/updateProduct" element={<UpdateUserInfo />} />
         </Routes>
       </Layout>
     </BrowserRouter>

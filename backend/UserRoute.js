@@ -80,7 +80,7 @@ routes.get('/userInfo', (req, res) => {
     return res.status(401).json("Not logged in")
 });
 
-routes.put("/update/:user_id", uploads.single("image"), async (req, res) => {
+routes.put("/update", uploads.single("image"), async (req, res) => {
   try {
     const { user_id } = req.session.user;
     const { user_name, OldPassword, NewPassword } = req.body;
