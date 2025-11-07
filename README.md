@@ -1,2 +1,2 @@
 Over view of App
-![App_Image](ecommerce-app/AppImage.JPG)
+![App_Image](appImage.png)
