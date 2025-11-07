@@ -11,10 +11,6 @@ const Navs = () => {
   const [isMenuShow, setIsMenuShown] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isActive1, setIsActive1] = useState(false);
-  const [isActive2, setIsActive2] = useState(false);
-  const [isActive3, setIsActive3] = useState(false);
-  const [isActive4, setIsActive4] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,16 +58,16 @@ const Navs = () => {
       </button>
 
       <div className="hidden md:flex space-x-8 font-medium text-gray-700">
-        <Link to="/" onClick={() => setIsActive1(true)} className={`hover:underline transition-colors hover:text-green-500 ${isActive1 ? "text-green-500": "text-gray-700"}`}>
+        <Link to="/" onClick={() => setIsActive1(true)} className={`hover:underline transition-colors hover:text-green-500`}>
           Home
         </Link>
-        <Link to="/contact" onClick={() => setIsActive2(true)} className={`hover:underline transition-colors hover:text-green-500 ${isActive2 ? "text-green-500": "text-gray-700"}`}>
+        <Link to="/contact"   className={`hover:underline transition-colors hover:text-green-500 `}>
           Contact
         </Link>
-        <Link to="/about" onClick={() => setIsActive3(true)} className={`hover:underline transition-colors hover:text-green-500 ${isActive3 ? "text-green-500": "text-gray-700"}`}>
+        <Link to="/about" className={`hover:underline transition-colors hover:text-green-500`}>
           About
         </Link>
-        <Link to="/sign-up" onClick={() => setIsActive4(true)} className={`hover:underline transition-colors hover:text-green-500 ${isActive4 ? "text-green-500": "text-gray-700"}`}>
+        <Link to="/sign-up"  className={`hover:underline transition-colors hover:text-green-500`}>
           Sign Up
         </Link>
       </div>
@@ -104,7 +100,7 @@ const Navs = () => {
           <div className="relative">
             <div
               className="flex items-center space-x-2 cursor-pointer"
-              onClick={() => setIsMenuShow(!isMenuShow)}
+              onClick={() => setIsMenuShown(!isMenuShow)}
             >
               <img
                 src={`http://localhost:5000/${userInfo.image}`}
