@@ -42,7 +42,7 @@ const LoginAccount = () => {
 
     return (
         <div className="flex flex-col items-center justify-center p-9 mt-4">
-            <h1 className="text-center mt-16 text-3xl font-bold mb-12">Login to Your Account</h1>
+            <h1 className="text-center mt-16 text-3xl font-bold mb-12 text-green-500">Login to Your Account</h1>
 
             <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md transition-all duration-300">
                 <div className="mb-6">

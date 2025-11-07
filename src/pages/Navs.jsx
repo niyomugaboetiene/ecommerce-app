@@ -111,8 +111,14 @@ const Navs = () => {
 
             {isMenuShow && (
               <div className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-lg px-6 py-4 z-50">
-                <p className="font-semibold text-lg mb-2">
-                  Username: {userInfo.user_name}
+                <h1 className="text-xl font-bold mb-3 ms-13 text-green-500 underline">User info</h1>
+                <div>
+                  <img src={`http://localhost:5000/${userInfo.image}`} alt={userInfo.user_name} 
+                     className="object-cover rounded-full w-30 h-30 ms-10 mb-4 shadow-2xl transition duration-200 hover:translate-y-2 border-2 text-green-500"
+                   />
+                </div>
+                <p className="text-lg mb-2 text-center text-green-500 font-bold capitalize">
+                  {userInfo.user_name}
                 </p>
                 <button
                   onClick={Logout}

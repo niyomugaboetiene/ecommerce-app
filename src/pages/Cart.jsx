@@ -19,7 +19,7 @@ const CartPage = () => {
         setCartItems(res.data.cart);
       } catch (err) {
         console.error(err);
-        setError("Failed to fetch cart items");
+        setError("Login First to exprole your cart");
       } finally {
         setIsLoading(false);
       }

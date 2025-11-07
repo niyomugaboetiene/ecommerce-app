@@ -31,7 +31,7 @@ const RegisterAccount = () => {
             setSuccess("Account created successfully");
             setTimeout(() => {
                 setSuccess("");
-                navigate('/sign-up'); // Fixed: use navigate directly, not useNavigate
+                navigate('/sign-up'); 
             }, 2000);
             setIsLoading(false);
         } catch (error) {
@@ -55,7 +55,7 @@ const RegisterAccount = () => {
                 &larr; Back
             </button>
 
-            <h1 className="text-center mt-16 text-3xl font-bold mb-12">Create Your Account</h1>
+            <h1 className="text-center mt-16 text-3xl font-bold mb-12 text-green-500">Create Your Account</h1>
 
             <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md transition-all duration-300">
                 <div className="mb-6">
