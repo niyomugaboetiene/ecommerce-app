@@ -80,48 +80,6 @@ routes.get('/userInfo', (req, res) => {
     return res.status(401).json("Not logged in")
 });
 
-
-routes.put('/updateUser', uploads.single("image"), async(req, res) => {
-    try {
-        const { user_name, OldPassword, NewPassword } = req.body;
-        const { user_id } = req.session.user;
-
-        const newData = {};
-
-        const hashedPassword = await bcrypt.hash(NewPassword, 10);
-        if (user_name) newData.user_name = user_name;
-        if (NewPassword) newData.NewPassword = hashedPassword;
-        if (req.file) newData.image = req.file.path; 
-        
-        const currentUser = await UserSchema.findOne({ user_id });
-        const isMatch = await bcrypt.compare(OldPassword, currentUser.password);
-        if (isMatch) {
-           const user  = await UserSchema.findOneAndUpdate(
-              { user_id: user_id },
-              { $set: newData },
-              { new: true }
-        );  
-        if (!user) return res.status(404).json({ message: "user not found" });
-        res.status(200).json({ message: "Product updated successfully", user });
-        } 
-    } catch (error) {
-         console.error(error);
-         res.status(500).json({ message: "Database error", error: error.message });
-    }
-});
-
-routes.post('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            console.error('Logout error:', err);
-            return res.status(500).json({ message: 'Failed to logout', error: err.message });
-        }
-        res.clearCookie('connect.sid'); 
-        res.status(200).json({ message: 'Logged out successfully' });
-    });
-});
-
-
 routes.post('/cart/add', async(req, res) => {
     if (!req.session.user) return res.status(401).json({ message: 'Login first' });
 
