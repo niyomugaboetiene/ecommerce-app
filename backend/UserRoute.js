@@ -80,41 +80,62 @@ routes.get('/userInfo', (req, res) => {
     return res.status(401).json("Not logged in")
 });
 
+
 routes.put("/update", uploads.single("image"), async (req, res) => {
   try {
+    if (!req.session.user || !req.session.user.user_id) {
+      return res.status(401).json({ message: "Please login first" });
+    }
+
     const { user_id } = req.session.user;
     const { user_name, OldPassword, NewPassword } = req.body;
 
     const CurrentUser = await UserSchema.findOne({ user_id });
     if (!CurrentUser) {
-      return res.status(404).json({ message: "Login please" });
+      return res.status(404).json({ message: "User not found" });
     }
 
-    const PasswordMatches = await bcrypt.compare(OldPassword, CurrentUser.password);
-    if (!PasswordMatches) {
-      return res.status(400).json({ message: "Old password is incorrect" });
-    }
-
-    const imagePath = req.file ? req.file.path : null;
     const NewData = {};
-    if (user_name) NewData.user_name = user_name;
-    if (req.file) NewData.imagePath = imagePath;
 
-    if (NewPassword) {
+    if (user_name && user_name !== CurrentUser.user_name) {
+      NewData.user_name = user_name;
+    }
+
+    if (NewPassword && NewPassword.trim() !== "") {
+      if (!OldPassword || OldPassword.trim() === "") {
+        return res.status(400).json({
+          message: "Old password is required to set a new password",
+        });
+      }
+
+      const PasswordMatches = await bcrypt.compare(
+        OldPassword,
+        CurrentUser.password
+      );
+
+      if (!PasswordMatches) {
+        return res.status(400).json({ message: "Old password is incorrect" });
+      }
+
       const salt = await bcrypt.genSalt(10);
       NewData.password = await bcrypt.hash(NewPassword, salt);
     }
 
-    await UserSchema.findOneAndUpdate(
-      { user_id },
-      { $set: NewData },
-      { new: true }
-    );
+    if (req.file) {
+      NewData.imagePath = req.file.path;
+    }
+
+    if (Object.keys(NewData).length === 0) {
+      return res.status(400).json({
+        message: "No changes to update",
+      });
+    }
+
+    await UserSchema.findOneAndUpdate({ user_id }, { $set: NewData }, { new: true });
 
     return res.status(200).json({
       message: "Updated successfully",
     });
-
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });

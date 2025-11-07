@@ -13,7 +13,6 @@ const Navs = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
     const GetUserInfo = async () => {
       try {
         setIsLoading(true);
@@ -25,6 +24,7 @@ const Navs = () => {
         setIsLoading(false);
       }
     };
+  useEffect(() => {
     GetUserInfo();
   }, []);
 

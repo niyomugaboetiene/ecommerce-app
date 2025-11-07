@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const UpdateUserInfo = () => {
   const [user_name, setUser_name] = useState("");
@@ -8,58 +8,62 @@ const UpdateUserInfo = () => {
   const [newPassword, setNewPassword] = useState("");
   const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
+
+  const fetchCurrentUser = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/user/userInfo", {
+        withCredentials: true,
+      });
+      setCurrentUser(res.data.userInfo);
+      setUser_name(res.data.userInfo.user_name);
+    } catch (error) {
+      console.log("Error fetching user info:", error.message);
+      navigate("/sign-up");
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentUser();
+  }, []);
 
   const Update = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("user_name", user_name);
-      formData.append("OldPassword", oldPassword);
-      formData.append("NewPassword", newPassword);
+
+      if (user_name) {
+        formData.append("user_name", user_name);
+      }
+
+      if (oldPassword && newPassword) {
+        formData.append("OldPassword", oldPassword);
+        formData.append("NewPassword", newPassword);
+      }
+
       if (image) {
         formData.append("image", image);
       }
 
-      const res = await axios.put(
-        `http://localhost:5000/user/update`,
-        {
-           formData
+      const res = await axios.put("http://localhost:5000/user/update", formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-        {
-          withCredentials: true, 
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      });
 
       setMessage(res.data.message);
       setOldPassword("");
       setNewPassword("");
       setImage(null);
+
+      fetchCurrentUser();
     } catch (err) {
       setMessage(err.response?.data?.message || "Something went wrong");
       console.error(err);
     }
   };
-
-   const [currentUser, setCurrentUser] = useState([]);
-    const fetchCurrentUser = async () => {
-        try {
-          const res = await axios.get("http://localhost:5000/user/userInfo", {
-            withCredentials: true,
-          });
-          setCurrentUser(res.data.userInfo);
-          console.log("current user", res.data);
-        } catch (error) {
-          console.log("Error fetching user info:", error.message);
-          
-        }
-      };
-
-      useEffect(() => {
-        fetchCurrentUser();
-      }, []);
 
   return (
     <div className="flex flex-col items-center justify-center p-8">
@@ -69,44 +73,50 @@ const UpdateUserInfo = () => {
         <input
           type="text"
           placeholder="New username"
-          value={currentUser.user_name}
+          value={user_name}
           onChange={(e) => setUser_name(e.target.value)}
           className="border p-2 rounded"
         />
 
         <input
           type="password"
-          placeholder="Old password"
+          placeholder="Old password (only if changing)"
           value={oldPassword}
           onChange={(e) => setOldPassword(e.target.value)}
-          required
           className="border p-2 rounded"
         />
 
         <input
           type="password"
-          placeholder="New password"
+          placeholder="New password (optional)"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
           className="border p-2 rounded"
-        />     
-         <input
+        />
+
+        <input
           type="file"
-          accept="images/*"
+          accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
           className="border p-2 rounded"
         />
 
         <button
           type="submit"
-          className="bg-green-500 hover:bg-green-600 text-white py-2 rounded"
+          className="bg-green-500 hover:bg-green-600 text-white py-2 rounded transition duration-200"
         >
           Update
         </button>
       </form>
 
       {message && (
-        <p className="mt-4 text-center text-gray-700 font-semibold">{message}</p>
+        <p
+          className={`mt-4 text-center font-semibold ${
+            message.includes("success") ? "text-green-600" : "text-red-600"
+          }`}
+        >
+          {message}
+        </p>
       )}
     </div>
   );

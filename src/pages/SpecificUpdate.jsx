@@ -47,7 +47,7 @@ const SpecificUpdation = () => {
                     <label className="block text-[15px] text-gray-600 mb-2">Choose an image</label>
                     <input 
                         type="file" 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                         onChange={(e) => setImage(e.target.files[0])} 
                         accept="image/*"
                     />
@@ -56,7 +56,7 @@ const SpecificUpdation = () => {
                <button 
                     onClick={Update}
                     disabled={isLoading}
-                    className="w-full bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg text-white hover:shadow-lg transition duration-200 disabled:bg-blue-300 disabled:cursor-not-allowed"
+                    className="w-full bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg text-white hover:shadow-lg transition duration-200 disabled:bg-green-300 disabled:cursor-not-allowed"
                 >
                     {isLoading ? "Updating..." : "Update Image"}
                 </button>
