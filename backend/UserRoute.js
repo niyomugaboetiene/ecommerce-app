@@ -80,7 +80,7 @@ routes.get('/userInfo', (req, res) => {
     return res.status(401).json("Not logged in")
 });
 
-routes.put("/update/:user_id", async (req, res) => {
+routes.put("/update/:user_id", uploads.single("image"), async (req, res) => {
   try {
     const { user_id } = req.session.user;
     const { user_name, OldPassword, NewPassword } = req.body;
@@ -95,6 +95,7 @@ routes.put("/update/:user_id", async (req, res) => {
       return res.status(400).json({ message: "Old password is incorrect" });
     }
 
+    const imagePath = req.file ? req.file.path : null;
     const NewData = {};
     if (user_name) NewData.user_name = user_name;
 
