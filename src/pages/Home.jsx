@@ -87,11 +87,9 @@ const Home = () => {
         </div>
       )}
 
-      {/* Top Layout */}
       <div className="flex flex-col md:flex-row w-full gap-6 md:gap-8">
         {/* Sidebar */}
         <div className="w-full md:w-1/4 border-b-2 md:border-b-0 md:border-r-2 border-gray-200 pb-4 md:pb-0 pr-0 md:pr-6">
-          {/* Mobile Toggle */}
           <div className="flex md:hidden justify-between items-center mb-4">
             <h2 className="text-xl font-semibold text-gray-700">Categories</h2>
             <button
@@ -102,7 +100,6 @@ const Home = () => {
             </button>
           </div>
 
-          {/* Category Links */}
           <nav
             className={`flex flex-col space-y-2 overflow-hidden transition-all duration-500 ease-in-out ${
               isMenuOpen ? "max-h-96" : "max-h-0 md:max-h-none"
@@ -147,7 +144,6 @@ const Home = () => {
           </nav>
         </div>
 
-        {/* Carousel Section */}
         <div className="flex-1 flex justify-center md:justify-end w-full">
           <div className="relative max-w-3xl w-full">
             <div className="transition-opacity duration-500 ease-in-out">

@@ -11,6 +11,10 @@ const Navs = () => {
   const [isMenuShow, setIsMenuShown] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isActive1, setIsActive1] = useState(false);
+  const [isActive2, setIsActive2] = useState(false);
+  const [isActive3, setIsActive3] = useState(false);
+  const [isActive4, setIsActive4] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,7 +54,6 @@ const Navs = () => {
 
   return (
    <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-4 flex items-center justify-between">
-      {/* Logo */}
       <button
         className="text-2xl font-bold text-green-500"
         onClick={() => navigate("/")}
@@ -58,24 +61,22 @@ const Navs = () => {
         Shop Sphere
       </button>
 
-      {/* Desktop Links */}
       <div className="hidden md:flex space-x-8 font-medium text-gray-700">
-        <Link to="/" className="hover:underline transition-colors hover:text-green-500">
+        <Link to="/" onClick={() => setIsActive1(true)} className={`hover:underline transition-colors hover:text-green-500 ${isActive1 ? "text-green-500": "text-gray-700"}`}>
           Home
         </Link>
-        <Link to="/contact" className="hover:underline transition-colors hover:text-green-500">
+        <Link to="/contact" onClick={() => setIsActive2(true)} className={`hover:underline transition-colors hover:text-green-500 ${isActive2 ? "text-green-500": "text-gray-700"}`}>
           Contact
         </Link>
-        <Link to="/about" className="hover:underline transition-colors hover:text-green-500">
+        <Link to="/about" onClick={() => setIsActive3(true)} className={`hover:underline transition-colors hover:text-green-500 ${isActive3 ? "text-green-500": "text-gray-700"}`}>
           About
         </Link>
-        <Link to="/sign-up" className="hover:underline transition-colors hover:text-green-500">
+        <Link to="/sign-up" onClick={() => setIsActive4(true)} className={`hover:underline transition-colors hover:text-green-500 ${isActive4 ? "text-green-500": "text-gray-700"}`}>
           Sign Up
         </Link>
       </div>
 
-      {/* Search + Cart + Profile */}
-      <div className="hidden md:flex items-center space-x-4">
+      <div className="hidden md:flex items-center space-x-4 p-4">
         <div className="flex items-center bg-gray-100 rounded-lg p-2 w-64">
           <input
             type="text"
@@ -90,7 +91,6 @@ const Navs = () => {
           />
         </div>
 
-        {/* Cart */}
         <button
           className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
           onClick={() => navigate("/cart")}
@@ -98,10 +98,8 @@ const Navs = () => {
           <FaShoppingCart className="text-gray-700" />
         </button>
 
-        {/* Loading */}
         {loading && <p>Loading...</p>}
 
-        {/* Profile */}
         {userInfo && (
           <div className="relative">
             <div
@@ -132,7 +130,6 @@ const Navs = () => {
         )}
       </div>
 
-      {/* Hamburger (Mobile) */}
       <div className="md:hidden flex items-center">
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? (
@@ -143,7 +140,6 @@ const Navs = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="absolute top-20 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-6 py-6 md:hidden z-40">
           <div className="flex flex-col space-y-4 font-medium text-gray-700">
