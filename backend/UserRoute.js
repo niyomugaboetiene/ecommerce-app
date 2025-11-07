@@ -88,20 +88,22 @@ routes.put('/updateUser', uploads.single("image"), async(req, res) => {
 
         const newData = {};
 
+        const hashedPassword = await bcrypt.hash(NewPassword, 10);
         if (user_name) newData.user_name = user_name;
-        if (OldPassword) newData.OldName = OldName;
-        if (NewPassword) newData.NewPassword = NewPassword;
+        if (NewPassword) newData.NewPassword = hashedPassword;
         if (req.file) newData.image = req.file.path; 
         
-        const user  = await UserSchema.findOneAndUpdate(
-            { user_id: user_id },
-            { $set: newData },
-            { new: true }
+        const currentUser = await UserSchema.findOne({ user_id });
+        const isMatch = await bcrypt.compare(OldPassword, currentUser.password);
+        if (isMatch) {
+           const user  = await UserSchema.findOneAndUpdate(
+              { user_id: user_id },
+              { $set: newData },
+              { new: true }
         );  
-
         if (!user) return res.status(404).json({ message: "user not found" });
-
         res.status(200).json({ message: "Product updated successfully", user });
+        } 
     } catch (error) {
          console.error(error);
          res.status(500).json({ message: "Database error", error: error.message });
