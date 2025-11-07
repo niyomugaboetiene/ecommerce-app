@@ -98,7 +98,7 @@ routes.put("/update", uploads.single("image"), async (req, res) => {
     const imagePath = req.file ? req.file.path : null;
     const NewData = {};
     if (user_name) NewData.user_name = user_name;
-    if (imagePath) NewData.imagePath = imagePath;
+    if (req.file) NewData.imagePath = imagePath;
 
     if (NewPassword) {
       const salt = await bcrypt.genSalt(10);

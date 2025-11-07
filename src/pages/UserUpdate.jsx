@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const UpdateUserInfo = () => {
-  const { user_id } = useParams();
   const [user_name, setUser_name] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -13,13 +12,18 @@ const UpdateUserInfo = () => {
   const Update = async (e) => {
     e.preventDefault(); 
     try {
+      const formData = new FormData();
+      formData.append("user_name", user_name);
+      formData.append("OldPassword", oldPassword);
+      formData.append("NewPassword", newPassword);
+      if (image) {
+        formData.append("image", image);
+      }
+
       const res = await axios.put(
-        `http://localhost:5000/user/update/${user_id}`,
+        `http://localhost:5000/user/update`,
         {
-          user_name: user_name,
-          OldPassword: oldPassword,
-          NewPassword: newPassword,
-          image: image
+           formData
         },
         {
           withCredentials: true, 
@@ -49,6 +53,7 @@ const UpdateUserInfo = () => {
           console.log("current user", res.data);
         } catch (error) {
           console.log("Error fetching user info:", error.message);
+          
         }
       };
 
