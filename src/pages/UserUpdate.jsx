@@ -1,125 +1,123 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-const UpdateUserInfo = () => {
-  const [user_name, setUser_name] = useState("");
+const UpdateUser = () => {
+  const [userName, setUserName] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
-  const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState([]);
 
-  const fetchCurrentUser = async () => {
+    const fetchCurrentUser = async () => {
     try {
       const res = await axios.get("http://localhost:5000/user/userInfo", {
         withCredentials: true,
       });
       setCurrentUser(res.data.userInfo);
-      setUser_name(res.data.userInfo.user_name);
+      console.log("current user", res.data);
     } catch (error) {
       console.log("Error fetching user info:", error.message);
-      navigate("/sign-up");
     }
   };
 
   useEffect(() => {
     fetchCurrentUser();
   }, []);
-
-  const Update = async (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("user_name", userName);
+    formData.append("OldPassword", oldPassword);
+    formData.append("NewPassword", newPassword);
+    if (image) formData.append("image", image);
+
     try {
-      const formData = new FormData();
-
-      if (user_name) {
-        formData.append("user_name", user_name);
-      }
-
-      if (oldPassword && newPassword) {
-        formData.append("OldPassword", oldPassword);
-        formData.append("NewPassword", newPassword);
-      }
-
-      if (image) {
-        formData.append("image", image);
-      }
-
-      const res = await axios.put("http://localhost:5000/user/update", formData, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await axios.put(
+        "http://localhost:5000/user/updateUser",
+        formData,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       setMessage(res.data.message);
-      setOldPassword("");
-      setNewPassword("");
-      setImage(null);
-
-      fetchCurrentUser();
+      console.log(res.data);
     } catch (err) {
-      setMessage(err.response?.data?.message || "Something went wrong");
-      console.error(err);
+      console.error(err.response?.data || err.message);
+      setMessage(err.response?.data?.message || "Update failed");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-8">
-      <h2 className="text-xl font-bold mb-4">Update Account Info</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md space-y-4"
+      >
+        <h2 className="text-xl font-semibold text-center mb-4">Update Profile</h2>
 
-      <form onSubmit={Update} className="flex flex-col gap-4 w-80">
-        <input
-          type="text"
-          placeholder="New username"
-          value={user_name}
-          onChange={(e) => setUser_name(e.target.value)}
-          className="border p-2 rounded"
-        />
+        <div>
+          <label className="block text-sm mb-1">Username</label>
+          <input
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            className="w-full p-2 border rounded-lg"
+            placeholder="Enter new username"
+          />
+        </div>
 
-        <input
-          type="password"
-          placeholder="Old password (only if changing)"
-          value={oldPassword}
-          onChange={(e) => setOldPassword(e.target.value)}
-          className="border p-2 rounded"
-        />
+        <div>
+          <label className="block text-sm mb-1">Old Password</label>
+          <input
+            type="password"
+            value={oldPassword}
+            onChange={(e) => setOldPassword(e.target.value)}
+            className="w-full p-2 border rounded-lg"
+            placeholder="Enter old password"
+          />
+        </div>
 
-        <input
-          type="password"
-          placeholder="New password (optional)"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          className="border p-2 rounded"
-        />
+        <div>
+          <label className="block text-sm mb-1">New Password</label>
+          <input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            className="w-full p-2 border rounded-lg"
+            placeholder="Enter new password"
+          />
+        </div>
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
-          className="border p-2 rounded"
-        />
+        <div>
+          <label className="block text-sm mb-1">Profile Image</label>
+          <input
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+            className="w-full"
+            accept="image/*"
+          />
+        </div>
 
         <button
           type="submit"
-          className="bg-green-500 hover:bg-green-600 text-white py-2 rounded transition duration-200"
+          className="w-full bg-green-600 text-white p-2 rounded-lg hover:bg-green-700"
         >
           Update
         </button>
-      </form>
 
-      {message && (
-        <p
-          className={`mt-4 text-center font-semibold ${
-            message.includes("success") ? "text-green-600" : "text-red-600"
-          }`}
-        >
-          {message}
-        </p>
-      )}
+        {message && (
+          <p className="text-center text-sm mt-2 text-gray-700">{message}</p>
+        )}
+      </form>
     </div>
   );
 };
 
-export default UpdateUserInfo;
+export default UpdateUser;
