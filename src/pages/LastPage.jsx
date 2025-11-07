@@ -7,6 +7,7 @@ const LastPage = () => {
   const [currentUser, setCurrentUser] = useState([]);
   const [currentProduct, setCurrentProduct] = useState([]);
   const [cartMessage, setCartMessage] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
 
@@ -63,6 +64,9 @@ const AddToCart = async(product_id) => {
       <div className="bg-black rounded-lg w-full max-w-7xl">
             {cartMessage && (
               <p className="text-green-500 text-center">Product Added successfully</p>
+            )}     
+           {cartMessage && (
+                <p className="text-red-500 text-center">{error}</p>
             )}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 relative">
           <img

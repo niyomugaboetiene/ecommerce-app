@@ -9,6 +9,7 @@ const BestSeller = () => {
     const [cartMessage, setCartMessage] = useState(false);
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
     const [userCart, setUserCart] = useState([]);
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -67,6 +68,9 @@ useEffect(() => {
 
             {cartMessage && (
                 <p className="text-green-500">Product added successfully</p>
+            )}
+            {error && (
+                <p className="text-red-500">{error}</p>
             )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500">

@@ -9,6 +9,7 @@ const Electronics = () => {
     const [products, setProducts] = useState([]);
     const [cartMessage, setCartMessage] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
     const [userCart, setUserCart] = useState([]);
     const navigate = useNavigate();
 
@@ -75,7 +76,14 @@ const isProductInCart = (product_id) => {
             <h2 className="text-3xl font-bold mb-8 text-green-500">Electronics Products</h2>
             {cartMessage && (
                 <p className="text-green-500">Product added successfully</p>
+            )}        
+           {error && (
+                <p className="text-red-500">{error}</p>
             )}
+           {isLoading && (
+                <div  className="animate-bounce text-green-500"></div>
+            )}
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500">
                 {itemToShow.map((item, idx) => (
                     <div

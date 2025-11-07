@@ -9,6 +9,7 @@ const FlashSales = () => {
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
     const [cartMessage, setCartMessage] = useState(false);
     const [products, setProducts] = useState([]);
+    const [error, setError] = useState("");
     const [userCart, setUserCart] = useState([]);
     const navigate = useNavigate();
 
@@ -64,6 +65,9 @@ useEffect(() => {
             <h2 className="text-3xl font-bold mb-8 text-green-500">New Products</h2>
             {cartMessage && (
                    <p className="text-green-500">Product Added successfully</p>
+            )}      
+            {error && (
+                   <p className="text-red-500">{error}</p>
             )}
              <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-7xl transition-all duration-500`}>
                 {itemToShow.map((item, idx) => (
