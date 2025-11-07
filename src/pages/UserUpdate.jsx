@@ -7,6 +7,7 @@ const UpdateUserInfo = () => {
   const [user_name, setUser_name] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [image, setImage] = useState("");
   const [message, setMessage] = useState("");
 
   const Update = async (e) => {
@@ -61,6 +62,12 @@ const UpdateUserInfo = () => {
           placeholder="New password"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
+          className="border p-2 rounded"
+        />     
+         <input
+          type="file"
+          accept="images/*"
+          onChange={(e) => setImage(e.target.files[0])}
           className="border p-2 rounded"
         />
 
