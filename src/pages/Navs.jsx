@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { searchProducts } from "./SearchApi"; 
@@ -10,6 +10,7 @@ const Navs = () => {
   const [error, setError] = useState("");
   const [isMenuShow, setIsMenuShown] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,23 +49,39 @@ const Navs = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-8 flex items-center justify-between">
-      <button className="text-2xl font-bold text-green-500" onClick={() => navigate('/')}>Shop Sphere</button>
+   <div className="fixed top-0 left-0 w-full shadow-2xl z-50 bg-white px-6 py-4 flex items-center justify-between">
+      {/* Logo */}
+      <button
+        className="text-2xl font-bold text-green-500"
+        onClick={() => navigate("/")}
+      >
+        Shop Sphere
+      </button>
 
-      <div className="flex space-x-8 font-medium text-gray-700">
-        <Link to="/" className="hover:underline transition-colors hover:text-green-500">Home</Link>
-        <Link to="/contact" className="hover:underline transition-colors hover:text-green-500">Contact</Link>
-        <Link to="/about" className="hover:underline transition-colors hover:text-green-500">About</Link>
-        <Link to="/sign-up" className="hover:underline transition-colors hover:text-green-500">Sign Up</Link>
+      {/* Desktop Links */}
+      <div className="hidden md:flex space-x-8 font-medium text-gray-700">
+        <Link to="/" className="hover:underline transition-colors hover:text-green-500">
+          Home
+        </Link>
+        <Link to="/contact" className="hover:underline transition-colors hover:text-green-500">
+          Contact
+        </Link>
+        <Link to="/about" className="hover:underline transition-colors hover:text-green-500">
+          About
+        </Link>
+        <Link to="/sign-up" className="hover:underline transition-colors hover:text-green-500">
+          Sign Up
+        </Link>
       </div>
 
-      <div className="flex items-center space-x-4">
-        <div className="flex items-center bg-gray-100 rounded-lg p-2 w-72">
+      {/* Search + Cart + Profile */}
+      <div className="hidden md:flex items-center space-x-4">
+        <div className="flex items-center bg-gray-100 rounded-lg p-2 w-64">
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="What are you looking for?"
+            placeholder="Search products..."
             className="flex-1 bg-gray-100 outline-none px-2"
           />
           <FaSearch
@@ -73,6 +90,7 @@ const Navs = () => {
           />
         </div>
 
+        {/* Cart */}
         <button
           className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
           onClick={() => navigate("/cart")}
@@ -80,13 +98,15 @@ const Navs = () => {
           <FaShoppingCart className="text-gray-700" />
         </button>
 
+        {/* Loading */}
         {loading && <p>Loading...</p>}
 
+        {/* Profile */}
         {userInfo && (
           <div className="relative">
             <div
               className="flex items-center space-x-2 cursor-pointer"
-              onClick={() => setIsMenuShown(!isMenuShow)}
+              onClick={() => setIsMenuShow(!isMenuShow)}
             >
               <img
                 src={`http://localhost:5000/${userInfo.image}`}
@@ -111,8 +131,66 @@ const Navs = () => {
           </div>
         )}
       </div>
+
+      {/* Hamburger (Mobile) */}
+      <div className="md:hidden flex items-center">
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? (
+            <FaTimes className="text-2xl text-gray-700" />
+          ) : (
+            <FaBars className="text-2xl text-gray-700" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-20 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-6 py-6 md:hidden z-40">
+          <div className="flex flex-col space-y-4 font-medium text-gray-700">
+            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500">
+              Home
+            </Link>
+            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500">
+              Contact
+            </Link>
+            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500">
+              About
+            </Link>
+            <Link to="/sign-up" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-green-500">
+              Sign Up
+            </Link>
+          </div>
+
+          <div className="flex items-center bg-gray-100 rounded-lg p-2 w-72">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search..."
+              className="flex-1 bg-gray-100 outline-none px-2"
+            />
+            <FaSearch
+              onClick={() => {
+                handleSearch();
+                setIsMobileMenuOpen(false);
+              }}
+              className="text-gray-600 cursor-pointer hover:text-gray-800"
+            />
+          </div>
+
+          <button
+            className="bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 transition"
+            onClick={() => {
+              navigate("/cart");
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <FaShoppingCart className="text-gray-700" />
+          </button>
+        </div>
+      )}
     </div>
-  );
+   );
 };
 
 export default Navs;
