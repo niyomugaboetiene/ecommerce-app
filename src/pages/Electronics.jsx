@@ -8,6 +8,7 @@ const Electronics = () => {
     const [isHoveredIndex, setIsHoveredIndex] = useState(null);
     const [products, setProducts] = useState([]);
     const [cartMessage, setCartMessage] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [userCart, setUserCart] = useState([]);
     const navigate = useNavigate();
 

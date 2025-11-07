@@ -9,6 +9,7 @@ const WomenFashion = () => {
     const [products, setProducts] = useState([]);
     const [cartMessage, setCartMessage] = useState(false);
     const [userCart, setUserCart] = useState([]);
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {

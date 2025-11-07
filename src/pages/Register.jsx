@@ -31,11 +31,11 @@ const RegisterAccount = () => {
             setSuccess("Account created successfully");
             setTimeout(() => {
                 setSuccess("");
-                navigate('/login'); // Fixed: use navigate directly, not useNavigate
+                navigate('/sign-up'); // Fixed: use navigate directly, not useNavigate
             }, 2000);
             setIsLoading(false);
         } catch (error) {
-            setError("Error during Registering");
+            setError("User name already taked");
             setTimeout(() => {
                 setError("");
             }, 6000);
