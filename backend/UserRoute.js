@@ -80,6 +80,41 @@ routes.get('/userInfo', (req, res) => {
     return res.status(401).json("Not logged in")
 });
 
+routes.put("/update/:user_id", async(req, res) => {
+    const { user_id } = req.session.user.user_id;
+    const { user_name, password } = req.body;
+
+
+    const NewData = {};
+    if (user_name) NewData.user_name;
+    if (password) NewData.password;
+
+    const CurrentUser = await UserSchema.findOne({ user_id });
+    if (CurrentUser) {
+        return res.status(200).json({
+            message: 'User',
+            user: CurrentUser
+        });
+    } 
+    res.status(404).json({
+        message: 'Login please'
+    });
+
+    const OldPassword = await CurrentUser.password;
+    if (OldPassword === NewData.password) {
+        const NewUser = await UserSchema.findOneAndUpdate({user_id}, {
+            user_name, password
+        });
+
+        if (NewUser) {
+        return res.status(201).json({
+              message: 'Updated Successfully',
+        });
+        }
+    }
+
+
+})
 routes.post('/logout', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
