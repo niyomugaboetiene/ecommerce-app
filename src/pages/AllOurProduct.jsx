@@ -141,7 +141,7 @@ const OurProduct = () => {
               {isHoveredIndex === idx && currentUser?.isAdmin && (
                 <button
                   onClick={() => editProduct(item.product_id)}
-                  className="absolute top-12 right-2 bg-white p-2 rounded-full shadow hover:bg-yellow-100 transition"
+                  className="absolute top-1 right-2 bg-white p-2 rounded-full shadow hover:bg-yellow-100 transition"
                   title="Edit Product"
                 >
                   <FaEdit className="text-yellow-500" />
@@ -150,7 +150,7 @@ const OurProduct = () => {
               {isHoveredIndex === idx && currentUser?.isAdmin && (
                 <button
                   onClick={() => Delete(item.product_id)}
-                  className="absolute top-22 right-2 bg-white p-2 rounded-full shadow hover:bg-blue-100 transition"
+                  className="absolute top-10 right-2 bg-white p-2 rounded-full shadow hover:bg-blue-100 transition"
                   title="Delete Product"
                 >
                   <FaTrash className="text-green-500" />

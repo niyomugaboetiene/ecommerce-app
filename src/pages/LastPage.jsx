@@ -79,7 +79,7 @@ const AddToCart = async(product_id) => {
             <>   
              <button
               onClick={() => navigate(`/updates`)}
-              className="absolute top-20 right-6 bg-yellow-500 hover:bg-yellow-700 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+              className="absolute top-5 right-3 bg-yellow-500 hover:bg-yellow-700 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
               title="Edit product"
             >
               <FaEdit className="text-xl text-center" />
