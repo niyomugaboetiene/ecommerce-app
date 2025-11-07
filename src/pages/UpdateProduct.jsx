@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ const UpdateProduct = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const { product_id } = useParams();
+    const [currentProduct, setCurrentProduct] = useState([]);
     const [success, setSuccess] = useState("");
     const navigate = useNavigate()
     
@@ -44,6 +45,21 @@ const UpdateProduct = () => {
         }
     }
 
+    useEffect(() => {
+        const GetCurrentProduct = async() => {
+            try {
+               const res = await axios.get(`http://localhost:5000/product/getProduct/${product_id}`);
+               setCurrentProduct(res.data.product);
+            } catch (error){
+                 const errorMessage = error.message;
+                 setError(errorMessage);
+            }
+        }
+        
+        GetCurrentProduct();
+    }, []);
+
+
     return (
         <div className="flex flex-col items-center justify-center p-9 mt-4">
             <h1 className="text-center mt-16 text-3xl font-bold mb-12">Update Product</h1>
@@ -53,9 +69,9 @@ const UpdateProduct = () => {
                     <label className="block text-[15px] text-gray-600 mb-2">Enter new product name</label>
                     <input 
                         type="text" 
+                        value={currentProduct.product_name}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                         onChange={(e) => setProduct_name(e.target.value)}
-                        value={product_name}
                     />
                 </div>
 
@@ -65,7 +81,7 @@ const UpdateProduct = () => {
                         type="number" 
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                         onChange={(e) => setPrice(e.target.value)}
-                        value={price}
+                        value={currentProduct.price}
                     />
                </div>
 
@@ -75,7 +91,7 @@ const UpdateProduct = () => {
                         type="number" 
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
                         onChange={(e) => setStock(e.target.value)}
-                        value={stock}
+                        value={currentProduct.stock}
                     />
                </div>
 
