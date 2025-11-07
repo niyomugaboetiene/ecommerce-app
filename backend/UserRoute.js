@@ -80,35 +80,45 @@ routes.get('/userInfo', (req, res) => {
     return res.status(401).json("Not logged in")
 });
 
-routes.put("/update/:user_id", async(req, res) => {
+routes.put("/update/:user_id", async (req, res) => {
+  try {
     const { user_id } = req.session.user;
     const { user_name, OldPassword, NewPassword } = req.body;
 
+    const CurrentUser = await UserSchema.findOne({ user_id });
+    if (!CurrentUser) {
+      return res.status(404).json({ message: "Login please" });
+    }
+
+    const PasswordMatches = await bcrypt.compare(OldPassword, CurrentUser.password);
+    if (!PasswordMatches) {
+      return res.status(400).json({ message: "Old password is incorrect" });
+    }
 
     const NewData = {};
     if (user_name) NewData.user_name = user_name;
-    if (NewPassword) NewData.NewPassword = NewPassword;
 
-    const CurrentUser = await UserSchema.findOne({ user_id });
-    const PasswordMatches = await bcrypt.compare(OldPassword, CurrentUser.password);
-    const salt = await bcrypt.genSalt(10);
-    if (NewPassword) NewData.password = await bcrypt.hash(NewPassword, salt);
-    res.status(404).json({
-        message: 'Login please'
+    if (NewPassword) {
+      const salt = await bcrypt.genSalt(10);
+      NewData.password = await bcrypt.hash(NewPassword, salt);
+    }
+
+    await UserSchema.findOneAndUpdate(
+      { user_id },
+      { $set: NewData },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      message: "Updated successfully",
     });
 
-    const password = CurrentUser.password;
-    console.log(password);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
-    if (PasswordMatches) {
-        await UserSchema.findOneAndUpdate({ user_id }, {$set: NewData}, { new: true });
-
-        return res.status(200).json({
-              message: 'Updated Successfully',
-        });
-        
-    }
-})
 
 routes.post('/logout', (req, res) => {
     req.session.destroy((err) => {
